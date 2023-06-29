@@ -1,0 +1,241 @@
+---
+openapi: 3.0.0
+
+info:
+  title: Викторины API
+  version: 1.0.0
+
+servers:
+  - description: SwaggerHub API Auto Mocking
+    url: https://virtserver.swaggerhub.com/PRO10022801/api/1.0.0
+  - description: Сервер для разработки
+    url: http://localhost:8080/api/v1
+
+
+paths:
+  /quizzes:
+    get:
+      summary: Получить список всех викторин
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Quiz"
+    post:
+      summary: Создать новую викторину
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Quiz"
+      responses:
+        "201":
+          description: Успешное создание
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quiz"
+  
+  /quizzes/{quizId}:
+    get:
+      summary: Получить информацию о викторине по ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quiz"
+        "404":
+          description: Викторина не найдена
+    put:
+      summary: Обновить информацию о викторине по ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Quiz"
+      responses:
+        "200":
+          description: Успешное обновление
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quiz"
+        "404":
+          description: Викторина не найдена
+    delete:
+      summary: Удалить викторину по ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+      responses:
+        "204":
+          description: Успешное удаление
+        "404":
+          description: Викторина не найдена
+
+  /quizzes/{quizId}/questions:
+    get:
+      summary: Получить список вопросов для викторины с указанным ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Question"
+        "404":
+          description: Викторина не найдена
+    post:
+      summary: Добавить новый вопрос в викторину с указанным ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Question"
+      responses:
+        "201":
+          description: Успешное создание
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Question"
+        "404":
+          description: Викторина не найдена
+
+  /quizzes/{quizId}/questions/{questionId}:
+    put:
+      summary: Обновить информацию о вопросе в викторине с указанным ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: questionId
+          description: ID вопроса
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Question"
+      responses:
+        "200":
+          description: Успешное обновление
+components:
+  schemas:
+
+    # Схема викторины
+    Quiz:
+      type: object
+      properties:
+        id:
+          description: Уникальный идентификатор викторины
+          type: integer
+          example: 1
+        title:
+          description: Название викторины
+          type: string
+          example: Насколько хорошо ты знаешь шахматы!?
+        description:
+          description: Описание викторины
+          type: string
+          example: Шахматы - знакомая всем с детства игра, сочетающая в себе элементы искусства. Проверь свои знания и узнай, можно ли делить мир на черное и белое.
+        created_at:
+          description: Дата создания викторины
+          type: string
+          format: date
+          example: 2023-06-28
+        questions:
+          description: Вопросы викторины
+          type: array
+          items:
+            $ref: "#/components/schemas/Question"
+        explanation:
+          description: Объяснение в случае неправильного ответа
+          type: string
+          example: В шахматах 16 черных и 16 белых фигур.
+        category:
+          description: Категория викторины
+          type: string
+          example: Шахматы
+        difficulty:
+          description: Сложность викторины
+          type: string
+          enum: [Easy, Medium, Hard]
+
+    # Схема вопроса
+    Question:
+      type: object
+      properties:
+        id:
+          description: Уникальный идентификатор вопроса
+          type: string
+          example: 1
+        text:
+          description: Текст вопроса
+          type: string
+          example: Сколько насчитывается шахматных фигур?
+        options:
+          description: Варианты ответа
+          type: array
+          items:
+            type: string
+            example: [64, 32, 12, 2]
+        correctOption:
+          description: Правильный ответ
+          type: integer
+          example: 32
+        
+        hint:
+          description: Подсказка к вопросу
+          type: string
+          example: Расставь шахматные фигуры и посчитай количество.
