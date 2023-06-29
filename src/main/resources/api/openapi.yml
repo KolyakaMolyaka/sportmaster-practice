@@ -18,7 +18,7 @@ paths:
       summary: Получить список всех викторин
       responses:
         "200":
-          description: Успешный ответ
+          description: Успешный ответ Good
           content:
             application/json:
               schema:
