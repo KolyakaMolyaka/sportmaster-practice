@@ -1,12 +1,14 @@
 package com.example.sportmaster;
 
 import com.example.openapi.api.QuizzesApi;
-import com.example.openapi.api.QuizzesApiDelegate;
 import com.example.openapi.model.Quiz;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RestController
 public class QuizzesApiControllerImp implements QuizzesApi {
@@ -22,5 +24,24 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         }
         return ResponseEntity.ok(quiz);
     }
+
+    @Override
+    public ResponseEntity<List<Quiz>> quizzesGet() {
+        List<Quiz> stubQuizzes = new ArrayList<>();
+
+        Quiz stubQuiz1 = new Quiz();
+        stubQuiz1.title("Stub title - quiz 1");
+        stubQuiz1.description("Stub description - quiz1");
+
+        Quiz stubQuiz2 = new Quiz();
+        stubQuiz2.title("Stub title - quiz 2");
+        stubQuiz2.description("Stub description - quiz2");
+
+        stubQuizzes.add(stubQuiz1);
+        stubQuizzes.add(stubQuiz2);
+
+        return ResponseEntity.ok(stubQuizzes);
+    }
+
 
 }
