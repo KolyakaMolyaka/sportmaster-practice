@@ -28,6 +28,16 @@ public class QuizzesApiControllerImp implements QuizzesApi {
     }
 
     @Override
+    public ResponseEntity<Void> quizzesQuizIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
+        // deleting quiz
+        if (1 == quizId) return ResponseEntity.ok().build();
+
+        // bad request
+        return ResponseEntity.badRequest().build();
+
+    }
+
+    @Override
     public ResponseEntity<List<Quiz>> quizzesGet() {
         List<Quiz> stubQuizzes = new ArrayList<>();
 
