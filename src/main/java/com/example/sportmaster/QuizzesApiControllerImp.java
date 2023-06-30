@@ -1,6 +1,7 @@
 package com.example.sportmaster;
 
 import com.example.openapi.api.QuizzesApi;
+import com.example.openapi.model.Question;
 import com.example.openapi.model.Quiz;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -65,6 +67,22 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         quiz.title(quiz.getTitle().toUpperCase());
         quiz.description(quiz.getDescription().toUpperCase());
         return ResponseEntity.ok(quiz);
+    }
+
+    @Override
+    public ResponseEntity<List<Question>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
+        ArrayList<Question> questions = new ArrayList<>();
+
+        Question q1 = new Question();
+        Question q2 = new Question();
+
+        q1.text("Question 1");
+        q2.text("Question 2");
+
+        questions.add(q1);
+        questions.add(q2);
+
+        return ResponseEntity.ok(questions);
     }
 
 }
