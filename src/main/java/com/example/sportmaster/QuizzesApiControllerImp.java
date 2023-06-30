@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 public class QuizzesApiControllerImp implements QuizzesApi {
@@ -99,5 +100,34 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         }
         return ResponseEntity.badRequest().build();
     }
+
+    @Override
+    public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId,@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
+
+        Quiz quiz = new Quiz();
+        quiz.setId(quizId);
+
+        Question question = new Question();
+        question.setId(1);
+
+        Question question2 = new Question();
+        question2.setId(2);
+
+
+        quiz.addQuestionsItem(question);
+        quiz.addQuestionsItem(question2);
+
+        // имитация удаления вопроса с ID=1
+        // (вопрос с ID=2 продолжает существовать), т.е. bad request будет всегда, кроме запрсоа с ID=1
+
+        List<Question> questions = quiz.getQuestions();
+        questions.remove(question);
+
+        for (Question q: questions) {
+            if (Objects.equals(q.getId(), questionId)) return ResponseEntity.badRequest().build();
+        }
+        return ResponseEntity.ok().build();
+    }
+
 
 }
