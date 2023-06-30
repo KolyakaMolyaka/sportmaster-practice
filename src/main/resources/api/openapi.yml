@@ -218,7 +218,7 @@ components:
       properties:
         id:
           description: Уникальный идентификатор вопроса
-          type: string
+          type: integer
           example: 1
         text:
           description: Текст вопроса

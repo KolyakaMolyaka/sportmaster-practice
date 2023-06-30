@@ -85,4 +85,19 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(questions);
     }
 
+    @Override
+    public ResponseEntity<Question> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId,@ApiParam(value = "", required = true) @Valid @RequestBody Question question) {
+        question.setId(1);
+        Quiz quiz = new Quiz();
+        quiz.id(quizId);
+        quiz.addQuestionsItem(question);
+        for (Question q :  quiz.getQuestions()) {
+            if (q.equals(question)) {
+                return ResponseEntity.ok(question);
+            }
+
+        }
+        return ResponseEntity.badRequest().build();
+    }
+
 }
