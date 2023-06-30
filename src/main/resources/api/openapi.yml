@@ -170,6 +170,25 @@ paths:
       responses:
         "200":
           description: Успешное обновление
+    delete:
+      summary: Удалить информацию о вопросе в викторине с указанным ID
+      parameters:
+        - in: path
+          name: quizId
+          description: ID викторины
+          required: true
+          schema:
+            type: integer
+        - in: path
+          name: questionId
+          description: ID вопроса
+          required: true
+          schema:
+            type: integer
+      responses:
+        "200":
+          description: Успешное удаление
+
 components:
   schemas:
 
