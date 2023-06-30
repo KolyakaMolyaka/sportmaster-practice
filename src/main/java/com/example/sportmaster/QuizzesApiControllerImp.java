@@ -5,8 +5,10 @@ import com.example.openapi.model.Quiz;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,5 +45,11 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(stubQuizzes);
     }
 
+    @Override
+    public ResponseEntity<Quiz> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody Quiz quiz) {
+        quiz.title(quiz.getTitle().toUpperCase());
+        quiz.description(quiz.getDescription().toUpperCase());
+        return ResponseEntity.ok(quiz);
+    }
 
 }
