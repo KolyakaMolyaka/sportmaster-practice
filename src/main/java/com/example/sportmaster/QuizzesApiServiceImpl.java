@@ -14,7 +14,7 @@ import java.util.Objects;
 
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
     /* Пример реализации собственного метода */
-    public ResponseEntity<Quiz> quizzesQuizIdGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
+    public ResponseEntity<Quiz> quizzesQuizIdGet(Integer quizId) {
         Quiz quiz = new Quiz();
         if (quizId == 1) {
             quiz.description("This is the first quiz");
@@ -24,14 +24,14 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return ResponseEntity.ok(quiz);
     }
 
-    public ResponseEntity<Void> quizzesQuizIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
+    public ResponseEntity<Void> quizzesQuizIdDelete(Integer quizId) {
         // deleting quiz
         if (1 == quizId) return ResponseEntity.ok().build();
 
         // bad request
         return ResponseEntity.badRequest().build();
     }
-    public ResponseEntity<Quiz> quizzesQuizIdPut(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId,@ApiParam(value = "", required = true) @Valid @RequestBody Quiz quiz) {
+    public ResponseEntity<Quiz> quizzesQuizIdPut(Integer quizId, Quiz quiz) {
         // updating quiz
         quiz.description("updated description");
         return ResponseEntity.ok(quiz);
@@ -54,13 +54,13 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return ResponseEntity.ok(stubQuizzes);
     }
 
-    public ResponseEntity<Quiz> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody Quiz quiz) {
+    public ResponseEntity<Quiz> quizzesPost(Quiz quiz) {
         quiz.title(quiz.getTitle().toUpperCase());
         quiz.description(quiz.getDescription().toUpperCase());
         return ResponseEntity.ok(quiz);
     }
 
-    public ResponseEntity<List<Question>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
+    public ResponseEntity<List<Question>> quizzesQuizIdQuestionsGet(Integer quizId) {
         ArrayList<Question> questions = new ArrayList<>();
 
         Question q1 = new Question();
@@ -75,7 +75,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return ResponseEntity.ok(questions);
     }
 
-    public ResponseEntity<Question> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId,@ApiParam(value = "", required = true) @Valid @RequestBody Question question) {
+    public ResponseEntity<Question> quizzesQuizIdQuestionsPost(Integer quizId, Question question) {
         question.setId(1);
         Quiz quiz = new Quiz();
         quiz.id(quizId);
@@ -89,7 +89,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return ResponseEntity.badRequest().build();
     }
 
-    public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId,@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
+    public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
 
         Quiz quiz = new Quiz();
         quiz.setId(quizId);
