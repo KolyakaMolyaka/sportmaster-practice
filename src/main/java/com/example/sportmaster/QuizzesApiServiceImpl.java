@@ -24,12 +24,12 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         if (1 == quizId) deleteOperation = true;
         return deleteOperation;
     }
-    public QuizDTO quizzesQuizIdPut(Integer quizId, QuizDTO quiz) {
+    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDTO quiz) {
         // updating quiz, returning QuizDoc ..
         QuizDoc quizdoc = new QuizDoc();
         quizdoc.description("updated description");
 
-        return (QuizDTO) quizdoc;
+        return quizdoc;
     }
 
     public List<QuizDoc> quizzesGet() {

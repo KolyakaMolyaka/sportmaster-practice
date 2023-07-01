@@ -9,7 +9,7 @@ public interface IQuizzesApiService {
 
     public boolean quizzesQuizIdDelete(Integer quizId);
 
-    public QuizDTO quizzesQuizIdPut(Integer quizId, QuizDTO quiz);
+    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDTO quiz);
 
     public List<QuizDoc> quizzesGet();
 
