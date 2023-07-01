@@ -1,70 +1,69 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.openapi.model.Question;
-import com.example.sportmaster.openapi.model.Quiz;
-import io.swagger.annotations.ApiParam;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-
-import javax.validation.Valid;
+import com.example.sportmaster.openapi.model.QuestionDTO;
+import com.example.sportmaster.openapi.model.QuizDTO;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
     /* Пример реализации собственного метода */
-    public ResponseEntity<Quiz> quizzesQuizIdGet(Integer quizId) {
-        Quiz quiz = new Quiz();
+    public QuizDoc quizzesQuizIdGet(Integer quizId) {
+        QuizDoc quiz = new QuizDoc();
         if (quizId == 1) {
             quiz.description("This is the first quiz");
         } else {
             quiz.description("This is not the first quiz :(");
         }
-        return ResponseEntity.ok(quiz);
+        return quiz;
     }
 
-    public ResponseEntity<Void> quizzesQuizIdDelete(Integer quizId) {
+    public boolean quizzesQuizIdDelete(Integer quizId) {
         // deleting quiz
-        if (1 == quizId) return ResponseEntity.ok().build();
-
-        // bad request
-        return ResponseEntity.badRequest().build();
+        boolean deleteOperation = false;
+        if (1 == quizId) deleteOperation = true;
+        return deleteOperation;
     }
-    public ResponseEntity<Quiz> quizzesQuizIdPut(Integer quizId, Quiz quiz) {
-        // updating quiz
-        quiz.description("updated description");
-        return ResponseEntity.ok(quiz);
+    public QuizDTO quizzesQuizIdPut(Integer quizId, QuizDTO quiz) {
+        // updating quiz, returning QuizDoc ..
+        QuizDoc quizdoc = new QuizDoc();
+        quizdoc.description("updated description");
+
+        return (QuizDTO) quizdoc;
     }
 
-    public ResponseEntity<List<Quiz>> quizzesGet() {
-        List<Quiz> stubQuizzes = new ArrayList<>();
+    public List<QuizDoc> quizzesGet() {
+        List<QuizDoc> stubQuizzes = new ArrayList<>();
 
-        Quiz stubQuiz1 = new Quiz();
+        QuizDoc stubQuiz1 = new QuizDoc();
         stubQuiz1.title("Stub title - quiz 1");
         stubQuiz1.description("Stub description - quiz1");
 
-        Quiz stubQuiz2 = new Quiz();
+        QuizDoc stubQuiz2 = new QuizDoc();
         stubQuiz2.title("Stub title - quiz 2");
         stubQuiz2.description("Stub description - quiz2");
 
         stubQuizzes.add(stubQuiz1);
         stubQuizzes.add(stubQuiz2);
 
-        return ResponseEntity.ok(stubQuizzes);
+        return stubQuizzes;
     }
 
-    public ResponseEntity<Quiz> quizzesPost(Quiz quiz) {
-        quiz.title(quiz.getTitle().toUpperCase());
-        quiz.description(quiz.getDescription().toUpperCase());
-        return ResponseEntity.ok(quiz);
+    public QuizDoc quizzesPost(QuizDTO quiz) {
+        // добавление QuizDTO, получение QuizDoc
+        QuizDoc quizDoc = new QuizDoc();
+        // изменение полей из QuizDTO
+        quizDoc.title(quiz.getTitle().toUpperCase());
+        quizDoc.description(quiz.getDescription().toUpperCase());
+
+        return quizDoc;
     }
 
-    public ResponseEntity<List<Question>> quizzesQuizIdQuestionsGet(Integer quizId) {
-        ArrayList<Question> questions = new ArrayList<>();
+    public List<QuestionDoc> quizzesQuizIdQuestionsGet(Integer quizId) {
+        ArrayList<QuestionDoc> questions = new ArrayList<>();
 
-        Question q1 = new Question();
-        Question q2 = new Question();
+        QuestionDoc q1 = new QuestionDoc();
+        QuestionDoc q2 = new QuestionDoc();
 
         q1.text("Question 1");
         q2.text("Question 2");
@@ -72,32 +71,31 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         questions.add(q1);
         questions.add(q2);
 
-        return ResponseEntity.ok(questions);
+        return questions;
     }
 
-    public ResponseEntity<Question> quizzesQuizIdQuestionsPost(Integer quizId, Question question) {
-        question.setId(1);
-        Quiz quiz = new Quiz();
+    public QuestionDoc quizzesQuizIdQuestionsPost(Integer quizId, QuestionDTO question) {
+        QuizDoc quiz = new QuizDoc();
         quiz.id(quizId);
-        quiz.addQuestionsItem(question);
-        for (Question q :  quiz.getQuestions()) {
-            if (q.equals(question)) {
-                return ResponseEntity.ok(question);
-            }
+        question.setId((int) (Math.random() * 15)); // случайное число от 0 до 15
 
-        }
-        return ResponseEntity.badRequest().build();
+        QuestionDoc newQuestion = new QuestionDoc();
+        newQuestion.setId(question.getId());
+
+        quiz.addQuestionsItem(newQuestion);
+
+        return newQuestion;
     }
 
-    public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
+    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
 
-        Quiz quiz = new Quiz();
+        QuizDoc quiz = new QuizDoc();
         quiz.setId(quizId);
 
-        Question question = new Question();
+        QuestionDoc question = new QuestionDoc();
         question.setId(1);
 
-        Question question2 = new Question();
+        QuestionDoc question2 = new QuestionDoc();
         question2.setId(2);
 
 
@@ -107,13 +105,17 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         // имитация удаления вопроса с ID=1
         // (вопрос с ID=2 продолжает существовать), т.е. bad request будет всегда, кроме запрсоа с ID=1
 
-        List<Question> questions = quiz.getQuestions();
+        List<QuestionDTO> questions = quiz.getQuestions();
         questions.remove(question);
 
-        for (Question q: questions) {
-            if (Objects.equals(q.getId(), questionId)) return ResponseEntity.badRequest().build();
+        boolean deleteOperation = true;
+        for (QuestionDTO q: questions) {
+            if (Objects.equals(q.getId(), questionId)) {
+                deleteOperation = false;
+                break;
+            }
         }
-        return ResponseEntity.ok().build();
+        return deleteOperation;
     }
 
 }

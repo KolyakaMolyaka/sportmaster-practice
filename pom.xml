@@ -116,6 +116,7 @@
                             <generatorName>spring</generatorName>
                             <apiPackage>com.example.sportmaster.openapi.api</apiPackage>
                             <modelPackage>com.example.sportmaster.openapi.model</modelPackage>
+                            <modelNameSuffix>DTO</modelNameSuffix>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
