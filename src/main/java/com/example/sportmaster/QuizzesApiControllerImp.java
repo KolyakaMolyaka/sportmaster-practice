@@ -1,8 +1,8 @@
 package com.example.sportmaster;
 
-import com.example.openapi.api.QuizzesApi;
-import com.example.openapi.model.Question;
-import com.example.openapi.model.Quiz;
+import com.example.sportmaster.openapi.api.QuizzesApi;
+import com.example.sportmaster.openapi.model.Question;
+import com.example.sportmaster.openapi.model.Quiz;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

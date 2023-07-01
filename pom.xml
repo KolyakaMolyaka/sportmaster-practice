@@ -113,12 +113,9 @@
                             <inputSpec>
                                 ${project.basedir}/src/main/resources/api/openapi.yml
                             </inputSpec>
-<!--                            <output>-->
-<!--                                ${project.basedir}-->
-<!--                            </output>-->
                             <generatorName>spring</generatorName>
-                            <apiPackage>com.example.openapi.api</apiPackage>
-                            <modelPackage>com.example.openapi.model</modelPackage>
+                            <apiPackage>com.example.sportmaster.openapi.api</apiPackage>
+                            <modelPackage>com.example.sportmaster.openapi.model</modelPackage>
                             <supportingFilesToGenerate>
                                 ApiUtil.java
                             </supportingFilesToGenerate>
