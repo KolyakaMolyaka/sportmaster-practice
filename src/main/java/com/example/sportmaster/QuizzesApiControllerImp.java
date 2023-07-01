@@ -3,6 +3,8 @@ package com.example.sportmaster;
 import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import com.example.sportmaster.openapi.model.QuizDTO;
+import com.example.sportmaster.service.QuestionDoc;
+import com.example.sportmaster.service.QuizDoc;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +18,7 @@ import java.util.List;
 @RestController
 public class QuizzesApiControllerImp implements QuizzesApi {
 
-    private final IQuizzesApiService quizzesApiService = new QuizzesApiServiceImpl();
+    public final IQuizzesApiService quizzesApiService = new QuizzesApiServiceImpl();
 
     public ResponseEntity<QuizDTO> quizzesQuizIdGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         QuizDTO q = quizzesApiService.quizzesQuizIdGet(quizId);
@@ -47,7 +49,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         List<QuizDTO> quizzesDTO = new ArrayList<>();
         List<QuizDoc> quizzesDoc = quizzesApiService.quizzesGet();
         // конвертируем QuizDoc в QuizDTO
-        for (QuizDoc quiz: quizzesDoc) {
+        for (QuizDoc quiz : quizzesDoc) {
             quizzesDTO.add((QuizDTO) quiz);
         }
 
@@ -63,7 +65,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         List<QuestionDTO> questionsDTO = new ArrayList<>();
         List<QuestionDoc> questionsDoc = quizzesApiService.quizzesQuizIdQuestionsGet(quizId);
         // конвертируем questionsDoc в questionsDTO
-        for (QuestionDoc q: questionsDoc) {
+        for (QuestionDoc q : questionsDoc) {
             questionsDTO.add((QuestionDTO) q);
         }
 

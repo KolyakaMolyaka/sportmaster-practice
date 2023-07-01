@@ -2,6 +2,8 @@ package com.example.sportmaster;
 
 import com.example.sportmaster.openapi.model.QuizDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;
+import com.example.sportmaster.service.QuestionDoc;
+import com.example.sportmaster.service.QuizDoc;
 
 import java.util.List;
 public interface IQuizzesApiService {
