@@ -75,4 +75,8 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         newQuestion.setId((int) (Math.random() * 15));
         return newQuestion;
     }
+
+    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
+        return questionId % 2 == 0; // четное число -> удаление успешно,  нечетное - нет
+    }
 }
