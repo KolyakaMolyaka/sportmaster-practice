@@ -13,4 +13,11 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         return quiz;
 
     }
+
+    public boolean quizzesQuizIdDelete(Integer quizId) {
+        // deleting quiz
+        boolean deleteOperation = false;
+        if (1 == quizId) deleteOperation = true;
+        return deleteOperation;
+    }
 }

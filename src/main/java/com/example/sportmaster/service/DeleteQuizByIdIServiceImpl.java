@@ -1,12 +1,11 @@
 package com.example.sportmaster.service;
 
-import com.example.sportmaster.service.IDeleteQuizByIdService;
+import com.example.sportmaster.repository.IQuizzesRepository;
+import com.example.sportmaster.repository.QuizzesRepositoryImpl;
 
 public class DeleteQuizByIdIServiceImpl implements IDeleteQuizByIdService {
+    private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
     public boolean quizzesQuizIdDelete(Integer quizId) {
-        // deleting quiz
-        boolean deleteOperation = false;
-        if (1 == quizId) deleteOperation = true;
-        return deleteOperation;
+        return quizzesRepository.quizzesQuizIdDelete(quizId);
     }
 }
