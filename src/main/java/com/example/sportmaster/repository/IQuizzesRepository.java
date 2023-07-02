@@ -19,4 +19,5 @@ public interface IQuizzesRepository {
     public QuizPer quizzesPost(QuizPer quiz);
 
     public List<QuestionPer> quizzesQuizIdQuestionsGet(Integer quizId);
+    public QuestionPer quizzesQuizIdQuestionsPost(Integer quizId, QuestionPer question);
 }

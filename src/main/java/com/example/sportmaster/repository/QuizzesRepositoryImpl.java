@@ -69,4 +69,10 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         return questions;
 
     }
+
+    public QuestionPer quizzesQuizIdQuestionsPost(Integer quizId, QuestionPer question) {
+        QuestionPer newQuestion = new QuestionPer();
+        newQuestion.setId((int) (Math.random() * 15));
+        return newQuestion;
+    }
 }
