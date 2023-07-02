@@ -1,23 +1,29 @@
 package com.example.sportmaster.service;
 
+import com.example.sportmaster.repository.IQuizzesRepository;
+import com.example.sportmaster.repository.QuizzesRepositoryImpl;
+import com.example.sportmaster.repository.mappers.IQuestionDocToQuestionPerMapper;
+import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
+import com.example.sportmaster.repository.mappers.QuestionDocToQuestionPerMapperImpl;
+import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
+import com.example.sportmaster.repository.models.QuestionPer;
 import com.example.sportmaster.service.models.QuestionDoc;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class GetQuestionsByQuizIdServiceImpl implements IGetQuestionsByQuizIdService {
+
+    private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
+    private final IQuestionDocToQuestionPerMapper questionDocToQuestionPerMapper = new QuestionDocToQuestionPerMapperImpl();
+
     public List<QuestionDoc> quizzesQuizIdQuestionsGet(Integer quizId) {
-        ArrayList<QuestionDoc> questions = new ArrayList<>();
+        List<QuestionPer> questionsPer = quizzesRepository.quizzesQuizIdQuestionsGet(quizId);
+        List<QuestionDoc> questionsDoc = new ArrayList<>();
+        for (QuestionPer questionPer : questionsPer) {
+            questionsDoc.add(questionDocToQuestionPerMapper.toQuestionDoc(questionPer));
 
-        QuestionDoc q1 = new QuestionDoc();
-        QuestionDoc q2 = new QuestionDoc();
-
-        q1.setText("Question 1");
-        q2.setText("Question 2");
-
-        questions.add(q1);
-        questions.add(q2);
-
-        return questions;
+        }
+        return questionsDoc;
     }
 }

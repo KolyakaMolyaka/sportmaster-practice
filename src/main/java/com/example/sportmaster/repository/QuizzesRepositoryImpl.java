@@ -1,6 +1,8 @@
 package com.example.sportmaster.repository;
 
+import com.example.sportmaster.repository.models.QuestionPer;
 import com.example.sportmaster.repository.models.QuizPer;
+import com.example.sportmaster.service.models.QuestionDoc;
 import com.example.sportmaster.service.models.QuizDoc;
 
 import java.util.ArrayList;
@@ -50,5 +52,21 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         quiz.setTitle(quiz.getTitle().toUpperCase());
         quiz.setDescription(quiz.getDescription().toUpperCase());
         return quiz;
+    }
+
+    public List<QuestionPer> quizzesQuizIdQuestionsGet(Integer quizId) {
+        ArrayList<QuestionPer> questions = new ArrayList<>();
+
+        QuestionPer q1 = new QuestionPer();
+        QuestionPer q2 = new QuestionPer();
+
+        q1.setText("Question 1");
+        q2.setText("Question 2");
+
+        questions.add(q1);
+        questions.add(q2);
+
+        return questions;
+
     }
 }
