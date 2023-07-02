@@ -1,6 +1,7 @@
 package com.example.sportmaster.repository;
 
 import com.example.sportmaster.repository.models.QuizPer;
+import com.example.sportmaster.service.models.QuizDoc;
 
 public class QuizzesRepositoryImpl implements IQuizzesRepository {
     public QuizPer quizzesQuizIdGet(Integer quizId) {
@@ -19,5 +20,10 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         boolean deleteOperation = false;
         if (1 == quizId) deleteOperation = true;
         return deleteOperation;
+    }
+
+    public QuizPer quizzesQuizIdPut(Integer quizId, QuizPer quiz) {
+        quiz.setDescription("updated description");
+        return quiz;
     }
 }
