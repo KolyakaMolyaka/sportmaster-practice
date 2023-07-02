@@ -1,7 +1,7 @@
-package com.example.sportmaster.mappers;
+package com.example.sportmaster.service.mappers;
 
 import com.example.sportmaster.openapi.model.QuizDTO;
-import com.example.sportmaster.service.QuizDoc;
+import com.example.sportmaster.service.models.QuizDoc;
 
 public interface IQuizDtoToQuizDocMapper {
     public QuizDTO toQuizDto(QuizDoc quizDoc);

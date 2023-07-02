@@ -1,6 +1,8 @@
 package com.example.sportmaster.service;
 
-import com.example.sportmaster.mappers.QuizDtoToQuizDocMapperImpl;
+import com.example.sportmaster.service.mappers.QuizDtoToQuizDocMapperImpl;
+import com.example.sportmaster.service.models.QuestionDoc;
+import com.example.sportmaster.service.models.QuizDoc;
 
 public class DeleteQuizByIdQuestionByIdServiceImpl implements IDeleteQuizByIdQuestionByIdService {
     private final QuizDtoToQuizDocMapperImpl dtoToDocMapper = new QuizDtoToQuizDocMapperImpl();

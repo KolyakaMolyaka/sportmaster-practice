@@ -1,6 +1,7 @@
-package com.example.sportmaster.repository;
+package com.example.sportmaster.repository.mappers;
 
-import com.example.sportmaster.service.QuizDoc;
+import com.example.sportmaster.repository.models.QuizPer;
+import com.example.sportmaster.service.models.QuizDoc;
 
 public class QuizDocToQuizPerMapperImpl implements IQuizDocToQuizPerMapper {
     public QuizPer toQuizPer(QuizDoc quizDoc) {

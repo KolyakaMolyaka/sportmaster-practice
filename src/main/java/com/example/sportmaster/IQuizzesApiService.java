@@ -1,7 +1,7 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.service.QuestionDoc;
-import com.example.sportmaster.service.QuizDoc;
+import com.example.sportmaster.service.models.QuestionDoc;
+import com.example.sportmaster.service.models.QuizDoc;
 
 import java.util.List;
 public interface IQuizzesApiService {

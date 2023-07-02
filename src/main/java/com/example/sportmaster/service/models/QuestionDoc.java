@@ -1,4 +1,4 @@
-package com.example.sportmaster.service;
+package com.example.sportmaster.service.models;
 
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import lombok.Data;

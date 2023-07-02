@@ -1,5 +1,7 @@
 package com.example.sportmaster.service;
 
+import com.example.sportmaster.service.models.QuizDoc;
+
 import java.util.ArrayList;
 import java.util.List;
 

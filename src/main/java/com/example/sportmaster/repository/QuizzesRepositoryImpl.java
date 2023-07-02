@@ -1,6 +1,6 @@
 package com.example.sportmaster.repository;
 
-import com.example.sportmaster.service.QuizDoc;
+import com.example.sportmaster.repository.models.QuizPer;
 
 public class QuizzesRepositoryImpl implements IQuizzesRepository {
     public QuizPer quizzesQuizIdGet(Integer quizId) {

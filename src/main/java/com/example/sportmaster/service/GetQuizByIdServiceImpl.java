@@ -1,6 +1,9 @@
 package com.example.sportmaster.service;
 
 import com.example.sportmaster.repository.*;
+import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
+import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
+import com.example.sportmaster.service.models.QuizDoc;
 
 public class GetQuizByIdServiceImpl implements IGetQuizByIdService {
 

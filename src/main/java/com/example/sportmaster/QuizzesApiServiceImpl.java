@@ -1,8 +1,8 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.openapi.model.QuestionDTO;
-import com.example.sportmaster.openapi.model.QuizDTO;
 import com.example.sportmaster.service.*;
+import com.example.sportmaster.service.models.QuestionDoc;
+import com.example.sportmaster.service.models.QuizDoc;
 
 import java.util.List;
 

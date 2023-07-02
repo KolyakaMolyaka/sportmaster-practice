@@ -1,14 +1,14 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.mappers.IQuestionDtoToQuestionDocMapper;
-import com.example.sportmaster.mappers.IQuizDtoToQuizDocMapper;
-import com.example.sportmaster.mappers.QuestionDtoToQuestionDocMapperImpl;
-import com.example.sportmaster.mappers.QuizDtoToQuizDocMapperImpl;
+import com.example.sportmaster.service.mappers.IQuestionDtoToQuestionDocMapper;
+import com.example.sportmaster.service.mappers.IQuizDtoToQuizDocMapper;
+import com.example.sportmaster.service.mappers.QuestionDtoToQuestionDocMapperImpl;
+import com.example.sportmaster.service.mappers.QuizDtoToQuizDocMapperImpl;
 import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import com.example.sportmaster.openapi.model.QuizDTO;
-import com.example.sportmaster.service.QuestionDoc;
-import com.example.sportmaster.service.QuizDoc;
+import com.example.sportmaster.service.models.QuestionDoc;
+import com.example.sportmaster.service.models.QuizDoc;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;

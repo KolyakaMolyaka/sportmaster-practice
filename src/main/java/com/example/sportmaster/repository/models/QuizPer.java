@@ -1,4 +1,4 @@
-package com.example.sportmaster.repository;
+package com.example.sportmaster.repository.models;
 
 import lombok.Data;
 
