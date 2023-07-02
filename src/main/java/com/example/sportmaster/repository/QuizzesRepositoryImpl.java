@@ -45,4 +45,10 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         stubQuizzes.add(stubQuiz2);
         return stubQuizzes;
     }
+
+    public QuizPer quizzesPost(QuizPer quiz) {
+        quiz.setTitle(quiz.getTitle().toUpperCase());
+        quiz.setDescription(quiz.getDescription().toUpperCase());
+        return quiz;
+    }
 }

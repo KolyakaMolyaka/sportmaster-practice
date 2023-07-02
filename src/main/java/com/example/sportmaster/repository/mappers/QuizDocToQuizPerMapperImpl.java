@@ -10,7 +10,7 @@ public class QuizDocToQuizPerMapperImpl implements IQuizDocToQuizPerMapper {
 
         quizPer.setId(quizDoc.getId());
         quizPer.setDescription(quizDoc.getDescription());
-        quizPer.setTitle(quizPer.getTitle());
+        quizPer.setTitle(quizDoc.getTitle());
 
         return quizPer;
 

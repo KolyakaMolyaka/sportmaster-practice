@@ -1,14 +1,20 @@
 package com.example.sportmaster.service;
 
+import com.example.sportmaster.repository.IQuizzesRepository;
+import com.example.sportmaster.repository.QuizzesRepositoryImpl;
+import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
+import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
 import com.example.sportmaster.service.models.QuizDoc;
 
 public class PostQuizServiceImpl implements IPostQuizService {
-    public QuizDoc quizzesPost(QuizDoc quiz) {
-        // изменение полей из QuizDTO
-        quiz.setTitle(quiz.getTitle().toUpperCase());
-        quiz.setDescription(quiz.getDescription().toUpperCase());
+    private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
+    private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
 
-        return quiz;
+    public QuizDoc quizzesPost(QuizDoc quiz) {
+        return quizDocToQuizPerMapper.toQuizDoc(
+                quizzesRepository.quizzesPost(quizDocToQuizPerMapper.toQuizPer(quiz))
+        );
+
     }
 
 }

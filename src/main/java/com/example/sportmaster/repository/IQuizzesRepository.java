@@ -10,4 +10,5 @@ public interface IQuizzesRepository {
     public boolean quizzesQuizIdDelete(Integer quizId);
     public QuizPer quizzesQuizIdPut(Integer quizId, QuizPer quiz);
     public List<QuizPer> quizzesGet();
+    public QuizPer quizzesPost(QuizPer quiz);
 }
