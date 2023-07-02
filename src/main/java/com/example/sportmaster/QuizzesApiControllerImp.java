@@ -88,8 +88,10 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO question) {
 
-//        QuestionDTO q = quizzesApiService.quizzesQuizIdQuestionsPost(quizId, question);
-        return ResponseEntity.ok().build();
+        QuestionDTO q = questionDtoToQuestionDocMapper.toQuestionDto(
+                quizzesApiService.quizzesQuizIdQuestionsPost(quizId, questionDtoToQuestionDocMapper.toQuestionDoc(question))
+        );
+        return ResponseEntity.ok(q);
     }
 
     public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
