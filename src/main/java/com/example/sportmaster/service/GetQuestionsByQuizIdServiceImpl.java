@@ -10,8 +10,8 @@ public class GetQuestionsByQuizIdServiceImpl implements IGetQuestionsByQuizIdSer
         QuestionDoc q1 = new QuestionDoc();
         QuestionDoc q2 = new QuestionDoc();
 
-        q1.text("Question 1");
-        q2.text("Question 2");
+        q1.setText("Question 1");
+        q2.setText("Question 2");
 
         questions.add(q1);
         questions.add(q2);

@@ -7,8 +7,8 @@ public class PostQuizServiceImpl implements IPostQuizService {
         // добавление QuizDTO, получение QuizDoc
         QuizDoc quizDoc = new QuizDoc();
         // изменение полей из QuizDTO
-        quizDoc.title(quiz.getTitle().toUpperCase());
-        quizDoc.description(quiz.getDescription().toUpperCase());
+        quizDoc.setTitle(quiz.getTitle().toUpperCase());
+        quizDoc.setDescription(quiz.getDescription().toUpperCase());
 
         return quizDoc;
     }
