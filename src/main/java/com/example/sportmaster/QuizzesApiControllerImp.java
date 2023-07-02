@@ -49,7 +49,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         String oldDesctiption = "old description";
         quiz.description(oldDesctiption);
         QuizDTO q = quizDtoToQuizDocMapper.toQuizDto(
-                quizzesApiService.quizzesQuizIdPut(quizId, quiz)
+                quizzesApiService.quizzesQuizIdPut(quizId, quizDtoToQuizDocMapper.toQuizDoc(quiz))
         );
         if (quiz.getDescription().equals(q.getDescription())) return ResponseEntity.badRequest().build();
 
@@ -69,7 +69,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     public ResponseEntity<QuizDTO> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quiz) {
         QuizDTO quizDTO = quizDtoToQuizDocMapper.toQuizDto(
-                quizzesApiService.quizzesPost(quiz)
+                quizzesApiService.quizzesPost(quizDtoToQuizDocMapper.toQuizDoc(quiz))
         );
         return ResponseEntity.ok(quizDTO);
     }

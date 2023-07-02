@@ -26,7 +26,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return deleteQuizByIdService.quizzesQuizIdDelete(quizId);
     }
 
-    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDTO quiz) {
+    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDoc quiz) {
         return putQuizByIdService.quizzesQuizIdPut(quizId, quiz);
     }
 
@@ -35,7 +35,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
 
-    public QuizDoc quizzesPost(QuizDTO quiz) {
+    public QuizDoc quizzesPost(QuizDoc quiz) {
         return postQuizService.quizzesPost(quiz);
     }
 
@@ -43,7 +43,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         return getQuestionsByQuizIdService.quizzesQuizIdQuestionsGet(quizId);
     }
 
-    public QuestionDoc quizzesQuizIdQuestionsPost(Integer quizId, QuestionDTO question) {
+    public QuestionDoc quizzesQuizIdQuestionsPost(Integer quizId, QuestionDoc question) {
         return postQuestionByQuizIdService.quizzesQuizIdQuestionsPost(quizId, question);
     }
 
