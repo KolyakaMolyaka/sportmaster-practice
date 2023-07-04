@@ -12,7 +12,7 @@ public class GetQuizServiceImpl implements IGetQuizService {
 
     public QuizDoc getQuiz(Integer quizId) {
         return quizDocToQuizPerMapper.toQuizDoc(
-                quizzesRepository.quizzesQuizIdGet(quizId)
+                quizzesRepository.getQuiz(quizId)
         );
     }
 

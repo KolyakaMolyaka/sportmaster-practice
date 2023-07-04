@@ -12,7 +12,7 @@ public class CreateQuestionServiceImpl implements ICreateQuestionService {
     private final IQuestionDocToQuestionPerMapper questionDocToQuestionPerMapper = new QuestionDocToQuestionPerMapperImpl();
     public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question) {
         return questionDocToQuestionPerMapper.toQuestionDoc(
-                quizzesRepository.quizzesQuizIdQuestionsPost(
+                quizzesRepository.createQuestion(
                         quizId, questionDocToQuestionPerMapper.toQuestionPer(question))
         ) ;
     }

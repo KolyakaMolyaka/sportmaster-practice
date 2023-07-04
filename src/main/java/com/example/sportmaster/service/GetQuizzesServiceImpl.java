@@ -15,7 +15,7 @@ public class GetQuizzesServiceImpl implements IGetQuizzesService {
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
     public List<QuizDoc> getQuizzes() {
 
-        List<QuizPer> stubPerQuizzes = quizzesRepository.quizzesGet();
+        List<QuizPer> stubPerQuizzes = quizzesRepository.getQuizzes();
         List<QuizDoc> stubDocQuizzes = new ArrayList<>();
         for (QuizPer quizPer: stubPerQuizzes) {
             stubDocQuizzes.add(quizDocToQuizPerMapper.toQuizDoc(quizPer));

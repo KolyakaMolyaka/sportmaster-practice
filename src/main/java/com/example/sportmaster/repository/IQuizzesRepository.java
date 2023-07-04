@@ -2,23 +2,21 @@ package com.example.sportmaster.repository;
 
 import com.example.sportmaster.repository.models.QuestionPer;
 import com.example.sportmaster.repository.models.QuizPer;
-import com.example.sportmaster.service.models.QuestionDoc;
-import com.example.sportmaster.service.models.QuizDoc;
 
 import java.util.List;
 
 public interface IQuizzesRepository {
-    public QuizPer quizzesQuizIdGet(Integer quizId);
+    public QuizPer getQuiz(Integer quizId);
 
-    public boolean quizzesQuizIdDelete(Integer quizId);
+    public boolean deleteQuiz(Integer quizId);
 
-    public QuizPer quizzesQuizIdPut(Integer quizId, QuizPer quiz);
+    public QuizPer updateQuiz(Integer quizId, QuizPer quiz);
 
-    public List<QuizPer> quizzesGet();
+    public List<QuizPer> getQuizzes();
 
-    public QuizPer quizzesPost(QuizPer quiz);
+    public QuizPer createQuiz(QuizPer quiz);
 
-    public List<QuestionPer> quizzesQuizIdQuestionsGet(Integer quizId);
-    public QuestionPer quizzesQuizIdQuestionsPost(Integer quizId, QuestionPer question);
-    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId);
+    public List<QuestionPer> getQuestions(Integer quizId);
+    public QuestionPer createQuestion(Integer quizId, QuestionPer question);
+    public boolean deleteQuestion(Integer quizId, Integer questionId);
 }

@@ -12,7 +12,7 @@ public class CreateQuizServiceImpl implements ICreateQuizService {
 
     public QuizDoc createQuiz(QuizDoc quiz) {
         return quizDocToQuizPerMapper.toQuizDoc(
-                quizzesRepository.quizzesPost(quizDocToQuizPerMapper.toQuizPer(quiz))
+                quizzesRepository.createQuiz(quizDocToQuizPerMapper.toQuizPer(quiz))
         );
 
     }

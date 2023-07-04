@@ -12,7 +12,7 @@ public class UpdateQuizServiceImpl implements IUpdateQuizdService {
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
     public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDoc quiz) {
         return quizDocToQuizPerMapper.toQuizDoc(
-                quizzesRepository.quizzesQuizIdPut(quizId, quizDocToQuizPerMapper.toQuizPer(quiz))
+                quizzesRepository.updateQuiz(quizId, quizDocToQuizPerMapper.toQuizPer(quiz))
         );
     }
 

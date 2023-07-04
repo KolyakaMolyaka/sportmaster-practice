@@ -7,7 +7,7 @@ public class DeleteQuestionFromQuizServiceImpl implements IDeleteQuestionFromQui
     private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
 
     public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId) {
-        return quizzesRepository.quizzesQuizIdQuestionsQuestionIdDelete(quizId, questionId);
+        return quizzesRepository.deleteQuestion(quizId, questionId);
 
     }
 

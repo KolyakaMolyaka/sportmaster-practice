@@ -16,7 +16,7 @@ public class GetQuestionsServiceImpl implements IGetQuestionsService {
     private final IQuestionDocToQuestionPerMapper questionDocToQuestionPerMapper = new QuestionDocToQuestionPerMapperImpl();
 
     public List<QuestionDoc> getQuestionsFor(Integer quizId) {
-        List<QuestionPer> questionsPer = quizzesRepository.quizzesQuizIdQuestionsGet(quizId);
+        List<QuestionPer> questionsPer = quizzesRepository.getQuestions(quizId);
         List<QuestionDoc> questionsDoc = new ArrayList<>();
         for (QuestionPer questionPer : questionsPer) {
             questionsDoc.add(questionDocToQuestionPerMapper.toQuestionDoc(questionPer));

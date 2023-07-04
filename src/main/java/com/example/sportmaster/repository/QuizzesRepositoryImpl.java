@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class QuizzesRepositoryImpl implements IQuizzesRepository {
-    public QuizPer quizzesQuizIdGet(Integer quizId) {
+    public QuizPer getQuiz(Integer quizId) {
         QuizPer quiz = new QuizPer();
         if (quizId == 1) {
             quiz.setDescription("This is the first quiz");
@@ -20,19 +20,19 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
 
     }
 
-    public boolean quizzesQuizIdDelete(Integer quizId) {
+    public boolean deleteQuiz(Integer quizId) {
         // deleting quiz
         boolean deleteOperation = false;
         if (1 == quizId) deleteOperation = true;
         return deleteOperation;
     }
 
-    public QuizPer quizzesQuizIdPut(Integer quizId, QuizPer quiz) {
+    public QuizPer updateQuiz(Integer quizId, QuizPer quiz) {
         quiz.setDescription("updated description");
         return quiz;
     }
 
-    public List<QuizPer> quizzesGet() {
+    public List<QuizPer> getQuizzes() {
         List<QuizPer> stubQuizzes = new ArrayList<>();
 
         QuizPer stubQuiz1 = new QuizPer();
@@ -48,13 +48,13 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
         return stubQuizzes;
     }
 
-    public QuizPer quizzesPost(QuizPer quiz) {
+    public QuizPer createQuiz(QuizPer quiz) {
         quiz.setTitle(quiz.getTitle().toUpperCase());
         quiz.setDescription(quiz.getDescription().toUpperCase());
         return quiz;
     }
 
-    public List<QuestionPer> quizzesQuizIdQuestionsGet(Integer quizId) {
+    public List<QuestionPer> getQuestions(Integer quizId) {
         ArrayList<QuestionPer> questions = new ArrayList<>();
 
         QuestionPer q1 = new QuestionPer();
@@ -70,13 +70,13 @@ public class QuizzesRepositoryImpl implements IQuizzesRepository {
 
     }
 
-    public QuestionPer quizzesQuizIdQuestionsPost(Integer quizId, QuestionPer question) {
+    public QuestionPer createQuestion(Integer quizId, QuestionPer question) {
         QuestionPer newQuestion = new QuestionPer();
         newQuestion.setId((int) (Math.random() * 15));
         return newQuestion;
     }
 
-    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
+    public boolean deleteQuestion(Integer quizId, Integer questionId) {
         return questionId % 2 == 0; // четное число -> удаление успешно,  нечетное - нет
     }
 }
