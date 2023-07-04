@@ -10,6 +10,9 @@ public class QuizDtoToQuizDocMapperImpl implements IQuizDtoToQuizDocMapper {
         quizdoc.setId(quizdto.getId());
         quizdoc.setTitle(quizdto.getTitle());
         quizdoc.setDescription(quizdto.getDescription());
+        quizdoc.setCreatedAt(quizdto.getCreatedAt());
+        quizdoc.setExplanation(quizdto.getExplanation());
+        quizdoc.setCategory(quizdto.getCategory());
         return quizdoc;
     }
 
@@ -19,6 +22,9 @@ public class QuizDtoToQuizDocMapperImpl implements IQuizDtoToQuizDocMapper {
         quizdto.setId(quizdoc.getId());
         quizdto.setTitle(quizdoc.getTitle());
         quizdto.setDescription(quizdoc.getDescription());
+        quizdto.setCreatedAt(quizdoc.getCreatedAt());
+        quizdto.setExplanation(quizdoc.getExplanation());
+        quizdto.setCategory(quizdoc.getCategory());
         return quizdto;
     }
 
