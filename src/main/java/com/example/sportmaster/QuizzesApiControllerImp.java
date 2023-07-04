@@ -27,6 +27,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
     public final IQuizDtoToQuizDocMapper quizDtoToQuizDocMapper = new QuizDtoToQuizDocMapperImpl();
     public final IQuestionDtoToQuestionDocMapper questionDtoToQuestionDocMapper = new QuestionDtoToQuestionDocMapperImpl();
 
+    @Override
     public ResponseEntity<QuizDTO> quizzesQuizIdGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         QuizDTO q = quizDtoToQuizDocMapper.toQuizDto(
                 quizzesApiService.getQuiz(quizId)
@@ -34,6 +35,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(q);
     }
 
+    @Override
     public ResponseEntity<Void> quizzesQuizIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         boolean deleteOperation = quizzesApiService.deleteQuiz(quizId);
 
@@ -44,6 +46,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     }
 
+    @Override
     public ResponseEntity<QuizDTO> quizzesQuizIdPut(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quiz) {
 
         String oldDesctiption = "old description";
@@ -56,6 +59,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(q);
     }
 
+    @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
         List<QuizDTO> quizzesDTO = new ArrayList<>();
         List<QuizDoc> quizzesDoc = quizzesApiService.getQuizzes();
@@ -67,6 +71,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(quizzesDTO);
     }
 
+    @Override
     public ResponseEntity<QuizDTO> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quiz) {
         QuizDTO quizDTO = quizDtoToQuizDocMapper.toQuizDto(
                 quizzesApiService.createQuiz(quizDtoToQuizDocMapper.toQuizDoc(quiz))
@@ -74,6 +79,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(quizDTO);
     }
 
+    @Override
     public ResponseEntity<List<QuestionDTO>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         List<QuestionDTO> questionsDTO = new ArrayList<>();
         List<QuestionDoc> questionsDoc = quizzesApiService.getQuestionsFor(quizId);
@@ -86,6 +92,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     }
 
+    @Override
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO question) {
 
         QuestionDTO q = questionDtoToQuestionDocMapper.toQuestionDto(
@@ -94,6 +101,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         return ResponseEntity.ok(q);
     }
 
+    @Override
     public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
         boolean deleteOperation = quizzesApiService.deleteQuestionFromQuiz(quizId, questionId);
 
