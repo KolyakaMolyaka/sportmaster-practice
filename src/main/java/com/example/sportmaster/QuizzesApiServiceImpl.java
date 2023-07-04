@@ -9,25 +9,25 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IGetQuizService getQuizByIdService = new GetQuizServiceImpl();
-    private final IDeleteQuizService deleteQuizByIdService = new DeleteQuizByIdIServiceImpl();
-    private final IUpdateQuizdService putQuizByIdService = new UpdateQuizServiceImpl();
+    private final IGetQuizService getQuizService = new GetQuizServiceImpl();
+    private final IDeleteQuizService deleteQuizService = new DeleteQuizServiceImpl();
+    private final IUpdateQuizdService updateQuizService = new UpdateQuizServiceImpl();
     private final IGetQuizzesService getQuizzesService = new GetQuizzesServiceImpl();
-    private final ICreateQuizService postQuizService = new CreateQuizServiceImpl();
-    private final IGetQuestionsService getQuestionsByQuizIdService = new GetQuestionsServiceImpl();
-    private final ICreateQuestionService postQuestionByQuizIdService = new CreateQuestionServiceImpl();
-    private final IDeleteQuestionFromQuizService deleteQuizByIdQuestionByIdService = new DeleteQuestionFromQuizServiceImpl();
+    private final ICreateQuizService createQuizService = new CreateQuizServiceImpl();
+    private final IGetQuestionsService getQuestionsService = new GetQuestionsServiceImpl();
+    private final ICreateQuestionService createQuestionService = new CreateQuestionServiceImpl();
+    private final IDeleteQuestionFromQuizService deleteQuestionFromQuizService = new DeleteQuestionFromQuizServiceImpl();
 
     public QuizDoc getQuiz(Integer quizId) {
-        return getQuizByIdService.getQuiz(quizId);
+        return getQuizService.getQuiz(quizId);
     }
 
     public boolean deleteQuiz(Integer quizId) {
-        return deleteQuizByIdService.deleteQuiz(quizId);
+        return deleteQuizService.deleteQuiz(quizId);
     }
 
     public QuizDoc updateQuiz(Integer quizId, QuizDoc quiz) {
-        return putQuizByIdService.quizzesQuizIdPut(quizId, quiz);
+        return updateQuizService.quizzesQuizIdPut(quizId, quiz);
     }
 
     public List<QuizDoc> getQuizzes() {
@@ -36,19 +36,19 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
 
     public QuizDoc createQuiz(QuizDoc quiz) {
-        return postQuizService.createQuiz(quiz);
+        return createQuizService.createQuiz(quiz);
     }
 
     public List<QuestionDoc> getQuestionsFor(Integer quizId) {
-        return getQuestionsByQuizIdService.getQuestionsFor(quizId);
+        return getQuestionsService.getQuestionsFor(quizId);
     }
 
     public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question) {
-        return postQuestionByQuizIdService.createQuestionForQuiz(quizId, question);
+        return createQuestionService.createQuestionForQuiz(quizId, question);
     }
 
     public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId) {
-        return deleteQuizByIdQuestionByIdService.deleteQuestionFromQuiz(quizId, questionId);
+        return deleteQuestionFromQuizService.deleteQuestionFromQuiz(quizId, questionId);
     }
 
 }
