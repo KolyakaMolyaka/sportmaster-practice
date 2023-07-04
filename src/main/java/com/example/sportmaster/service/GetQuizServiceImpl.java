@@ -5,12 +5,12 @@ import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
 import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
 import com.example.sportmaster.service.models.QuizDoc;
 
-public class GetQuizByIdServiceImpl implements IGetQuizByIdService {
+public class GetQuizServiceImpl implements IGetQuizService {
 
     private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
 
-    public QuizDoc quizzesQuizIdGet(Integer quizId) {
+    public QuizDoc getQuiz(Integer quizId) {
         return quizDocToQuizPerMapper.toQuizDoc(
                 quizzesRepository.quizzesQuizIdGet(quizId)
         );

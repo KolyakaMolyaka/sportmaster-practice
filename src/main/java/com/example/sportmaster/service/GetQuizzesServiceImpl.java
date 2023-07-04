@@ -13,7 +13,7 @@ import java.util.List;
 public class GetQuizzesServiceImpl implements IGetQuizzesService {
     private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
-    public List<QuizDoc> quizzesGet() {
+    public List<QuizDoc> getQuizzes() {
 
         List<QuizPer> stubPerQuizzes = quizzesRepository.quizzesGet();
         List<QuizDoc> stubDocQuizzes = new ArrayList<>();

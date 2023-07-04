@@ -6,15 +6,14 @@ import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
 import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
 import com.example.sportmaster.service.models.QuizDoc;
 
-public class PostQuizServiceImpl implements IPostQuizService {
+public class UpdateQuizServiceImpl implements IUpdateQuizdService {
+
     private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
-
-    public QuizDoc quizzesPost(QuizDoc quiz) {
+    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDoc quiz) {
         return quizDocToQuizPerMapper.toQuizDoc(
-                quizzesRepository.quizzesPost(quizDocToQuizPerMapper.toQuizPer(quiz))
+                quizzesRepository.quizzesQuizIdPut(quizId, quizDocToQuizPerMapper.toQuizPer(quiz))
         );
-
     }
 
 }
