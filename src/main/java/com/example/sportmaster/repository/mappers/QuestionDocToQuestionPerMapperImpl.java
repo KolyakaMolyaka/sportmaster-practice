@@ -5,24 +5,28 @@ import com.example.sportmaster.repository.models.QuestionPer;
 import com.example.sportmaster.service.models.QuestionDoc;
 
 public class QuestionDocToQuestionPerMapperImpl implements IQuestionDocToQuestionPerMapper {
-    public QuestionPer toQuestionPer(QuestionDoc quizDoc) {
+    public QuestionPer toQuestionPer(QuestionDoc questionDoc) {
         QuestionPer questionPer;
         questionPer = new QuestionPer();
 
-        questionPer.setId(quizDoc.getId());
-        questionPer.setText(quizDoc.getText());
-        questionPer.setHint(quizDoc.getHint());
+        questionPer.setId(questionDoc.getId());
+        questionPer.setText(questionDoc.getText());
+        questionPer.setCorrectOption(questionDoc.getCorrectOption());
+        questionPer.setOptions(questionDoc.getOptions());
+        questionPer.setHint(questionDoc.getHint());
 
         return questionPer;
     }
 
-    public QuestionDoc toQuestionDoc(QuestionPer quizPer) {
+    public QuestionDoc toQuestionDoc(QuestionPer questionPer) {
         QuestionDoc questionDoc;
         questionDoc = new QuestionDoc();
 
-        questionDoc.setId(quizPer.getId());
-        questionDoc.setText(quizPer.getText());
-        questionDoc.setHint(quizPer.getHint());
+        questionDoc.setId(questionPer.getId());
+        questionDoc.setText(questionPer.getText());
+        questionDoc.setCorrectOption(questionPer.getCorrectOption());
+        questionDoc.setOptions(questionPer.getOptions());
+        questionDoc.setHint(questionPer.getHint());
 
         return questionDoc;
     }

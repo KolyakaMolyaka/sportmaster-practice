@@ -251,7 +251,7 @@ components:
             example: [64, 32, 12, 2]
         correctOption:
           description: Правильный ответ
-          type: integer
+          type: string
           example: 32
         
         hint:

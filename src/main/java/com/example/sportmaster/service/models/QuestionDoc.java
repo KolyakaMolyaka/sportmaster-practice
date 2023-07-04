@@ -1,13 +1,14 @@
 package com.example.sportmaster.service.models;
 
-import com.example.sportmaster.openapi.model.QuestionDTO;
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
+
+import java.util.List;
 
 @Data
-public class QuestionDoc  {
+public class QuestionDoc {
     private Integer id;
     private String text;
+    private String correctOption;
+    private List<String> options = null;
     private String hint;
 }

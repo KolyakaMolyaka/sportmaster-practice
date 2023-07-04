@@ -1,7 +1,5 @@
 package com.example.sportmaster.service.models;
 
-import com.example.sportmaster.openapi.model.QuestionDTO;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import java.time.LocalDate;
