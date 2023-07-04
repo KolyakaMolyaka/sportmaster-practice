@@ -29,13 +29,13 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     public ResponseEntity<QuizDTO> quizzesQuizIdGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         QuizDTO q = quizDtoToQuizDocMapper.toQuizDto(
-                quizzesApiService.quizzesQuizIdGet(quizId)
+                quizzesApiService.getQuiz(quizId)
         );
         return ResponseEntity.ok(q);
     }
 
     public ResponseEntity<Void> quizzesQuizIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
-        boolean deleteOperation = quizzesApiService.quizzesQuizIdDelete(quizId);
+        boolean deleteOperation = quizzesApiService.deleteQuiz(quizId);
 
         ResponseEntity<Void> response = ResponseEntity.badRequest().build();
         if (deleteOperation) response = ResponseEntity.ok().build();
@@ -49,7 +49,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
         String oldDesctiption = "old description";
         quiz.description(oldDesctiption);
         QuizDTO q = quizDtoToQuizDocMapper.toQuizDto(
-                quizzesApiService.quizzesQuizIdPut(quizId, quizDtoToQuizDocMapper.toQuizDoc(quiz))
+                quizzesApiService.updateQuiz(quizId, quizDtoToQuizDocMapper.toQuizDoc(quiz))
         );
         if (quiz.getDescription().equals(q.getDescription())) return ResponseEntity.badRequest().build();
 
@@ -58,7 +58,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
         List<QuizDTO> quizzesDTO = new ArrayList<>();
-        List<QuizDoc> quizzesDoc = quizzesApiService.quizzesGet();
+        List<QuizDoc> quizzesDoc = quizzesApiService.getQuizzes();
         // конвертируем QuizDoc в QuizDTO
         for (QuizDoc quiz : quizzesDoc) {
             quizzesDTO.add(quizDtoToQuizDocMapper.toQuizDto(quiz));
@@ -69,14 +69,14 @@ public class QuizzesApiControllerImp implements QuizzesApi {
 
     public ResponseEntity<QuizDTO> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quiz) {
         QuizDTO quizDTO = quizDtoToQuizDocMapper.toQuizDto(
-                quizzesApiService.quizzesPost(quizDtoToQuizDocMapper.toQuizDoc(quiz))
+                quizzesApiService.createQuiz(quizDtoToQuizDocMapper.toQuizDoc(quiz))
         );
         return ResponseEntity.ok(quizDTO);
     }
 
     public ResponseEntity<List<QuestionDTO>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         List<QuestionDTO> questionsDTO = new ArrayList<>();
-        List<QuestionDoc> questionsDoc = quizzesApiService.quizzesQuizIdQuestionsGet(quizId);
+        List<QuestionDoc> questionsDoc = quizzesApiService.getQuestionsFor(quizId);
 //         конвертируем questionsDoc в questionsDTO
         for (QuestionDoc q : questionsDoc) {
             questionsDTO.add(questionDtoToQuestionDocMapper.toQuestionDto(q));
@@ -89,13 +89,13 @@ public class QuizzesApiControllerImp implements QuizzesApi {
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO question) {
 
         QuestionDTO q = questionDtoToQuestionDocMapper.toQuestionDto(
-                quizzesApiService.quizzesQuizIdQuestionsPost(quizId, questionDtoToQuestionDocMapper.toQuestionDoc(question))
+                quizzesApiService.createQuestionForQuiz(quizId, questionDtoToQuestionDocMapper.toQuestionDoc(question))
         );
         return ResponseEntity.ok(q);
     }
 
     public ResponseEntity<Void> quizzesQuizIdQuestionsQuestionIdDelete(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
-        boolean deleteOperation = quizzesApiService.quizzesQuizIdQuestionsQuestionIdDelete(quizId, questionId);
+        boolean deleteOperation = quizzesApiService.deleteQuestionFromQuiz(quizId, questionId);
 
         ResponseEntity<Void> response = ResponseEntity.badRequest().build();
         if (deleteOperation) response = ResponseEntity.ok().build();

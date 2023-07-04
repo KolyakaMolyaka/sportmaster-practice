@@ -18,36 +18,36 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     private final IPostQuestionByQuizIdService postQuestionByQuizIdService = new PostQuestionByQuizIdServiceImpl();
     private final IDeleteQuizByIdQuestionByIdService deleteQuizByIdQuestionByIdService = new DeleteQuizByIdQuestionByIdServiceImpl();
 
-    public QuizDoc quizzesQuizIdGet(Integer quizId) {
+    public QuizDoc getQuiz(Integer quizId) {
         return getQuizByIdService.quizzesQuizIdGet(quizId);
     }
 
-    public boolean quizzesQuizIdDelete(Integer quizId) {
+    public boolean deleteQuiz(Integer quizId) {
         return deleteQuizByIdService.quizzesQuizIdDelete(quizId);
     }
 
-    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDoc quiz) {
+    public QuizDoc updateQuiz(Integer quizId, QuizDoc quiz) {
         return putQuizByIdService.quizzesQuizIdPut(quizId, quiz);
     }
 
-    public List<QuizDoc> quizzesGet() {
+    public List<QuizDoc> getQuizzes() {
         return getQuizzesService.quizzesGet();
     }
 
 
-    public QuizDoc quizzesPost(QuizDoc quiz) {
+    public QuizDoc createQuiz(QuizDoc quiz) {
         return postQuizService.quizzesPost(quiz);
     }
 
-    public List<QuestionDoc> quizzesQuizIdQuestionsGet(Integer quizId) {
+    public List<QuestionDoc> getQuestionsFor(Integer quizId) {
         return getQuestionsByQuizIdService.quizzesQuizIdQuestionsGet(quizId);
     }
 
-    public QuestionDoc quizzesQuizIdQuestionsPost(Integer quizId, QuestionDoc question) {
+    public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question) {
         return postQuestionByQuizIdService.quizzesQuizIdQuestionsPost(quizId, question);
     }
 
-    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId) {
+    public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId) {
         return deleteQuizByIdQuestionByIdService.quizzesQuizIdQuestionsQuestionIdDelete(quizId, questionId);
     }
 

@@ -5,20 +5,20 @@ import com.example.sportmaster.service.models.QuizDoc;
 
 import java.util.List;
 public interface IQuizzesApiService {
-    public QuizDoc quizzesQuizIdGet(Integer quizId);
+    public QuizDoc getQuiz(Integer quizId);
 
-    public boolean quizzesQuizIdDelete(Integer quizId);
+    public boolean deleteQuiz(Integer quizId);
 
-    public QuizDoc quizzesQuizIdPut(Integer quizId, QuizDoc quiz);
+    public QuizDoc updateQuiz(Integer quizId, QuizDoc quiz);
 
-    public List<QuizDoc> quizzesGet();
+    public List<QuizDoc> getQuizzes();
 
-    public QuizDoc quizzesPost(QuizDoc quiz);
+    public QuizDoc createQuiz(QuizDoc quiz);
 
-    public List<QuestionDoc> quizzesQuizIdQuestionsGet(Integer quizId);
+    public List<QuestionDoc> getQuestionsFor(Integer quizId);
 
-    public QuestionDoc quizzesQuizIdQuestionsPost(Integer quizId, QuestionDoc question);
+    public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question);
 
-    public boolean quizzesQuizIdQuestionsQuestionIdDelete(Integer quizId, Integer questionId);
+    public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId);
 
 }
