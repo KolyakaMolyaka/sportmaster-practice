@@ -2,8 +2,11 @@ package com.example.sportmaster;
 
 import com.example.sportmaster.repository.IQuizzesRepository;
 import com.example.sportmaster.repository.QuizzesRepositoryImpl;
+import com.example.sportmaster.repository.mappers.IQuestionDocToQuestionPerMapper;
 import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
+import com.example.sportmaster.repository.mappers.QuestionDocToQuestionPerMapperImpl;
 import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
+import com.example.sportmaster.repository.models.QuestionPer;
 import com.example.sportmaster.repository.models.QuizPer;
 import com.example.sportmaster.service.*;
 import com.example.sportmaster.service.models.QuestionDoc;
@@ -15,10 +18,11 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IGetQuestionsService getQuestionsService = new GetQuestionsServiceImpl();
     private final ICreateQuestionService createQuestionService = new CreateQuestionServiceImpl();
     private final IDeleteQuestionFromQuizService deleteQuestionFromQuizService = new DeleteQuestionFromQuizServiceImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
+
+    private final IQuestionDocToQuestionPerMapper questionDocToQuestionPerMapper = new QuestionDocToQuestionPerMapperImpl();
     private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
 
 
@@ -55,7 +59,13 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public List<QuestionDoc> getQuestionsFor(Integer quizId) {
-        return getQuestionsService.getQuestionsFor(quizId);
+        List<QuestionPer> questionsPer = quizzesRepository.getQuestions(quizId);
+        List<QuestionDoc> questionsDoc = new ArrayList<>();
+        for (QuestionPer questionPer : questionsPer) {
+            questionsDoc.add(questionDocToQuestionPerMapper.toQuestionDoc(questionPer));
+
+        }
+        return questionsDoc;
     }
 
     public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question) {
