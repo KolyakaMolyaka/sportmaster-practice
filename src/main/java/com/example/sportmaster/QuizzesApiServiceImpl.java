@@ -18,7 +18,6 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IDeleteQuestionFromQuizService deleteQuestionFromQuizService = new DeleteQuestionFromQuizServiceImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
 
     private final IQuestionDocToQuestionPerMapper questionDocToQuestionPerMapper = new QuestionDocToQuestionPerMapperImpl();
@@ -75,7 +74,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId) {
-        return deleteQuestionFromQuizService.deleteQuestionFromQuiz(quizId, questionId);
+        return quizzesRepository.deleteQuestion(quizId, questionId);
     }
 
 }
