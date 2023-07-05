@@ -1,5 +1,9 @@
 package com.example.sportmaster;
 
+import com.example.sportmaster.repository.IQuizzesRepository;
+import com.example.sportmaster.repository.QuizzesRepositoryImpl;
+import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
+import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
 import com.example.sportmaster.service.*;
 import com.example.sportmaster.service.models.QuestionDoc;
 import com.example.sportmaster.service.models.QuizDoc;
@@ -9,7 +13,6 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IGetQuizService getQuizService = new GetQuizServiceImpl();
     private final IDeleteQuizService deleteQuizService = new DeleteQuizServiceImpl();
     private final IUpdateQuizdService updateQuizService = new UpdateQuizServiceImpl();
     private final IGetQuizzesService getQuizzesService = new GetQuizzesServiceImpl();
@@ -17,9 +20,14 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     private final IGetQuestionsService getQuestionsService = new GetQuestionsServiceImpl();
     private final ICreateQuestionService createQuestionService = new CreateQuestionServiceImpl();
     private final IDeleteQuestionFromQuizService deleteQuestionFromQuizService = new DeleteQuestionFromQuizServiceImpl();
+    private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
+    private final IQuizzesRepository quizzesRepository = new QuizzesRepositoryImpl();
+
 
     public QuizDoc getQuiz(Integer quizId) {
-        return getQuizService.getQuiz(quizId);
+        return quizDocToQuizPerMapper.toQuizDoc(
+                quizzesRepository.getQuiz(quizId)
+        );
     }
 
     public boolean deleteQuiz(Integer quizId) {
