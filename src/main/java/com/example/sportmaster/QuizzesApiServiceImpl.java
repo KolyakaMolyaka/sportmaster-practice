@@ -13,7 +13,6 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IUpdateQuizdService updateQuizService = new UpdateQuizServiceImpl();
     private final IGetQuizzesService getQuizzesService = new GetQuizzesServiceImpl();
     private final ICreateQuizService createQuizService = new CreateQuizServiceImpl();
     private final IGetQuestionsService getQuestionsService = new GetQuestionsServiceImpl();
@@ -34,7 +33,9 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public QuizDoc updateQuiz(Integer quizId, QuizDoc quiz) {
-        return updateQuizService.quizzesQuizIdPut(quizId, quiz);
+        return quizDocToQuizPerMapper.toQuizDoc(
+                quizzesRepository.updateQuiz(quizId, quizDocToQuizPerMapper.toQuizPer(quiz))
+        );
     }
 
     public List<QuizDoc> getQuizzes() {
