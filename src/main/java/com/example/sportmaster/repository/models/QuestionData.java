@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class QuestionPer {
+public class QuestionData {
     private Integer id;
     private String text;
     private String correctOption;

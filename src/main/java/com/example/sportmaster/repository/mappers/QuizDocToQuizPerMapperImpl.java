@@ -1,27 +1,27 @@
 package com.example.sportmaster.repository.mappers;
 
-import com.example.sportmaster.repository.models.QuizPer;
+import com.example.sportmaster.repository.models.QuizData;
 import com.example.sportmaster.service.models.QuizDoc;
 
 public class QuizDocToQuizPerMapperImpl implements IQuizDocToQuizPerMapper {
-    public QuizPer toQuizPer(QuizDoc quizDoc) {
-        QuizPer quizPer;
-        quizPer = new QuizPer();
+    public QuizData toQuizPer(QuizDoc quizDoc) {
+        QuizData quizData;
+        quizData = new QuizData();
 
-        quizPer.setId(quizDoc.getId());
-        quizPer.setDescription(quizDoc.getDescription());
-        quizPer.setTitle(quizDoc.getTitle());
+        quizData.setId(quizDoc.getId());
+        quizData.setDescription(quizDoc.getDescription());
+        quizData.setTitle(quizDoc.getTitle());
 
-        return quizPer;
+        return quizData;
 
     }
-    public QuizDoc toQuizDoc(QuizPer quizPer) {
+    public QuizDoc toQuizDoc(QuizData quizData) {
         QuizDoc quizDoc;
         quizDoc = new QuizDoc();
 
-        quizDoc.setId(quizPer.getId());
-        quizDoc.setDescription(quizPer.getDescription());
-        quizDoc.setTitle(quizPer.getTitle());
+        quizDoc.setId(quizData.getId());
+        quizDoc.setDescription(quizData.getDescription());
+        quizDoc.setTitle(quizData.getTitle());
 
         return quizDoc;
 

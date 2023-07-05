@@ -1,32 +1,31 @@
 package com.example.sportmaster.repository.mappers;
 
-import com.example.sportmaster.openapi.model.QuestionDTO;
-import com.example.sportmaster.repository.models.QuestionPer;
+import com.example.sportmaster.repository.models.QuestionData;
 import com.example.sportmaster.service.models.QuestionDoc;
 
 public class QuestionDocToQuestionPerMapperImpl implements IQuestionDocToQuestionPerMapper {
-    public QuestionPer toQuestionPer(QuestionDoc questionDoc) {
-        QuestionPer questionPer;
-        questionPer = new QuestionPer();
+    public QuestionData toQuestionPer(QuestionDoc questionDoc) {
+        QuestionData questionData;
+        questionData = new QuestionData();
 
-        questionPer.setId(questionDoc.getId());
-        questionPer.setText(questionDoc.getText());
-        questionPer.setCorrectOption(questionDoc.getCorrectOption());
-        questionPer.setOptions(questionDoc.getOptions());
-        questionPer.setHint(questionDoc.getHint());
+        questionData.setId(questionDoc.getId());
+        questionData.setText(questionDoc.getText());
+        questionData.setCorrectOption(questionDoc.getCorrectOption());
+        questionData.setOptions(questionDoc.getOptions());
+        questionData.setHint(questionDoc.getHint());
 
-        return questionPer;
+        return questionData;
     }
 
-    public QuestionDoc toQuestionDoc(QuestionPer questionPer) {
+    public QuestionDoc toQuestionDoc(QuestionData questionData) {
         QuestionDoc questionDoc;
         questionDoc = new QuestionDoc();
 
-        questionDoc.setId(questionPer.getId());
-        questionDoc.setText(questionPer.getText());
-        questionDoc.setCorrectOption(questionPer.getCorrectOption());
-        questionDoc.setOptions(questionPer.getOptions());
-        questionDoc.setHint(questionPer.getHint());
+        questionDoc.setId(questionData.getId());
+        questionDoc.setText(questionData.getText());
+        questionDoc.setCorrectOption(questionData.getCorrectOption());
+        questionDoc.setOptions(questionData.getOptions());
+        questionDoc.setHint(questionData.getHint());
 
         return questionDoc;
     }

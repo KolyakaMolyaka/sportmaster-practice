@@ -6,9 +6,8 @@ import com.example.sportmaster.repository.mappers.IQuestionDocToQuestionPerMappe
 import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
 import com.example.sportmaster.repository.mappers.QuestionDocToQuestionPerMapperImpl;
 import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
-import com.example.sportmaster.repository.models.QuestionPer;
-import com.example.sportmaster.repository.models.QuizPer;
-import com.example.sportmaster.service.*;
+import com.example.sportmaster.repository.models.QuestionData;
+import com.example.sportmaster.repository.models.QuizData;
 import com.example.sportmaster.service.models.QuestionDoc;
 import com.example.sportmaster.service.models.QuizDoc;
 
@@ -41,10 +40,10 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public List<QuizDoc> getQuizzes() {
-        List<QuizPer> stubPerQuizzes = quizzesRepository.getQuizzes();
+        List<QuizData> stubPerQuizzes = quizzesRepository.getQuizzes();
         List<QuizDoc> stubDocQuizzes = new ArrayList<>();
-        for (QuizPer quizPer : stubPerQuizzes) {
-            stubDocQuizzes.add(quizDocToQuizPerMapper.toQuizDoc(quizPer));
+        for (QuizData quizData : stubPerQuizzes) {
+            stubDocQuizzes.add(quizDocToQuizPerMapper.toQuizDoc(quizData));
         }
         return stubDocQuizzes;
     }
@@ -57,10 +56,10 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public List<QuestionDoc> getQuestionsFor(Integer quizId) {
-        List<QuestionPer> questionsPer = quizzesRepository.getQuestions(quizId);
+        List<QuestionData> questionsPer = quizzesRepository.getQuestions(quizId);
         List<QuestionDoc> questionsDoc = new ArrayList<>();
-        for (QuestionPer questionPer : questionsPer) {
-            questionsDoc.add(questionDocToQuestionPerMapper.toQuestionDoc(questionPer));
+        for (QuestionData questionData : questionsPer) {
+            questionsDoc.add(questionDocToQuestionPerMapper.toQuestionDoc(questionData));
 
         }
         return questionsDoc;
