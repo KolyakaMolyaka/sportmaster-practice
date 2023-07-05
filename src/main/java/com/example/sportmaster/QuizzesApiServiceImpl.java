@@ -18,7 +18,6 @@ import java.util.List;
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final ICreateQuestionService createQuestionService = new CreateQuestionServiceImpl();
     private final IDeleteQuestionFromQuizService deleteQuestionFromQuizService = new DeleteQuestionFromQuizServiceImpl();
     private final IQuizDocToQuizPerMapper quizDocToQuizPerMapper = new QuizDocToQuizPerMapperImpl();
 
@@ -45,7 +44,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     public List<QuizDoc> getQuizzes() {
         List<QuizPer> stubPerQuizzes = quizzesRepository.getQuizzes();
         List<QuizDoc> stubDocQuizzes = new ArrayList<>();
-        for (QuizPer quizPer: stubPerQuizzes) {
+        for (QuizPer quizPer : stubPerQuizzes) {
             stubDocQuizzes.add(quizDocToQuizPerMapper.toQuizDoc(quizPer));
         }
         return stubDocQuizzes;
@@ -69,7 +68,10 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question) {
-        return createQuestionService.createQuestionForQuiz(quizId, question);
+        return questionDocToQuestionPerMapper.toQuestionDoc(
+                quizzesRepository.createQuestion(
+                        quizId, questionDocToQuestionPerMapper.toQuestionPer(question))
+        );
     }
 
     public boolean deleteQuestionFromQuiz(Integer quizId, Integer questionId) {
