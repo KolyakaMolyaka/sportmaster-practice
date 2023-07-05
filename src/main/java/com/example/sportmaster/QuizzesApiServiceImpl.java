@@ -39,7 +39,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         );
     }
 
-    public List<QuizDoc> getQuizzes() {
+    public List<QuizDoc> findAllQuizzes() {
         List<QuizData> stubPerQuizzes = quizzesRepository.getQuizzes();
         List<QuizDoc> stubDocQuizzes = new ArrayList<>();
         for (QuizData quizData : stubPerQuizzes) {
@@ -55,7 +55,7 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
         );
     }
 
-    public List<QuestionDoc> getQuestionsFor(Integer quizId) {
+    public List<QuestionDoc> findAllQuestionsFor(Integer quizId) {
         List<QuestionData> questionsPer = quizzesRepository.getQuestions(quizId);
         List<QuestionDoc> questionsDoc = new ArrayList<>();
         for (QuestionData questionData : questionsPer) {

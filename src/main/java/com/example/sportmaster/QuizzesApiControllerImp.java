@@ -62,7 +62,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
     @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
         List<QuizDTO> quizzesDTO = new ArrayList<>();
-        List<QuizDoc> quizzesDoc = quizzesApiService.getQuizzes();
+        List<QuizDoc> quizzesDoc = quizzesApiService.findAllQuizzes();
         // конвертируем QuizDoc в QuizDTO
         for (QuizDoc quiz : quizzesDoc) {
             quizzesDTO.add(quizDtoToQuizDocMapper.toQuizDto(quiz));
@@ -82,7 +82,7 @@ public class QuizzesApiControllerImp implements QuizzesApi {
     @Override
     public ResponseEntity<List<QuestionDTO>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
         List<QuestionDTO> questionsDTO = new ArrayList<>();
-        List<QuestionDoc> questionsDoc = quizzesApiService.getQuestionsFor(quizId);
+        List<QuestionDoc> questionsDoc = quizzesApiService.findAllQuestionsFor(quizId);
 //         конвертируем questionsDoc в questionsDTO
         for (QuestionDoc q : questionsDoc) {
             questionsDTO.add(questionDtoToQuestionDocMapper.toQuestionDto(q));

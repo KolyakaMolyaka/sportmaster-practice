@@ -11,11 +11,11 @@ public interface IQuizzesApiService {
 
     public QuizDoc updateQuiz(Integer quizId, QuizDoc quiz);
 
-    public List<QuizDoc> getQuizzes();
+    public List<QuizDoc> findAllQuizzes();
 
     public QuizDoc createQuiz(QuizDoc quiz);
 
-    public List<QuestionDoc> getQuestionsFor(Integer quizId);
+    public List<QuestionDoc> findAllQuestionsFor(Integer quizId);
 
     public QuestionDoc createQuestionForQuiz(Integer quizId, QuestionDoc question);
 
