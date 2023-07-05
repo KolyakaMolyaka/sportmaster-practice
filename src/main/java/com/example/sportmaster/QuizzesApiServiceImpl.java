@@ -4,16 +4,17 @@ import com.example.sportmaster.repository.IQuizzesRepository;
 import com.example.sportmaster.repository.QuizzesRepositoryImpl;
 import com.example.sportmaster.repository.mappers.IQuizDocToQuizPerMapper;
 import com.example.sportmaster.repository.mappers.QuizDocToQuizPerMapperImpl;
+import com.example.sportmaster.repository.models.QuizPer;
 import com.example.sportmaster.service.*;
 import com.example.sportmaster.service.models.QuestionDoc;
 import com.example.sportmaster.service.models.QuizDoc;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class QuizzesApiServiceImpl implements IQuizzesApiService {
 
     /* Использование анемичной модели */
-    private final IGetQuizzesService getQuizzesService = new GetQuizzesServiceImpl();
     private final ICreateQuizService createQuizService = new CreateQuizServiceImpl();
     private final IGetQuestionsService getQuestionsService = new GetQuestionsServiceImpl();
     private final ICreateQuestionService createQuestionService = new CreateQuestionServiceImpl();
@@ -39,7 +40,12 @@ public class QuizzesApiServiceImpl implements IQuizzesApiService {
     }
 
     public List<QuizDoc> getQuizzes() {
-        return getQuizzesService.getQuizzes();
+        List<QuizPer> stubPerQuizzes = quizzesRepository.getQuizzes();
+        List<QuizDoc> stubDocQuizzes = new ArrayList<>();
+        for (QuizPer quizPer: stubPerQuizzes) {
+            stubDocQuizzes.add(quizDocToQuizPerMapper.toQuizDoc(quizPer));
+        }
+        return stubDocQuizzes;
     }
 
 
