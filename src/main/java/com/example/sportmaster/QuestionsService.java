@@ -4,6 +4,7 @@ import com.example.sportmaster.openapi.model.QuestionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
@@ -11,11 +12,7 @@ public class QuestionsService implements IQuestionsService {
     @Autowired
     private IQuestionsRepository questionsRepository;
     @Autowired
-    private IAnswersRepository answersRepository;
-    @Autowired
     private IQuizzesRepository quizzesRepository;
-    @Autowired
-    private IQuestionsService questionsService;
 
     private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
 
@@ -58,5 +55,16 @@ public class QuestionsService implements IQuestionsService {
         return questionsRepository.findAll(quizId)
                 .stream()
                 .map(questionDocToQuestionDataMapper::toQuestionDoc).toList();
+    }
+
+    @Override
+    public QuestionDoc createQuestion(Integer quizId, QuestionDoc questionDoc) throws InvalidKeyException {
+        /* проверка, есть ли викторина с заданным id (если есть - к ней будет привязан вопрос) */
+        if (quizzesRepository.find(quizId) == null)
+            throw new InvalidKeyException("Викторины с указанным ID не существует");
+
+        return questionDocToQuestionDataMapper.toQuestionDoc(
+                questionsRepository.create(quizId, questionDocToQuestionDataMapper.toQuestionData(questionDoc))
+        );
     }
 }

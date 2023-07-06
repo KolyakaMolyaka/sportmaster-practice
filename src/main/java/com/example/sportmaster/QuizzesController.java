@@ -15,14 +15,20 @@ import java.util.List;
 
 @RestController
 public class QuizzesController implements QuizzesApi {
+
+    /* севисы */
     @Autowired
     private IQuizzesService quizzesService;
 
     @Autowired
     private IQuestionsService questionsService;
 
+    /* мапперы */
     private IQuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new QuizDTOToQuizDocMapper();
     private IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
+
+
+    /* API */
 
     @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
@@ -85,8 +91,13 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO questionDTO) {
-        
-
-        return ResponseEntity.internalServerError().build();
+        try {
+            QuestionDTO question = questionDTOToQuestionDocMapper.toQuestionDTO(
+                    questionsService.createQuestion(quizId, questionDTOToQuestionDocMapper.toQuestionDoc(questionDTO))
+            );
+            return ResponseEntity.ok(question);
+        } catch (InvalidKeyException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 }

@@ -1,13 +1,12 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.openapi.model.AnswerDTO;
-import com.example.sportmaster.openapi.model.QuestionDTO;
 import io.swagger.annotations.ApiParam;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.validation.Valid;
+import java.security.InvalidKeyException;
 import java.util.List;
 
 public interface IQuestionsService {
@@ -27,4 +26,6 @@ public interface IQuestionsService {
     public void updateQuestion(Integer questionId, QuestionDoc questionDoc);
 
     List<QuestionDoc> findAllQuestions(Integer quizId);
+
+    public QuestionDoc createQuestion(Integer quizId, QuestionDoc questionDoc) throws InvalidKeyException;
 }

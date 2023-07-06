@@ -3,6 +3,7 @@ package com.example.sportmaster;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import org.springframework.stereotype.Repository;
 
+import java.security.InvalidKeyException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Objects;
@@ -28,4 +29,16 @@ public class QuestionsRepository implements IQuestionsRepository {
                 filter(questionData -> Objects.equals(questionData.getQuizId(), quizId))
                 .toList();
     }
+
+    @Override
+    public QuestionData create(Integer quizId, QuestionData questionData) {
+        Integer id = nextId();
+
+        questionData.setQuizId(quizId);
+        questionData.setId(id);
+        questionMap.put(id, questionData);
+
+        return questionData;
+    }
 }
+
