@@ -5,10 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class QuestionsRepository implements IQuestionsRepository {
     HashMap<Integer, QuestionData> questionMap = new HashMap<>();
+
+    private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
 
     private Integer id = 0;
 
@@ -19,13 +22,10 @@ public class QuestionsRepository implements IQuestionsRepository {
 
 
     @Override
-    public List<QuestionDTO> findAllQuestions(Integer quizId) {
-//        List<QuestionData> questionDataList = questionMap.values()
-//                .stream().
-//                filter(questionData -> Objects.equals(questionData.getQuizId(), quizId))
-//                .toList();
-//
-//        return
-        return null;
+    public List<QuestionData> findAll(Integer quizId) {
+        return questionMap.values()
+                .stream().
+                filter(questionData -> Objects.equals(questionData.getQuizId(), quizId))
+                .toList();
     }
 }

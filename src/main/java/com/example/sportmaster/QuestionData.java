@@ -12,4 +12,6 @@ public class QuestionData extends QuestionDTO {
     public void setQuizId(Integer quizId) {
         this.quizId = quizId;
     }
+
+
 }

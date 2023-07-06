@@ -19,9 +19,10 @@ public class QuizzesController implements QuizzesApi {
     private IQuizzesService quizzesService;
 
     @Autowired
-    private IQuestionsRepository questionsRepository;
+    private IQuestionsService questionsService;
 
     private IQuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new QuizDTOToQuizDocMapper();
+    private IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
 
     @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
@@ -69,12 +70,23 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<List<QuestionDTO>> quizzesQuizIdQuestionsGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
-        List<QuestionDTO> questions = questionsRepository.findAllQuestions(quizId);
-        return ResponseEntity.internalServerError().build();
+        List<QuestionDTO> questions = new ArrayList<>();
+        questionsService.findAllQuestions(quizId)
+                .stream()
+                .map(questionDTOToQuestionDocMapper::toQuestionDTO)
+                .forEach(questions::add);
+
+        if (questions.isEmpty()) {
+            ResponseEntity.notFound().build();
+        }
+
+        return ResponseEntity.ok(questions);
     }
 
     @Override
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO questionDTO) {
+        
+
         return ResponseEntity.internalServerError().build();
     }
 }
