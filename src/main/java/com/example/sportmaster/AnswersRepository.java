@@ -7,6 +7,21 @@ import java.util.HashMap;
 
 @Repository
 public class AnswersRepository implements IAnswersRepository {
-    HashMap<Integer, AnswerDTO> answersMap = new HashMap<>();
+    HashMap<Integer, AnswerData> answersMap = new HashMap<>();
 
+    private Integer id = 0;
+    private Integer nextId() {
+        id += 1;
+        return id;
+    }
+    @Override
+    public AnswerData create(Integer questionId, AnswerData answerData) {
+        Integer id = nextId();
+
+        answerData.setId(id);
+        answerData.setQuestionId(questionId);
+
+        answersMap.put(id, answerData);
+        return answerData;
+    }
 }

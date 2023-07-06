@@ -187,9 +187,7 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Answer"
+                $ref: "#/components/schemas/Answer"
   /questions/{questionId}/answers/{answerId}:
 
     # Общие параметры

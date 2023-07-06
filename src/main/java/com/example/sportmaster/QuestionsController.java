@@ -18,9 +18,14 @@ import java.util.List;
 public class QuestionsController implements QuestionsApi {
 
     @Autowired
-    IQuestionsService questionsService;
+    private IQuestionsService questionsService;
 
-    IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
+    @Autowired
+    private IAnswersService answersService;
+
+
+    private IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
+    private IAnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new AnswerDTOToAnswerDocMapper();
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {
@@ -43,8 +48,15 @@ public class QuestionsController implements QuestionsApi {
     }
 
     @Override
-    public ResponseEntity<List<AnswerDTO>> questionsQuestionIdAnswersPost(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "", required = true) @Valid @RequestBody AnswerDTO answerDTO) {
-        return ResponseEntity.internalServerError().build();
+    public ResponseEntity<AnswerDTO> questionsQuestionIdAnswersPost(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "", required = true) @Valid @RequestBody AnswerDTO answerDTO) {
+        try {
+            AnswerDTO answer = answerDTOToAnswerDocMapper.toAnswerDTO(
+                    answersService.createAnswer(questionId, answerDTOToAnswerDocMapper.toAnswerDoc(answerDTO))
+            );
+            return ResponseEntity.ok(answer);
+        } catch (InvalidKeyException e) {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @Override

@@ -13,4 +13,6 @@ public interface IQuestionsRepository {
     void delete(Integer questionId) throws InvalidKeyException;
 
     void update(Integer questionId, QuestionData questionData) throws InvalidKeyException;
+
+    QuestionData find(Integer questionId);
 }
