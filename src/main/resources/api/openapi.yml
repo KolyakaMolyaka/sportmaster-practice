@@ -6,8 +6,6 @@ info:
   version: 1.0.0
 
 servers:
-  - description: SwaggerHub API Auto Mocking
-    url: https://virtserver.swaggerhub.com/PRO10022801/api/1.0.0
   - description: Сервер для разработки
     url: http://localhost:8080/api/v1
 
@@ -15,6 +13,7 @@ servers:
 paths:
   /quizzes:
     get:
+      tags: [Quizzes]
       summary: Получить список всех викторин
       responses:
         "200":
@@ -25,14 +24,13 @@ paths:
                 type: array
                 items:
                   $ref: "#/components/schemas/Quiz"
+        "404":
+          description: Викторины отсутствуют
     post:
+      tags: [Quizzes]
       summary: Создать новую викторину
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Quiz"
+        $ref: "#/components/requestBodies/QuizBody"
       responses:
         "201":
           description: Успешное создание
@@ -40,17 +38,21 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Quiz"
-  
+        "400":
+          description: Некорректное тело запроса
+
   /quizzes/{quizId}:
+    parameters:
+      - in: path
+        name: quizId
+        description: ID викторины
+        required: true
+        schema:
+          type: integer
     get:
+      tags: [Quizzes]
       summary: Получить информацию о викторине по ID
-      parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
+
       responses:
         "200":
           description: Успешный ответ
@@ -61,20 +63,10 @@ paths:
         "404":
           description: Викторина не найдена
     put:
+      tags: [Quizzes]
       summary: Обновить информацию о викторине по ID
-      parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Quiz"
+        $ref: "#/components/requestBodies/QuizBody"
       responses:
         "200":
           description: Успешное обновление
@@ -85,14 +77,8 @@ paths:
         "404":
           description: Викторина не найдена
     delete:
+      tags: [Quizzes]
       summary: Удалить викторину по ID
-      parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
       responses:
         "204":
           description: Успешное удаление
@@ -100,15 +86,16 @@ paths:
           description: Викторина не найдена
 
   /quizzes/{quizId}/questions:
+    parameters:
+      - in: path
+        name: quizId
+        description: ID викторины
+        required: true
+        schema:
+          type: integer
     get:
+      tags: [Questions]
       summary: Получить список вопросов для викторины с указанным ID
-      parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
       responses:
         "200":
           description: Успешный ответ
@@ -121,20 +108,11 @@ paths:
         "404":
           description: Викторина не найдена
     post:
+      tags: [Questions]
       summary: Добавить новый вопрос в викторину с указанным ID
-      parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
+
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Question"
+        $ref: "#/components/requestBodies/QuestionBody"
       responses:
         "201":
           description: Успешное создание
@@ -145,16 +123,11 @@ paths:
         "404":
           description: Викторина не найдена
 
-  /quizzes/{quizId}/questions/{questionId}:
+  /questions/{questionId}:
     put:
+      tags: [Questions]
       summary: Обновить информацию о вопросе в викторине с указанным ID
       parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
         - in: path
           name: questionId
           description: ID вопроса
@@ -162,23 +135,14 @@ paths:
           schema:
             type: integer
       requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              $ref: "#/components/schemas/Question"
+        $ref: "#/components/requestBodies/QuestionBody"
       responses:
         "200":
           description: Успешное обновление
     delete:
+      tags: [Questions]
       summary: Удалить информацию о вопросе в викторине с указанным ID
       parameters:
-        - in: path
-          name: quizId
-          description: ID викторины
-          required: true
-          schema:
-            type: integer
         - in: path
           name: questionId
           description: ID вопроса
@@ -189,9 +153,118 @@ paths:
         "200":
           description: Успешное удаление
 
-components:
-  schemas:
+  /questions/{questionId}/answers:
+    # Общие параметры
+    parameters:
+      - in: path
+        name: questionId
+        description: ID вопроса
+        required: true
+        schema:
+          type: integer
+    get:
+      tags: [Answers]
+      summary: Получить список ответов вопроса с заданным ID
 
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Answer"
+    post:
+      tags: [Answers]
+      summary: Добавить ответ в вопрос с указанным ID
+
+      requestBody:
+        $ref: "#/components/requestBodies/AnswerBody"
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/Answer"
+  /questions/{questionId}/answers/{answerId}:
+
+    # Общие параметры
+    parameters:
+      - in: path
+        name: questionId
+        description: ID вопроса
+        required: true
+        schema:
+          type: integer
+      - in: path
+        name: answerId
+        description: ID ответа
+        required: true
+        schema:
+          type: integer
+
+    get:
+      tags: [Answers]
+      summary: Получить ответ с указанным ID
+      responses:
+        "200":
+          description: Успешный ответ
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Answer'
+    put:
+      tags: [Answers]
+      summary: Обновить ответ с указанным ID
+      requestBody:
+        $ref: "#/components/requestBodies/AnswerBody"
+      responses:
+        "200":
+          description: Успешное обновление
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Answer"
+        "404":
+          description: Ответа с указанным ID не существует
+    delete:
+      tags: [Answers]
+      summary: Удалить ответ с указанным ID
+      responses:
+        "204":
+          description: Успешное удаление
+        "404":
+          description: Ответ с указанным ID не найден
+
+components:
+  requestBodies:
+
+    QuizBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Quiz"
+
+    QuestionBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Question"
+
+    AnswerBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Answer"
+
+  schemas:
     # Схема викторины
     Quiz:
       type: object
@@ -213,15 +286,6 @@ components:
           type: string
           format: date
           example: 2023-06-28
-        questions:
-          description: Вопросы викторины
-          type: array
-          items:
-            $ref: "#/components/schemas/Question"
-        explanation:
-          description: Объяснение в случае неправильного ответа
-          type: string
-          example: В шахматах 16 черных и 16 белых фигур.
         category:
           description: Категория викторины
           type: string
@@ -229,7 +293,9 @@ components:
         difficulty:
           description: Сложность викторины
           type: string
-          enum: [Easy, Medium, Hard]
+          example: Easy
+
+
 
     # Схема вопроса
     Question:
@@ -243,18 +309,26 @@ components:
           description: Текст вопроса
           type: string
           example: Сколько насчитывается шахматных фигур?
-        options:
+        answers:
           description: Варианты ответа
           type: array
           items:
-            type: string
-            example: [64, 32, 12, 2]
-        correctOption:
-          description: Правильный ответ
+            $ref: "#/components/schemas/Answer"
+
+
+    # Cхема вопроса
+    Answer:
+      type: object
+      properties:
+        id:
+          description: Уникальный идентификатор ответа
+          type: integer
+          example: 1
+        text:
+          description: Содержимое ответа
           type: string
-          example: 32
-        
-        hint:
-          description: Подсказка к вопросу
-          type: string
-          example: Расставь шахматные фигуры и посчитай количество.
+          example: шахматы НЕ являются видом спорта
+        isCorrect:
+          description: Указывает, является ли ответ правильным
+          type: boolean
+          example: false
