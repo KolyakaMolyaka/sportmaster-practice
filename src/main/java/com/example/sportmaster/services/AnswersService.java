@@ -1,0 +1,61 @@
+package com.example.sportmaster.services;
+
+import com.example.sportmaster.models.AnswerDoc;
+import com.example.sportmaster.repositories.interfaces.IAnswersRepository;
+import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
+import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
+import com.example.sportmaster.services.interfaces.IAnswersService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.security.InvalidKeyException;
+import java.util.List;
+
+@Service
+public class AnswersService implements IAnswersService {
+    @Autowired
+    private IQuestionsRepository questionsRepository;
+
+    @Autowired
+    private IAnswersRepository answersRepository;
+
+    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
+    @Override
+    public AnswerDoc createAnswer(Integer questionId, AnswerDoc answerDoc) throws InvalidKeyException {
+        if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");
+        return answerDocToAnswerDataMapper.toAnswerDoc(
+                answersRepository.create(questionId, answerDocToAnswerDataMapper.toAnswerData(answerDoc))
+        );
+    }
+
+    @Override
+    public List<AnswerDoc> findAllAnswers(Integer questionId) throws InvalidKeyException {
+        if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");
+        return answersRepository.findAll(questionId)
+                .stream()
+                .map(answerDocToAnswerDataMapper::toAnswerDoc)
+                .toList();
+    }
+
+    @Override
+    public AnswerDoc updateAnswer(Integer questionId, Integer answerId, AnswerDoc answerDoc) throws InvalidKeyException {
+        if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");
+
+        return answerDocToAnswerDataMapper.toAnswerDoc(
+                answersRepository.update(answerId, answerDocToAnswerDataMapper.toAnswerData(answerDoc))
+        );
+    }
+
+    @Override
+    public AnswerDoc getAnswer(Integer questionId, Integer answerId) {
+        if (questionsRepository.find(questionId) == null) return null;
+        return answerDocToAnswerDataMapper.toAnswerDoc(answersRepository.find(answerId));
+    }
+
+    @Override
+    public void deleteAnswer(Integer answerId) {
+        answersRepository.delete(answerId);
+
+    }
+}
