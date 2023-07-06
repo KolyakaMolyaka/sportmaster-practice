@@ -4,6 +4,7 @@ import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import com.example.sportmaster.openapi.model.QuizDTO;
 import io.swagger.annotations.ApiParam;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,9 +13,13 @@ import java.util.List;
 
 @RestController
 public class QuizzesController implements QuizzesApi {
+    @Autowired
+    IQuizzesService quizzesService;
     @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
-        return ResponseEntity.internalServerError().build();
+        List<QuizDTO> quizzes = quizzesService.findAllQuizzes();
+        if (quizzes.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(quizzes);
     }
 
     @Override
