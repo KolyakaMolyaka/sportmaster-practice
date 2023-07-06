@@ -1,5 +1,6 @@
 package com.example.sportmaster;
 
+import com.example.sportmaster.openapi.model.AnswerDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,14 @@ public class AnswersService implements IAnswersService {
                 .stream()
                 .map(answerDocToAnswerDataMapper::toAnswerDoc)
                 .toList();
+    }
+
+    @Override
+    public AnswerDoc updateAnswer(Integer questionId, Integer answerId, AnswerDoc answerDoc) throws InvalidKeyException {
+        if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");
+
+        return answerDocToAnswerDataMapper.toAnswerDoc(
+                answersRepository.update(answerId, answerDocToAnswerDataMapper.toAnswerData(answerDoc))
+        );
     }
 }
