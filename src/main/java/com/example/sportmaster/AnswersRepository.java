@@ -4,10 +4,14 @@ import com.example.sportmaster.openapi.model.AnswerDTO;
 import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
+import java.util.List;
+import java.util.Objects;
 
 @Repository
 public class AnswersRepository implements IAnswersRepository {
     HashMap<Integer, AnswerData> answersMap = new HashMap<>();
+
+    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
 
     private Integer id = 0;
     private Integer nextId() {
@@ -23,5 +27,13 @@ public class AnswersRepository implements IAnswersRepository {
 
         answersMap.put(id, answerData);
         return answerData;
+    }
+
+    @Override
+    public List<AnswerData> findAll(Integer questionId) {
+        return answersMap.values()
+                .stream()
+                .filter(answerData -> Objects.equals(answerData.getQuestionId(), questionId))
+                .toList();
     }
 }

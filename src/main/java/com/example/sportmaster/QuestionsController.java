@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 import java.security.InvalidKeyException;
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -44,7 +45,17 @@ public class QuestionsController implements QuestionsApi {
 
     @Override
     public ResponseEntity<List<AnswerDTO>> questionsQuestionIdAnswersGet(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId) {
-        return ResponseEntity.internalServerError().build();
+        List<AnswerDTO> answers = new ArrayList<>();
+        try {
+            answersService.findAllAnswers(questionId)
+                    .stream()
+                    .map(answerDTOToAnswerDocMapper::toAnswerDTO)
+                    .forEach(answers::add);
+        } catch (InvalidKeyException e) {
+            return ResponseEntity.notFound().build();
+        }
+        if (answers.isEmpty()) return ResponseEntity.notFound().build();
+        return ResponseEntity.ok(answers);
     }
 
     @Override

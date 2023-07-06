@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidKeyException;
+import java.util.List;
 
 @Service
 public class AnswersService implements IAnswersService {
@@ -20,5 +21,14 @@ public class AnswersService implements IAnswersService {
         return answerDocToAnswerDataMapper.toAnswerDoc(
                 answersRepository.create(questionId, answerDocToAnswerDataMapper.toAnswerData(answerDoc))
         );
+    }
+
+    @Override
+    public List<AnswerDoc> findAllAnswers(Integer questionId) throws InvalidKeyException {
+        if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");
+        return answersRepository.findAll(questionId)
+                .stream()
+                .map(answerDocToAnswerDataMapper::toAnswerDoc)
+                .toList();
     }
 }
