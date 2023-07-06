@@ -23,7 +23,7 @@ public interface IQuestionsService {
 
     public void deleteQuestion(Integer questionId) throws InvalidKeyException;
 
-    public void updateQuestion(Integer questionId, QuestionDoc questionDoc);
+    public void updateQuestion(Integer questionId, QuestionDoc questionDoc) throws InvalidKeyException;
 
     List<QuestionDoc> findAllQuestions(Integer quizId);
 

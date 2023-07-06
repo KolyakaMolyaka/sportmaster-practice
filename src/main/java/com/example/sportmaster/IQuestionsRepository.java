@@ -11,4 +11,6 @@ public interface IQuestionsRepository {
     QuestionData create(Integer quizId, QuestionData questionData);
 
     void delete(Integer questionId) throws InvalidKeyException;
+
+    void update(Integer questionId, QuestionData questionData) throws InvalidKeyException;
 }

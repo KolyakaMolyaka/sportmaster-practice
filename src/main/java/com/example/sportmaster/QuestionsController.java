@@ -20,6 +20,8 @@ public class QuestionsController implements QuestionsApi {
     @Autowired
     IQuestionsService questionsService;
 
+    IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
+
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {
         return ResponseEntity.internalServerError().build();
@@ -57,6 +59,11 @@ public class QuestionsController implements QuestionsApi {
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdPut(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO questionDTO) {
-        return ResponseEntity.internalServerError().build();
+        try {
+            questionsService.updateQuestion(questionId, questionDTOToQuestionDocMapper.toQuestionDoc(questionDTO));
+        } catch (InvalidKeyException e) {
+            return ResponseEntity.notFound().build();
+        }
+        return ResponseEntity.ok().build();
     }
 }

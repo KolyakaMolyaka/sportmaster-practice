@@ -46,5 +46,11 @@ public class QuestionsRepository implements IQuestionsRepository {
         if (!questionMap.containsKey(questionId)) throw new InvalidKeyException("Вопрос с таким ID не существует");
         questionMap.remove(questionId);
     }
+
+    @Override
+    public void update(Integer questionId, QuestionData questionData) throws InvalidKeyException {
+        if (!questionMap.containsKey(questionId)) throw new InvalidKeyException("Вопроса с таким ID не существует");
+        questionMap.replace(questionId, questionData);
+    }
 }
 

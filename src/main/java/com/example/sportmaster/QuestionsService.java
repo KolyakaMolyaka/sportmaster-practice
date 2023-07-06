@@ -46,7 +46,8 @@ public class QuestionsService implements IQuestionsService {
     }
 
     @Override
-    public void updateQuestion(Integer questionId, QuestionDoc questionDoc) {
+    public void updateQuestion(Integer questionId, QuestionDoc questionDoc) throws InvalidKeyException {
+        questionsRepository.update(questionId, questionDocToQuestionDataMapper.toQuestionData(questionDoc));
     }
 
     @Override
