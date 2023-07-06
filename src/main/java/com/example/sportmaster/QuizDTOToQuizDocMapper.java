@@ -4,9 +4,16 @@ import com.example.sportmaster.openapi.model.QuizDTO;
 
 public class QuizDTOToQuizDocMapper implements IQuizDTOToQuizDocMapper {
     @Override
-    public QuizDoc toQuizDTO(QuizDoc doc) {
+    public QuizDTO toQuizDTO(QuizDoc doc) {
         if (doc == null) return null;
-        return (QuizDoc) doc;
+        QuizDTO dto = new QuizDTO();
+        dto.setId(doc.getId());
+        dto.setTitle(doc.getTitle());
+        dto.setDescription(doc.getDescription());
+        dto.setDifficulty(doc.getDifficulty());
+        dto.setCategory(doc.getCategory());
+        dto.setCreatedAt(doc.getCreatedAt());
+        return dto;
     }
 
     @Override
@@ -18,7 +25,6 @@ public class QuizDTOToQuizDocMapper implements IQuizDTOToQuizDocMapper {
         doc.setDescription(dto.getDescription());
         doc.setDifficulty(dto.getDifficulty());
         doc.setCategory(dto.getCategory());
-        doc.setCreatedAt(dto.getCreatedAt());
         return doc;
     }
 
