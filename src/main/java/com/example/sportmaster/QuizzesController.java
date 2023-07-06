@@ -36,8 +36,8 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<QuizDTO> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quizDTO) {
-        QuizDoc quizz = quizzesService.createQuiz(quizDTOToQuizDocMapper.toQuizDoc(quizDTO));
-        return ResponseEntity.ok(quizz);
+        QuizDTO quiz = quizDTOToQuizDocMapper.toQuizDTO(quizzesService.createQuiz(quizDTOToQuizDocMapper.toQuizDoc(quizDTO)));
+        return ResponseEntity.ok(quiz);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<QuizDTO> quizzesQuizIdGet(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId) {
-        QuizDoc quiz = quizzesService.findQuiz(quizId);
+        QuizDTO quiz = quizDTOToQuizDocMapper.toQuizDTO(quizzesService.findQuiz(quizId));
         if (quiz == null) return ResponseEntity.notFound().build();
         return ResponseEntity.ok(quiz);
     }
@@ -60,7 +60,7 @@ public class QuizzesController implements QuizzesApi {
     @Override
     public ResponseEntity<QuizDTO> quizzesQuizIdPut(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quizDTO) {
         try {
-            QuizDoc quiz = quizzesService.updateQuiz(quizId, quizDTOToQuizDocMapper.toQuizDoc(quizDTO));
+            QuizDTO quiz = quizDTOToQuizDocMapper.toQuizDTO(quizzesService.updateQuiz(quizId, quizDTOToQuizDocMapper.toQuizDoc(quizDTO)));
             return ResponseEntity.ok(quiz);
         } catch (InvalidKeyException e) {
             return ResponseEntity.notFound().build();
