@@ -11,4 +11,6 @@ public interface IAnswersRepository {
     AnswerData find(Integer answerId);
 
     AnswerData update(Integer answerId, AnswerData answerData) throws InvalidKeyException;
+
+    void delete(Integer answerId);
 }

@@ -41,4 +41,16 @@ public class AnswersService implements IAnswersService {
                 answersRepository.update(answerId, answerDocToAnswerDataMapper.toAnswerData(answerDoc))
         );
     }
+
+    @Override
+    public AnswerDoc getAnswer(Integer questionId, Integer answerId) {
+        if (questionsRepository.find(questionId) == null) return null;
+        return answerDocToAnswerDataMapper.toAnswerDoc(answersRepository.find(answerId));
+    }
+
+    @Override
+    public void deleteAnswer(Integer answerId) {
+        answersRepository.delete(answerId);
+
+    }
 }

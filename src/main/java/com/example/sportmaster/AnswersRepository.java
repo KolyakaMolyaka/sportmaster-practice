@@ -51,4 +51,9 @@ public class AnswersRepository implements IAnswersRepository {
         answersMap.replace(answerId, answerData);
         return answersMap.get(answerId);
     }
+
+    @Override
+    public void delete(Integer answerId) {
+        answersMap.remove(answerId);
+    }
 }

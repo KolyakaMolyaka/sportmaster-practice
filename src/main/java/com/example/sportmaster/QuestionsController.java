@@ -30,12 +30,16 @@ public class QuestionsController implements QuestionsApi {
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {
-        return ResponseEntity.internalServerError().build();
+        // TODO: т.к. answerID всегда уникален, то questionId не нужен
+        answersService.deleteAnswer(answerId);
+        return ResponseEntity.accepted().build();
     }
 
     @Override
     public ResponseEntity<AnswerDTO> questionsQuestionIdAnswersAnswerIdGet(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {
-        return ResponseEntity.internalServerError().build();
+        AnswerDTO answer =  answerDTOToAnswerDocMapper.toAnswerDTO(answersService.getAnswer(questionId, answerId));
+        if (answer == null) ResponseEntity.notFound().build();
+        return ResponseEntity.ok(answer);
     }
 
     @Override
