@@ -1,6 +1,5 @@
 package com.example.sportmaster;
 
-import com.example.sportmaster.openapi.model.QuestionDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,13 +40,13 @@ public class QuestionsService implements IQuestionsService {
     }
 
     @Override
-    public void deleteQuestion(Integer questionId) {
+    public void deleteQuestion(Integer questionId) throws InvalidKeyException {
+        questionsRepository.delete(questionId);
 
     }
 
     @Override
     public void updateQuestion(Integer questionId, QuestionDoc questionDoc) {
-
     }
 
     @Override

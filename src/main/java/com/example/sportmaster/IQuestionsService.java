@@ -21,7 +21,7 @@ public interface IQuestionsService {
 
     public List<AnswerDoc> createAnswer(Integer questionId, AnswerDoc answerDoc);
 
-    public void deleteQuestion(Integer questionId);
+    public void deleteQuestion(Integer questionId) throws InvalidKeyException;
 
     public void updateQuestion(Integer questionId, QuestionDoc questionDoc);
 
