@@ -14,8 +14,7 @@
                     <div class="d-flex fw-bold"> Варианты ответа </div>
                 </div>
                 <div class="question-answers mt-4">
-                    {{  question.answers }}
-                    <button v-for="answer in [{text: 'answer #1', isCorrect: false}, {text: 'answer #2', isCorrect: true}]"
+                    <button v-for="answer in question.answers"
                         class="answer-card btn btn-primary d-block w-50 text-start p-3 ps-5 fs-5 mt-3 rounded-pill mx-auto">
                         {{ answer.text }}, isCorrect?: {{ answer.isCorrect }}
                     </button>
