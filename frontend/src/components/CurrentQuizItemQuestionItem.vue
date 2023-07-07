@@ -29,7 +29,6 @@ export default {
     },
     methods: {
         handler(answer, questionId) {
-            console.log('answer is: ' + answer);
             if (answer.isCorrect) {
             } else {
 

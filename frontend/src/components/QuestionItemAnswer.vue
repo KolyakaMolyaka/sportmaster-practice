@@ -23,7 +23,12 @@ export default {
     }, 
     methods: {
         activateChoice(event) {
-            console.log(event.target.classList.toggle('btn-info'));
+            if (this.answer.isCorrect) {
+                event.target.classList.toggle('btn-success');
+            } else {
+                event.target.classList.toggle('btn-danger');
+
+            }
             this.$emit('handleAnswer', this.answer, this.questionId);
         }
     }
@@ -32,10 +37,14 @@ export default {
 </script>
 <style scoped>
 
-.btn-info {
-    background: lightcoral !important;
+.btn-danger {
+    background: red !important;
     color: white;
 }
- 
+
+.btn-success {
+    background: green !important;
+    /* color: white; */
+}
 
 </style>
