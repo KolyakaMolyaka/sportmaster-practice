@@ -1,6 +1,6 @@
 <template>
     <div>
-        <CurrentQuizItem :quizId="quizId"/>
+        <CurrentQuizItem :quizId="quizId" :key="quizId"/>
         <div class="text-center">
             <button class="btn btn-primary btn-color rounded-3 p-3 m-5 fs-4">Закончить прохождение</button>
         </div>

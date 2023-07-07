@@ -4,6 +4,7 @@
     v-if="questions !== null"
     v-for="(question, index) in questions"
     :question="question"
+    :key="question.id"
     > 
         <template #index> {{index+1}} </template>
     </CurrentQuizItemQuestionItem>
@@ -30,7 +31,7 @@ export default {
             fetch(questionsAPI + this.quizId + '/questions')
             .then(response => response.json())
             .then(json => this.questions = json);
-        }
+        },
     },
     mounted() {
         this.fetchQuestionsInfo();

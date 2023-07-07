@@ -6,7 +6,7 @@
     <div>
         <h1 class="text-center mt-5 fw-bold">{{ quiz?.title }}</h1>
         <div class="card fs-5 mt-3 w-50 mx-auto">{{ quiz?.description }}</div>
-        <CurrentQuizItemQuestions :quizId="quizId"/>
+        <CurrentQuizItemQuestions :quizId="quizId" :key="quizId"/>
     </div>
 </template>
 

@@ -3,11 +3,17 @@
         <div class="d-flex">Вопрос #<slot name="index"></slot></div>
     </h2>
     <div class="card fs-5 mt-3 w-50 mx-auto"> {{ question.text }} </div>
-        <div class="fs-3 mt-3 text-center fw-medium w-50 mx-auto">
-            <div class="d-flex fw-bold">Варианты ответа </div>
-        </div>
-        <div class="question-answers mt-4">
-            <QuestionItemAnswer v-for="answer in question.answers" :answer="answer"/>
+    <div class="fs-3 mt-3 text-center fw-medium w-50 mx-auto">
+        <div class="d-flex fw-bold">Варианты ответа </div>
+    </div>
+    <div class="question-answers mt-4">
+        <QuestionItemAnswer 
+        v-for="answer in question?.answers" 
+        :answer="answer" 
+        :questionId="question.id"
+        :key="answer.id"
+        @handleAnswer="handler"
+        />
     </div>
 </template>
 
@@ -21,6 +27,15 @@ export default {
             required: true
         }
     },
+    methods: {
+        handler(answer, questionId) {
+            console.log('answer is: ' + answer);
+            if (answer.isCorrect) {
+            } else {
+
+            }
+        }
+    }
 
 }
 </script>
