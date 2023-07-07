@@ -2,7 +2,9 @@
     <div>
         <CurrentQuizItem :quizId="quizId" :key="quizId"/>
         <div class="text-center">
-            <button class="btn btn-primary btn-color rounded-3 p-3 m-5 fs-4">Закончить прохождение</button>
+            <button
+            @click="$router.push({path: '/quiz_results', query: {score: 42}})" 
+            class="btn btn-primary btn-color rounded-3 p-3 m-5 fs-4">Закончить прохождение</button>
         </div>
     </div>
     
@@ -16,7 +18,8 @@ export default {
     data() {
         return {
             questions: null,
-            quizId: this.$route.params.id 
+            quizId: this.$route.params.id,
+            score: 0
         }
     }
 }

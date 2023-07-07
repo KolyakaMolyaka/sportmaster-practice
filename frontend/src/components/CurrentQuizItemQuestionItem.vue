@@ -57,7 +57,7 @@ export default {
 
 .v-enter-active,
 .v-leave-active {
-  transition: opacity 1s ease;
+  transition: opacity .7s ease-out;
 }
 
 .v-enter-from,
