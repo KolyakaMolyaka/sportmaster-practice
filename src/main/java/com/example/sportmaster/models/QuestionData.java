@@ -1,17 +1,21 @@
 package com.example.sportmaster.models;
 
 import com.example.sportmaster.openapi.model.QuestionDTO;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-public class QuestionData extends QuestionDTO {
+
+@Data
+@NoArgsConstructor
+public class QuestionData {
+    private Integer id;
     private Integer quizId;
+    private String text;
 
-    public Integer getQuizId() {
-        return quizId;
-    }
-
-    public void setQuizId(Integer quizId) {
+    public QuestionData(Integer id, Integer quizId, String text) {
+        this.id = id;
         this.quizId = quizId;
+        this.text = text;
     }
-
-
 }
