@@ -1,6 +1,9 @@
 package com.example.sportmaster.services;
 
+import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
 import com.example.sportmaster.models.AnswerDoc;
+import com.example.sportmaster.repositories.interfaces.IAnswersRepository;
 import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
 import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
 import com.example.sportmaster.models.QuestionDoc;
@@ -11,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidKeyException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -20,7 +24,11 @@ public class QuestionsService implements IQuestionsService {
     @Autowired
     private IQuizzesRepository quizzesRepository;
 
+    @Autowired
+    private IAnswersRepository answersRepository;
+
     private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
+    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
 
     @Override
     public void deleteAnswer(Integer questionId, Integer answerId) {
@@ -59,9 +67,23 @@ public class QuestionsService implements IQuestionsService {
 
     @Override
     public List<QuestionDoc> findAllQuestions(Integer quizId) {
-        return questionsRepository.findAll(quizId)
+        List<QuestionDoc> questions = questionsRepository.findAll(quizId)
                 .stream()
                 .map(questionDocToQuestionDataMapper::toQuestionDoc).toList();
+
+        List<QuestionDoc> questionsWithAnswers = new ArrayList<>();
+        for (QuestionDoc question: questions) {
+            question.setAnswers(
+                    answersRepository.findAll(question.getId())
+                            .stream()
+                            .map(answerDocToAnswerDataMapper::toAnswerDoc)
+                            .toList()
+            );
+            System.out.println(question.getAnswers());
+            questionsWithAnswers.add(question);
+        }
+
+        return questionsWithAnswers;
     }
 
     @Override
