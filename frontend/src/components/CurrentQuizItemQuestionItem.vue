@@ -1,4 +1,6 @@
 <template>
+    <Transition>
+<div v-show="isActive === true">
     <h2 class="mt-5 text-center w-50 mx-auto fw-bolder">
         <div class="d-flex">Вопрос #<slot name="index"></slot></div>
     </h2>
@@ -15,6 +17,8 @@
         @handleAnswer="handler"
         />
     </div>
+</div>
+</Transition>
 </template>
 
 <script>
@@ -27,12 +31,14 @@ export default {
             required: true
         }
     },
+    data() {
+        return {
+            isActive: true
+        }
+    },
     methods: {
         handler(answer, questionId) {
-            if (answer.isCorrect) {
-            } else {
-
-            }
+            this.isActive = false
         }
     }
 
@@ -48,4 +54,16 @@ export default {
     box-shadow: 0px 12px 28px 4px rgba(0, 0, 0, 0.3);
     color: #737380;
 }
+
+.v-enter-active,
+.v-leave-active {
+  transition: opacity 1s ease;
+}
+
+.v-enter-from,
+.v-leave-to {
+  opacity: 0;
+}
+
+
 </style>
