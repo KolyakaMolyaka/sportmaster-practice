@@ -8,13 +8,7 @@ export default {
   components: { TopLogo, QuizzesList },
   data() {
     return {
-      quizzes: [
-        {id: 1, title: 'Quiz #1', description: 'Quiz #1 description'},
-        {id: 2, title: 'Quiz #2', description: 'Quiz #2 description'},
-        {id: 3, title: 'Quiz #3', description: 'Quiz #3 description'},
-        {id: 4, title: 'Quiz #4', description: 'Quiz #4 description'},
-        {id: 5, title: 'Quiz #5', description: 'Quiz #5 description'},
-      ],
+      quizzes: [], 
     }
   },
   methods: {
@@ -23,17 +17,23 @@ export default {
       .then(response => response.json())
       .then(json => this.quizzes = json);
     },
-    
+  },
+  mounted() {
+    this.fetchQuizzes();
   }
 }
 
 </script>
 
 <template>
-  <button @click="fetchQuizzes">Загрузить викторины</button>
   <div class="col-md-10 mx-auto">
     <TopLogo/>
-    <QuizzesList :quizzes="quizzes"/>
+
+    <QuizzesList v-if="quizzes.length" :quizzes="quizzes"/>
+    <div v-else class="alert alert-info mt-3 fs-3 text-lightblue">
+      Викторины отсутствуют.
+    </div>
+
   </div>
 </template>
 
