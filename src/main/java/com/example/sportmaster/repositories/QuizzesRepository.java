@@ -7,12 +7,19 @@ import org.springframework.stereotype.Repository;
 import java.security.InvalidKeyException;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Repository
 public class QuizzesRepository implements IQuizzesRepository {
-    private HashMap<Integer, QuizData> quizzesMap = new HashMap<>();
+    private HashMap<Integer, QuizData> quizzesMap = new HashMap<Integer, QuizData>() {{
+        put(1, new QuizData(1, "Quiz #1", "Quiz #1 title", "Quiz #1 description", "Easy"));
+        put(2, new QuizData(2, "Quiz #2", "Quiz #2 title", "Quiz #2 description", "Medium"));
+        put(3, new QuizData(3, "Quiz #3", "Quiz #3 title", "Quiz #3 description", "Hard"));
+        put(4, new QuizData(4, "Quiz #4", "Quiz #4 title", "Quiz #4 description", "Easy"));
+        put(5, new QuizData(5, "Quiz #5", "Quiz #5 title", "Quiz #5 description", "Medium"));
+    }};
 
-    private Integer id = 0;
+    private Integer id = 2;
 
     private Integer nextId() {
         id += 1;
@@ -26,6 +33,7 @@ public class QuizzesRepository implements IQuizzesRepository {
 
     @Override
     public QuizData create(QuizData quizData) {
+
         Integer id = nextId();
         quizData.setId(id);
         quizzesMap.put(id, quizData);
