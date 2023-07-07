@@ -1,5 +1,5 @@
 <template>
-    <h1>Страница текущей викторины</h1>
+    <h1>Страница текущей викторины ID = {{  $route.params.id }} </h1>
 </template>
 
 <script>

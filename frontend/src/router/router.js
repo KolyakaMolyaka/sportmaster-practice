@@ -15,7 +15,7 @@ const routes = [
         component: QuizzesPage
     },
     {
-        path: '/quiz',
+        path: '/quiz/:id',
         component: CurrentQuizPage
     },
     {

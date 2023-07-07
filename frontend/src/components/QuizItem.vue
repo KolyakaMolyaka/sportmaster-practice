@@ -2,8 +2,7 @@
     <h1 class="text-center mt-5 fw-bold text-white"> {{ quiz.title }} </h1>
     <div class="card fs-5 mt-3 mx-auto"> {{ quiz.description }} </div>
     <div class="d-flex justify-end justify-content-end mt-4">
-        <router-link to="/quiz" class="btn btn-primary fw-bold ps-4 pe-4 pt-3 pb-3">Пройти</router-link>
-        <!-- <a href="#" class="btn btn-primary fw-bold ps-4 pe-4 pt-3 pb-3">Пройти</a> -->
+        <button @click="$router.push(`/quiz/${quiz.id}`)" class="btn btn-primary fw-bold ps-4 pe-4 pt-3 pb-3">Пройти</button>
     </div>
 </template>
 
