@@ -7,6 +7,10 @@ import QuizResultsPage from "@/pages/QuizResultsPage.vue"
 
 const routes = [
     {
+        path: '/quizzes',
+        component: QuizzesPage
+    },
+    {
         path: '/',
         component: QuizzesPage
     },
