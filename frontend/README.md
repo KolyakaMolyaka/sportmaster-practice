@@ -14,6 +14,8 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 
 ```sh
 npm install
+[npm install --save vuex@next](https://stackoverflow.com/questions/63335821/module-not-found-error-cant-resolve-vuex-in-myapp-src-store)
+
 ```
 
 ### Compile and Hot-Reload for Development

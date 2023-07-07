@@ -39,6 +39,9 @@ export default {
     methods: {
         handler(answer, questionId) {
             this.isActive = false
+            if (answer.isCorrect) {
+                this.$store.commit('incrementScore');
+            }
         }
     }
 

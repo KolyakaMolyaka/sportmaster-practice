@@ -32,6 +32,7 @@ export default {
             .then(json => this.quiz = json);
         },
     },
+
     mounted() {
         this.fetchQuizInfo();
     }

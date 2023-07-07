@@ -35,6 +35,7 @@ export default {
     },
     mounted() {
         this.fetchQuestionsInfo();
+        this.$store.commit('resetScore');
     }
 
 }
