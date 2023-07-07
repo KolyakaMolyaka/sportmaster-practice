@@ -14,7 +14,7 @@ export default {
 </template>
 
 <style>
-.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+.btn-primary, .btn-primary:active, .btn-primary:visited {
     background-color: #505e86 !important;
     border: 0;
 }
