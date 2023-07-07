@@ -1,8 +1,9 @@
 <script>
+import TopHeader from './components/TopHeader.vue';
 export default {
+  components: {TopHeader},
   data() {
     return {
-      message: 'Hello world'
     }
   }
 }
@@ -10,7 +11,7 @@ export default {
 </script>
 
 <template>
-  <h1>Message is: {{  message }}</h1>
+  <TopHeader/>
 </template>
 
 <style scoped>
