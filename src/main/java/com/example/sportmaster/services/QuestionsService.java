@@ -79,7 +79,6 @@ public class QuestionsService implements IQuestionsService {
                             .map(answerDocToAnswerDataMapper::toAnswerDoc)
                             .toList()
             );
-            System.out.println(question.getAnswers());
             questionsWithAnswers.add(question);
         }
 
