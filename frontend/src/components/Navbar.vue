@@ -1,5 +1,5 @@
 <template>
-    <nav class="navbar mt-4 bg-primary mx-auto">
+    <nav class="navbar mt-4 mx-auto" style="background: #505e86;">
         <div class="col-md-8 mx-auto d-flex justify-content-center">
             <button @click="$router.push('/quizzes')" class="btn btn-primary text-white m-1">Викторины</button>
         </div>

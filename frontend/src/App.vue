@@ -13,6 +13,16 @@ export default {
   <router-view></router-view>
 </template>
 
-<style scoped>
+<style>
+.btn-primary, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #505e86 !important;
+    border: 0;
+}
+
+
+.btn-color, .btn-primary:hover, .btn-primary:active, .btn-primary:visited {
+    background-color: #cb585d !important;
+    border: 0;
+}
 
 </style>

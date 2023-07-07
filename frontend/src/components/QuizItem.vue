@@ -18,6 +18,8 @@ export default {
 </script>
 
 <style scoped>
+
+
 .card {
     background-color: #fefefe;
     border-radius: 9px;

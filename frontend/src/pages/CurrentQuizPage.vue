@@ -21,6 +21,9 @@
                     </button>
                 </div>
         </div>
+        <div class="text-center">
+        <button class="btn btn-primary btn-color rounded-3 p-3 m-5 fs-4">Закончить прохождение</button>
+        </div>
     </div>
     
 </template>
@@ -57,6 +60,13 @@ export default {
 </script>
 
 <style>
+.alert-color {
+    background-color: #505e86 !important;
+    border-radius: 9px;
+}
+
+
+
 .card {
     background-color: #fefefe;
     border-radius: 9px;
