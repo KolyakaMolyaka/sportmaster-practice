@@ -19,7 +19,7 @@ public class QuizzesRepository implements IQuizzesRepository {
         put(5, new QuizData(5, "Quiz #5", "Quiz #5 title", "Quiz #5 description", "Medium"));
     }};
 
-    private Integer id = 2;
+    private Integer id = 5; // текущий ID не будет включен в nextId
 
     private Integer nextId() {
         id += 1;
