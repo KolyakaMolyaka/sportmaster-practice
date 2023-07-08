@@ -5,6 +5,7 @@ import com.example.sportmaster.models.QuizData;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -45,6 +46,7 @@ public class QuizzesRepository implements IQuizzesRepository {
 
         Integer id = nextId();
         quizData.setId(id);
+        quizData.setCreatedAt(LocalDate.now());
         quizzesMap.put(id, quizData);
         return quizData;
     }
