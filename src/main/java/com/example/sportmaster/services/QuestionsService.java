@@ -9,6 +9,7 @@ import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
 import com.example.sportmaster.models.QuestionDoc;
 import com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper;
 import com.example.sportmaster.mappers.interfaces.IQuestionDocToQuestionDataMapper;
+import com.example.sportmaster.services.interfaces.IAnswersService;
 import com.example.sportmaster.services.interfaces.IQuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class QuestionsService implements IQuestionsService {
@@ -23,9 +25,12 @@ public class QuestionsService implements IQuestionsService {
     private IQuestionsRepository questionsRepository;
     @Autowired
     private IQuizzesRepository quizzesRepository;
-
     @Autowired
     private IAnswersRepository answersRepository;
+
+
+    @Autowired
+    private IAnswersService answersService;
 
     private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
     private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
@@ -94,5 +99,13 @@ public class QuestionsService implements IQuestionsService {
         return questionDocToQuestionDataMapper.toQuestionDoc(
                 questionsRepository.create(quizId, questionDocToQuestionDataMapper.toQuestionData(questionDoc))
         );
+    }
+
+    @Override
+    public void deleteForQuiz(Integer quizId) {
+        List<Integer> questionIdsToRemove = questionsRepository.deleteQuestions(quizId);
+        for (Integer questionId: questionIdsToRemove) {
+            answersService.deleteAnswersForQuestion(questionId);
+        }
     }
 }

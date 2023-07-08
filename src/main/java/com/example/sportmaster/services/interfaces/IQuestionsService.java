@@ -25,4 +25,6 @@ public interface IQuestionsService {
     List<QuestionDoc> findAllQuestions(Integer quizId);
 
     public QuestionDoc createQuestion(Integer quizId, QuestionDoc questionDoc) throws InvalidKeyException;
+
+    void deleteForQuiz(Integer quizId);
 }

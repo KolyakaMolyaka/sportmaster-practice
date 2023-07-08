@@ -1,9 +1,11 @@
 package com.example.sportmaster.services;
 
+import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
 import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
 import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.mappers.QuizDocToQuizDataMapper;
 import com.example.sportmaster.mappers.interfaces.IQuizDocToQuizDataMapper;
+import com.example.sportmaster.services.interfaces.IQuestionsService;
 import com.example.sportmaster.services.interfaces.IQuizzesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -15,6 +17,9 @@ import java.util.List;
 public class QuizzesService implements IQuizzesService {
     @Autowired
     private IQuizzesRepository quizzesRepository;
+
+    @Autowired
+    private IQuestionsService questionsService;
 
     private final IQuizDocToQuizDataMapper quizDocToQuizDataMapper = new QuizDocToQuizDataMapper();
 
@@ -34,6 +39,8 @@ public class QuizzesService implements IQuizzesService {
     @Override
     public void deleteQuiz(Integer quizId) throws InvalidKeyException {
         quizzesRepository.delete(quizId);
+        questionsService.deleteForQuiz(quizId);
+
     }
 
     @Override

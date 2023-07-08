@@ -8,9 +8,7 @@ import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Repository
 public class AnswersRepository implements IAnswersRepository {
@@ -150,5 +148,11 @@ public class AnswersRepository implements IAnswersRepository {
     @Override
     public void delete(Integer answerId) {
         answersMap.remove(answerId);
+    }
+
+    @Override
+    public void deleteForQuestion(Integer questionId) {
+        // Удалить элементы, у которых questionId равен заданному
+        answersMap.entrySet().removeIf(entry -> Objects.equals(entry.getValue().getQuestionId(), questionId));
     }
 }

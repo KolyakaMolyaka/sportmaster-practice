@@ -15,4 +15,6 @@ public interface IAnswersRepository {
     AnswerData update(Integer answerId, AnswerData answerData) throws InvalidKeyException;
 
     void delete(Integer answerId);
+
+    void deleteForQuestion(Integer questionId);
 }

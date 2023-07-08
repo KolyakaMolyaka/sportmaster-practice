@@ -15,4 +15,6 @@ public interface IAnswersService {
     AnswerDoc getAnswer(Integer questionId, Integer answerId);
 
     void deleteAnswer(Integer answerId) throws InvalidKeyException;
+
+    void deleteAnswersForQuestion(Integer questionId);
 }

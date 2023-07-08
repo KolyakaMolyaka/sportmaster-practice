@@ -59,4 +59,10 @@ public class AnswersService implements IAnswersService {
         answersRepository.delete(answerId);
 
     }
+
+    @Override
+    public void deleteAnswersForQuestion(Integer questionId) {
+        answersRepository.deleteForQuestion(questionId);
+
+    }
 }

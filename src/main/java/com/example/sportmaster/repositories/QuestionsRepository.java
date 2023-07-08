@@ -5,12 +5,11 @@ import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
 import com.example.sportmaster.models.QuestionData;
 import com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper;
 import com.example.sportmaster.mappers.interfaces.IQuestionDocToQuestionDataMapper;
+import io.swagger.v3.oas.models.security.SecurityScheme;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 @Repository
 public class QuestionsRepository implements IQuestionsRepository {
@@ -85,5 +84,25 @@ public class QuestionsRepository implements IQuestionsRepository {
     public QuestionData find(Integer questionId) {
         return questionMap.get(questionId);
     }
+
+    @Override
+    public List<Integer> deleteQuestions(Integer quizId) {
+
+
+        List<Integer> questionIdsToRemove = new ArrayList<>();
+
+        Iterator<Map.Entry<Integer, QuestionData>> iterator = questionMap.entrySet().iterator();
+        while (iterator.hasNext()) {
+            Map.Entry<Integer, QuestionData> entry = iterator.next();
+            // Удалить элементы, у которых значение quizId равно заданному
+            if (Objects.equals(entry.getValue().getQuizId(), quizId)) {
+                questionIdsToRemove.add(entry.getValue().getId()); // добавить id в список вопросов, которые были удалены
+                iterator.remove(); // удалить вопрос
+            }
+        }
+
+        return questionIdsToRemove;
+    }
+
 }
 
