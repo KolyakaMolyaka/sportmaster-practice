@@ -141,6 +141,7 @@ public class AnswersRepository implements IAnswersRepository {
     @Override
     public AnswerData update(Integer answerId, AnswerData answerData) throws InvalidKeyException {
         if (!answersMap.containsKey(answerId)) throw new InvalidKeyException("Ответа с заданным ID не существует");
+        answerData.setId(answerId);
         answersMap.replace(answerId, answerData);
         return answersMap.get(answerId);
     }

@@ -4,6 +4,7 @@ import com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.interfaces.IAnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
+import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.openapi.api.QuestionsApi;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;
@@ -83,9 +84,8 @@ public class QuestionsController implements QuestionsApi {
     @Override
     public ResponseEntity<AnswerDTO> questionsQuestionIdAnswersPost(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "", required = true) @Valid @RequestBody AnswerDTO answerDTO) {
         try {
-            AnswerDTO answer = answerDTOToAnswerDocMapper.toAnswerDTO(
-                    answersService.createAnswer(questionId, answerDTOToAnswerDocMapper.toAnswerDoc(answerDTO))
-            );
+            AnswerDoc answerDoc  = answersService.createAnswer(questionId, answerDTOToAnswerDocMapper.toAnswerDoc(answerDTO));
+            AnswerDTO answer = answerDTOToAnswerDocMapper.toAnswerDTO(answerDoc);
             return ResponseEntity.ok(answer);
         } catch (InvalidKeyException e) {
             return ResponseEntity.notFound().build();
