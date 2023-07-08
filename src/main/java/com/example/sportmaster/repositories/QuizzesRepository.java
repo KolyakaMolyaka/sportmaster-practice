@@ -44,9 +44,12 @@ public class QuizzesRepository implements IQuizzesRepository {
     public QuizData create(QuizData quizData) {
 
         Integer id = nextId();
+
         quizData.setId(id);
         quizData.setCreatedAt(LocalDate.now());
+
         quizzesMap.put(id, quizData);
+
         return quizData;
     }
 

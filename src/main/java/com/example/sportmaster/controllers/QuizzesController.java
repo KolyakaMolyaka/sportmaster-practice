@@ -4,6 +4,7 @@ import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.interfaces.IQuizDTOToQuizDocMapper;
+import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import com.example.sportmaster.openapi.model.QuizDTO;
@@ -52,7 +53,8 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<QuizDTO> quizzesPost(@ApiParam(value = "", required = true) @Valid @RequestBody QuizDTO quizDTO) {
-        QuizDTO quiz = quizDTOToQuizDocMapper.toQuizDTO(quizzesService.createQuiz(quizDTOToQuizDocMapper.toQuizDoc(quizDTO)));
+        QuizDoc quizDoc= quizzesService.createQuiz(quizDTOToQuizDocMapper.toQuizDoc(quizDTO));
+        QuizDTO quiz = quizDTOToQuizDocMapper.toQuizDTO(quizDoc);
         return ResponseEntity.ok(quiz);
     }
 
