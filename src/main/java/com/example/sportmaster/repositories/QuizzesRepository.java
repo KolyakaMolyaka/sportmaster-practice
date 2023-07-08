@@ -73,6 +73,10 @@ public class QuizzesRepository implements IQuizzesRepository {
         if (!quizzesMap.containsKey(quizId)) throw new InvalidKeyException("Викторины с указанным ID не существует");
 
         quizData.setId(quizId);
+
+        // установка даты создания у обновленнной викторины, как у предыдущей
+        quizData.setCreatedAt(quizzesMap.get(quizId).getCreatedAt());
+
         quizzesMap.replace(quizId, quizData);
         return quizData;
     }

@@ -31,7 +31,6 @@ public class QuizDocToQuizDataMapper implements IQuizDocToQuizDataMapper {
         data.setDescription(doc.getDescription());
         data.setCategory(doc.getCategory());
         data.setDifficulty(doc.getDifficulty());
-        data.setCreatedAt(doc.getCreatedAt());
 
         return data;
     }
