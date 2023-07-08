@@ -38,8 +38,11 @@ public class QuestionsController implements QuestionsApi {
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {
-        // TODO: т.к. answerID всегда уникален, то questionId не нужен
-        answersService.deleteAnswer(answerId);
+        try {
+            answersService.deleteAnswer(answerId);
+        } catch (InvalidKeyException e) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.accepted().build();
     }
 

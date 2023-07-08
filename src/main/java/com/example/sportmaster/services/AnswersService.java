@@ -54,7 +54,8 @@ public class AnswersService implements IAnswersService {
     }
 
     @Override
-    public void deleteAnswer(Integer answerId) {
+    public void deleteAnswer(Integer answerId) throws InvalidKeyException {
+        if (answersRepository.find(answerId) == null) throw new InvalidKeyException("Вопроса с указанным ID не существует");
         answersRepository.delete(answerId);
 
     }
