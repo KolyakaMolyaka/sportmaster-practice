@@ -7,12 +7,12 @@
 
     <div class="d-flex mt-4">
         <div class="d-flex align-items-start flex-column">
-            <div class="btn btn-info text-white fw-bold">
+            <div v-if="quiz.category" class="btn btn-info text-white fw-bold">
                 Категория: {{quiz.category}}
             </div>
             <div v-if="quiz.difficulty == 'Легкий'" class="btn btn-success mt-2 fw-bold text-white">Уровень сложности: {{  quiz.difficulty }}</div>
             <div v-else-if="quiz.difficulty == 'Средний'" class="btn btn-warning mt-2 fw-bold">Уровень сложности: {{  quiz.difficulty }}</div>
-            <div v-else class="btn btn-danger mt-2 fw-bold text-white">Уровень сложности: {{  quiz.difficulty }}</div>
+            <div v-else-if="quiz.difficulty == 'Сложный'" class="btn btn-danger mt-2 fw-bold text-white">Уровень сложности: {{  quiz.difficulty }}</div>
         </div>
         <button 
         style="background-color: #cb585d !important;"
