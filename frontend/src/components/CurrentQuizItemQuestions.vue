@@ -33,6 +33,16 @@ export default {
             .then(json => this.questions = json);
         },
     },
+    watch: {
+        questions(newQuestions, oldQuestions) {
+            if (newQuestions !== null) {
+                this.$store.commit('setFullScore', newQuestions.length);
+            }
+            else {
+                this.$store.commit('setFullScore', 0);
+            }
+        }
+    },
     mounted() {
         this.fetchQuestionsInfo();
         this.$store.commit('resetScore');

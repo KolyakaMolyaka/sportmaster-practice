@@ -7,7 +7,7 @@ export default createStore ({
     },
     getters: {
         fullScores(state) {
-            return state.fullScore;
+            return state.fullScore
         },
         scores(state) {
             return state.score;
@@ -22,8 +22,11 @@ export default createStore ({
         resetScore() {
             this.state.score = 0;
         },
-        setFullScore(newFullScore) {
-            this.state.fullScore = newFullScore;
+        resetFullScore() {
+            this.state.fullScore = 0;
+        },
+        setFullScore(state, newFullScore) {
+            state.fullScore = newFullScore;
         }
 
     },

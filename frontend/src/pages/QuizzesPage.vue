@@ -19,6 +19,8 @@ export default {
   },
   mounted() {
     this.fetchQuizzes();
+    this.$store.commit('resetScore');
+    this.$store.commit('resetFullScore');
   }
 }
 
