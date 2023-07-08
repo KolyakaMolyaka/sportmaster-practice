@@ -42,7 +42,7 @@ export default {
             if (answer.isCorrect) {
                 this.$store.commit('incrementScore');
             }
-        }
+        },
     }
 
 }

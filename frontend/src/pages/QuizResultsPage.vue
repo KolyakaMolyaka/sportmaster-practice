@@ -1,7 +1,7 @@
 <template>
     <div class="h-100 d-flex justify-content-evenly align-items-center mt-5">
         <div class="quiz-card mt-3 alert alert-color">
-            <h1 class="mt-3 fw-bold text-white">Правильных ответов:  {{ $route.query.score }} </h1>
+            <h1 class="mt-3 fw-bold text-white">Правильных ответов:  {{ $store.getters.scores }} / {{ $store.getters.fullScores }}</h1>
             <div class="card fs-5 mt-3 mb-3 mx-auto">
                 Вам есть куда стремиться. Попробуйте играть чаще и тогда вы улучшите свой результат!
             </div>

@@ -3,7 +3,7 @@
         <CurrentQuizItem :quizId="quizId" :key="quizId"/>
         <div class="text-center">
             <button
-            @click="$router.push({path: '/quiz_results', query: {score: $store.state.score}})" 
+            @click="$router.push({path: '/quiz_results' })" 
             class="btn btn-primary btn-color rounded-3 p-3 m-5 fs-4">Закончить прохождение</button>
         </div>
     </div>
