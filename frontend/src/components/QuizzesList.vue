@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-wrap mt-5 justify-content-center">
         <div
-        class="quiz-card mt-3 me-5 alert alert-color"
+        class="quiz-card mt-3 mx-5 alert alert-color"
         v-for="quiz in quizzes"> 
 
         <QuizItem :quiz="quiz"/>
