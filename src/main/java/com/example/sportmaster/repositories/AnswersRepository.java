@@ -35,22 +35,26 @@ public class AnswersRepository implements IAnswersRepository {
         put(15, new AnswerData(15, 4, "Пат", false));
         put(16, new AnswerData(16, 4, "Крепость", false));
 
-        put(17, new AnswerData(17, 7, "Option 2, False answer #2", false));
+        put(17, new AnswerData(17, 5, "Греция", true));
+        put(18, new AnswerData(18, 5, "Рим", false));
+        put(19, new AnswerData(19, 5, "Египет", false));
+        put(20, new AnswerData(20, 5, "Китай", false));
 
-        put(18, new AnswerData(18, 8, "Option 1, True answer #1", true));
-        put(19, new AnswerData(19, 8, "Option 2, False answer #2", false));
+        put(21, new AnswerData(21, 6, "Греко-римская борьба", false));
+        put(22, new AnswerData(22, 6, "Вольная борьба", true));
+        put(23, new AnswerData(23, 6, "Сумо", false));
+        put(24, new AnswerData(24, 6, "Джудо", false));
 
-        put(20, new AnswerData(20, 9, "Option 1, True answer #1", true));
-        put(21, new AnswerData(21, 9, "Option 2, False answer #2", false));
+        put(25, new AnswerData(25, 7, "Сергей Белоглазов", false));
+        put(26, new AnswerData(26, 7, "Александр Карелин", true));
+        put(27, new AnswerData(27, 7, "Джон Смит", false));
+        put(28, new AnswerData(28, 7, "Лукас Рейс", false));
 
-        put(22, new AnswerData(22, 10, "Option 1, True answer #1", true));
-        put(23, new AnswerData(23, 10, "Option 2, False answer #2", false));
+        put(29, new AnswerData(29, 8, "1896 год", false));
+        put(30, new AnswerData(30, 8, "1904 год", false));
+        put(31, new AnswerData(31, 8, "1924 год", true));
+        put(32, new AnswerData(32, 8, "1936 год", false));
 
-        put(24, new AnswerData(24, 11, "Option 1, True answer #1", true));
-        put(25, new AnswerData(25, 11, "Option 2, False answer #2", false));
-
-        put(26, new AnswerData(26, 12, "Option 1, True answer #1", true));
-        put(27, new AnswerData(27, 12, "Option 2, False answer #2", false));
 
     }};
 

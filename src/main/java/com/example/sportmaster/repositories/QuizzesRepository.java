@@ -15,7 +15,10 @@ public class QuizzesRepository implements IQuizzesRepository {
         put(1, new QuizData(1, "Мастер шахмат",
                 "Пройдите тест и проверьте свои знания в шахматах! Викторина \"Мастер шахмат\" представляет серию вопросов, связанных с правилами, стратегией и историей этой увлекательной игры.",
                 "Шахматы", "Легкий"));
-        put(2, new QuizData(2, "Quiz #2", "Quiz #2 title", "Quiz #2 description", "Medium"));
+        put(2, new QuizData(2, "История борьбы",
+                "В этой викторине вы сможете проверить свои знания об истории борьбы – одном из самых древних видов спорта. Будут представлены вопросы о различных стилях борьбы, великих борцах и их достижениях, а также интересные факты и исторические события, связанные с этим спортом. Готовы проверить свои навыки?",
+                "Борьба", "Средний"));
+
         put(3, new QuizData(3, "Quiz #3", "Quiz #3 title", "Quiz #3 description", "Hard"));
         put(4, new QuizData(4, "Quiz #4", "Quiz #4 title", "Quiz #4 description", "Easy"));
         put(5, new QuizData(5, "Quiz #5", "Quiz #5 title", "Quiz #5 description", "Medium"));

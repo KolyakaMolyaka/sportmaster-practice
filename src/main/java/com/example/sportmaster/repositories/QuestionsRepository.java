@@ -20,11 +20,11 @@ public class QuestionsRepository implements IQuestionsRepository {
         put(3, new QuestionData(3, 1, "Какая фигура может ходить на любое количество клеток вперед, но только по вертикали или горизонтали?"));
         put(4, new QuestionData(4, 1, "Как называется ситуация, когда король находится под нападением, но не может сделать ни одного легального хода?"));
 
-        put(5, new QuestionData(5, 2, "Quiz #2, Answer #2"));
-        put(6, new QuestionData(6, 2, "Quiz #2, Answer #3"));
+        put(5, new QuestionData(5, 2, "В какой стране родилась древняя греко-римская борьба?"));
+        put(6, new QuestionData(6, 2, "Какой стиль борьбы характеризуется применением бросков и приемов на ноги?"));
+        put(7, new QuestionData(7, 2, "Кто из этих борцов выиграл наибольшее количество золотых медалей на Олимпийских играх?"));
+        put(8, new QuestionData(8, 2, "В каком году борьба стала официальным видом спорта на Олимпийских играх?"));
 
-        put(7, new QuestionData(7, 3, "Quiz #3, Answer #1"));
-        put(8, new QuestionData(8, 3, "Quiz #3, Answer #2"));
         put(9, new QuestionData(9, 3, "Quiz #3, Answer #3"));
         put(10, new QuestionData(10, 3, "Quiz #3, Answer #4"));
 
@@ -34,7 +34,6 @@ public class QuestionsRepository implements IQuestionsRepository {
 
         put(14, new QuestionData(14, 5, "Quiz #5, Answer #1"));
         put(15, new QuestionData(15, 5, "Quiz #5, Answer #2"));
-
 
     }};
 
