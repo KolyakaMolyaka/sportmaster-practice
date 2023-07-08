@@ -77,6 +77,7 @@ public class QuestionsRepository implements IQuestionsRepository {
     @Override
     public void update(Integer questionId, QuestionData questionData) throws InvalidKeyException {
         if (!questionMap.containsKey(questionId)) throw new InvalidKeyException("Вопроса с таким ID не существует");
+        questionData.setId(questionId);
         questionMap.replace(questionId, questionData);
     }
 
