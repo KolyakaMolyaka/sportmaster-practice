@@ -29,7 +29,7 @@ public class QuizzesRepository implements IQuizzesRepository {
                 "Легкая атлетика", "Сложный"));
     }};
 
-    private Integer id = 0; // текущий ID не будет включен в nextId
+    private Integer id = 4; // текущий ID не будет включен в nextId
 
     private Integer nextId() {
         id += 1;
