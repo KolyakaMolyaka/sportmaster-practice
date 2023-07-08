@@ -8,7 +8,6 @@ import java.security.InvalidKeyException;
 import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Repository
 public class QuizzesRepository implements IQuizzesRepository {

@@ -39,12 +39,14 @@ public class QuizzesController implements QuizzesApi {
 
     @Override
     public ResponseEntity<List<QuizDTO>> quizzesGet() {
-        List<QuizDTO> quizzes = new ArrayList<>();
-        quizzesService.findAllQuizzes().stream()
-                .map(quizDTOToQuizDocMapper::toQuizDTO).
-                forEach(quizzes::add);
+        List<QuizDTO> quizzes = quizzesService.findAllQuizzes()
+                .stream()
+                .map(quizDTOToQuizDocMapper::toQuizDTO)
+                .toList();
 
-        if (quizzes.isEmpty()) return ResponseEntity.notFound().build();
+        if (quizzes.isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
         return ResponseEntity.ok(quizzes);
     }
 
