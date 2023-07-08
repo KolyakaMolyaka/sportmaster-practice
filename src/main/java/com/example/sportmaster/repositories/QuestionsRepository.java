@@ -30,17 +30,19 @@ public class QuestionsRepository implements IQuestionsRepository {
         put(11, new QuestionData(11, 3, "Какой стиль плавания считается самым быстрым?"));
         put(12, new QuestionData(12, 3, "Как называется специальное оборудование, используемое для тренировки плавания?"));
 
-        put(13, new QuestionData(13, 4, "Quiz #4, Answer #3"));
-
-        put(14, new QuestionData(14, 5, "Quiz #5, Answer #1"));
-        put(15, new QuestionData(15, 5, "Quiz #5, Answer #2"));
+        put(13, new QuestionData(13, 4, "Какой олимпийский чемпион считается \"быстрейшим человеком в мире\"?"));
+        put(14, new QuestionData(14, 4, "Каково расстояние в беге на 100 метров?"));
+        put(15, new QuestionData(15, 4, "Какое максимальное количество попыток предоставляется каждому спортсмену в прыжках в высоту и в длину?"));
+        put(16, new QuestionData(16, 4, "Какой рекорд принадлежит Жанне Лазарь?"));
+        put(17, new QuestionData(17, 4, "Какой спортсмен установил мировой рекорд в метании копья?"));
+        put(18, new QuestionData(18, 4, "Какое расстояние преодолевает спортсмен в беге на 800 метров?"));
 
     }};
 
     private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
 
 
-    private Integer id = 15; // текущий ID не будет включен в nextId()
+    private Integer id = 18; // текущий ID не будет включен в nextId()
 
     private Integer nextId() {
         id += 1;

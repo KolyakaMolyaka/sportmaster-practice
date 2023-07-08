@@ -75,11 +75,41 @@ public class AnswersRepository implements IAnswersRepository {
         put(47, new AnswerData(47, 12, "Клетка", false));
         put(48, new AnswerData(48, 12, "Гидрокостюм", true));
 
+        put(49, new AnswerData(49, 13, "Юсэйн Болт", true));
+        put(50, new AnswerData(50, 13, "Карл Льюис", false));
+        put(51, new AnswerData(51, 13, "Усэйн Блэйк", false));
+        put(52, new AnswerData(52, 13, "Джастин Гэтлин", false));
+
+        put(53, new AnswerData(53, 14, "100 метров", true));
+        put(54, new AnswerData(54, 14, "200 метров", false));
+        put(55, new AnswerData(55, 14, "400 метров", false));
+        put(56, new AnswerData(56, 14, "800 метров", false));
+
+        put(57, new AnswerData(57, 15, "1 попытка", false));
+        put(58, new AnswerData(58, 15, "3 попытки", true));
+        put(59, new AnswerData(59, 15, "5 попыток", false));
+        put(60, new AnswerData(60, 15, "Нет ограничений", false));
+
+        put(61, new AnswerData(61, 16, "Самый длинный прыжок в высоту", false));
+        put(62, new AnswerData(62, 16, "Самый длинный прыжок в длину", true));
+        put(63, new AnswerData(63, 16, "Самый быстрый забег на 100 метров", false));
+        put(64, new AnswerData(64, 16, "Самый длинный метание диска", false));
+
+        put(65, new AnswerData(65, 17, "Ян Желеховский", true));
+        put(66, new AnswerData(66, 17, "Юрген Шлюдер", false));
+        put(67, new AnswerData(67, 17, "Теодорос Икуридис", false));
+        put(68, new AnswerData(68, 17, " Юхан Видерберг", false));
+
+        put(69, new AnswerData(69, 18, "400 метров", false));
+        put(70, new AnswerData(70, 18, "800 метров", true));
+        put(71, new AnswerData(71, 18, "1600 метров", false));
+        put(72, new AnswerData(72, 18, "2000 метров", false));
+
     }};
 
     private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
 
-    private Integer id = 20; // текущий id не будет включен в nextId()
+    private Integer id = 72; // текущий id не будет включен в nextId()
 
     private Integer nextId() {
         id += 1;
