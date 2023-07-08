@@ -15,11 +15,11 @@ import java.util.Objects;
 @Repository
 public class QuestionsRepository implements IQuestionsRepository {
     private HashMap<Integer, QuestionData> questionMap = new HashMap<Integer, QuestionData>() {{
-        put(1, new QuestionData(1, 1, "Quiz #1, Answer #1"));
-        put(2, new QuestionData(2, 1, "Quiz #1, Answer #2"));
-        put(3, new QuestionData(3, 1, "Quiz #1, Answer #3"));
+        put(1, new QuestionData(1, 1, "Какое количество фигур находится на шахматной доске в начале партии?"));
+        put(2, new QuestionData(2, 1, "Какой фигурой можно совершить \"Рокировку\"?"));
+        put(3, new QuestionData(3, 1, "Какая фигура может ходить на любое количество клеток вперед, но только по вертикали или горизонтали?"));
+        put(4, new QuestionData(4, 1, "Как называется ситуация, когда король находится под нападением, но не может сделать ни одного легального хода?"));
 
-        put(4, new QuestionData(4, 2, "Quiz #2, Answer #1"));
         put(5, new QuestionData(5, 2, "Quiz #2, Answer #2"));
         put(6, new QuestionData(6, 2, "Quiz #2, Answer #3"));
 

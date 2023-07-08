@@ -15,28 +15,26 @@ import java.util.Objects;
 @Repository
 public class AnswersRepository implements IAnswersRepository {
     private HashMap<Integer, AnswerData> answersMap = new HashMap<Integer, AnswerData>() {{
-        put(1, new AnswerData(1, 1, "Q1, Option 1, True answer #1", true));
-        put(2, new AnswerData(2, 1, "Q1, Option 2, False answer #2", false));
-        put(3, new AnswerData(3, 1, "Q1, Option 3, False answer #3", false));
+        put(1, new AnswerData(1, 1, "24 фигуры", false));
+        put(2, new AnswerData(2, 1, "28 фигур", false));
+        put(3, new AnswerData(3, 1, "32 фигуры", true));
+        put(4, new AnswerData(4, 1, "36 фигур", false));
 
-        put(4, new AnswerData(4, 2, "Q1, Option 1, False answer #1", false));
-        put(5, new AnswerData(5, 2, "Q1, Option 2, False answer #1", false));
-        put(6, new AnswerData(6, 2, "Q1, Option 3, True answer #1", true));
-        put(7, new AnswerData(7, 2, "Q1, Option 4, True answer #1", false));
+        put(5, new AnswerData(5, 2, "Пешкой", false));
+        put(6, new AnswerData(6, 2, "Слоном", false));
+        put(7, new AnswerData(7, 2, "Конем", false));
+        put(8, new AnswerData(8, 2, "Королем", true));
 
-        put(8, new AnswerData(8, 3, "Q1, Option 1, True answer #1", true));
-        put(9, new AnswerData(9, 3, "Q1, Option 2, False answer #2", false));
+        put(9, new AnswerData(9, 3, "Ферзь", false));
+        put(10, new AnswerData(10, 3, "Ладья", true));
+        put(11, new AnswerData(11, 3, "Конь", false));
+        put(12, new AnswerData(12, 3, "Король", false));
 
-        put(10, new AnswerData(10, 4, "Option 1, True answer #1", true));
-        put(11, new AnswerData(11, 4, "Option 2, False answer #2", false));
+        put(13, new AnswerData(13, 4, "Мат", true));
+        put(14, new AnswerData(14, 4, "Шах", false));
+        put(15, new AnswerData(15, 4, "Пат", false));
+        put(16, new AnswerData(16, 4, "Крепость", false));
 
-        put(12, new AnswerData(12, 5, "Option 1, True answer #1", true));
-        put(13, new AnswerData(13, 5, "Option 2, False answer #2", false));
-
-        put(14, new AnswerData(14, 6, "Option 1, True answer #1", true));
-        put(15, new AnswerData(15, 6, "Option 2, False answer #2", false));
-
-        put(16, new AnswerData(16, 7, "Option 1, True answer #1", true));
         put(17, new AnswerData(17, 7, "Option 2, False answer #2", false));
 
         put(18, new AnswerData(18, 8, "Option 1, True answer #1", true));
