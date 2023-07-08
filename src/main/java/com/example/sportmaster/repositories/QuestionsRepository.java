@@ -25,11 +25,11 @@ public class QuestionsRepository implements IQuestionsRepository {
         put(7, new QuestionData(7, 2, "Кто из этих борцов выиграл наибольшее количество золотых медалей на Олимпийских играх?"));
         put(8, new QuestionData(8, 2, "В каком году борьба стала официальным видом спорта на Олимпийских играх?"));
 
-        put(9, new QuestionData(9, 3, "Quiz #3, Answer #3"));
-        put(10, new QuestionData(10, 3, "Quiz #3, Answer #4"));
+        put(9, new QuestionData(9, 3, "Какая из этих дистанций является олимпийской в плавании?"));
+        put(10, new QuestionData(10, 3, "Стартуя на спине, каким образом пловец может проплыть дистанцию?"));
+        put(11, new QuestionData(11, 3, "Какой стиль плавания считается самым быстрым?"));
+        put(12, new QuestionData(12, 3, "Как называется специальное оборудование, используемое для тренировки плавания?"));
 
-        put(11, new QuestionData(11, 4, "Quiz #4, Answer #1"));
-        put(12, new QuestionData(12, 4, "Quiz #4, Answer #2"));
         put(13, new QuestionData(13, 4, "Quiz #4, Answer #3"));
 
         put(14, new QuestionData(14, 5, "Quiz #5, Answer #1"));

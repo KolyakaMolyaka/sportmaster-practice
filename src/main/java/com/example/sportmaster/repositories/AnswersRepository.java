@@ -55,6 +55,25 @@ public class AnswersRepository implements IAnswersRepository {
         put(31, new AnswerData(31, 8, "1924 год", true));
         put(32, new AnswerData(32, 8, "1936 год", false));
 
+        put(33, new AnswerData(33, 9, "50 метров", false));
+        put(34, new AnswerData(34, 9, "100 метров", false));
+        put(35, new AnswerData(35, 9, "200 метров", true));
+        put(36, new AnswerData(36, 9, "500 метров", false));
+
+        put(37, new AnswerData(37, 10, "Баттерфляем", false));
+        put(38, new AnswerData(38, 10, "Кролем", false));
+        put(39, new AnswerData(39, 10, "Брассом", false));
+        put(40, new AnswerData(40, 10, "На спине", true));
+
+        put(41, new AnswerData(41, 11, "Кроль", false));
+        put(42, new AnswerData(42, 11, "Баттерфляй", true));
+        put(43, new AnswerData(43, 11, "Брасс", false));
+        put(44, new AnswerData(44, 11, "Гребля на каноэ", false));
+
+        put(45, new AnswerData(45, 12, "Гондола", false));
+        put(46, new AnswerData(46, 12, "Рябинка", false));
+        put(47, new AnswerData(47, 12, "Клетка", false));
+        put(48, new AnswerData(48, 12, "Гидрокостюм", true));
 
     }};
 
