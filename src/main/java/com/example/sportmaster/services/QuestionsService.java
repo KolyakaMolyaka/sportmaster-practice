@@ -62,6 +62,7 @@ public class QuestionsService implements IQuestionsService {
     @Override
     public void deleteQuestion(Integer questionId) throws InvalidKeyException {
         questionsRepository.delete(questionId);
+        answersService.deleteAnswersForQuestion(questionId);
 
     }
 
