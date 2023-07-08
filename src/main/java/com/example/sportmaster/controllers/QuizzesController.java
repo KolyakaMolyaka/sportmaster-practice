@@ -4,6 +4,7 @@ import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.interfaces.IQuizDTOToQuizDocMapper;
+import com.example.sportmaster.models.QuestionDoc;
 import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
@@ -103,9 +104,8 @@ public class QuizzesController implements QuizzesApi {
     @Override
     public ResponseEntity<QuestionDTO> quizzesQuizIdQuestionsPost(@ApiParam(value = "ID викторины", required = true) @PathVariable("quizId") Integer quizId, @ApiParam(value = "", required = true) @Valid @RequestBody QuestionDTO questionDTO) {
         try {
-            QuestionDTO question = questionDTOToQuestionDocMapper.toQuestionDTO(
-                    questionsService.createQuestion(quizId, questionDTOToQuestionDocMapper.toQuestionDoc(questionDTO))
-            );
+            QuestionDoc questionDoc = questionsService.createQuestion(quizId, questionDTOToQuestionDocMapper.toQuestionDoc(questionDTO));
+            QuestionDTO question = questionDTOToQuestionDocMapper.toQuestionDTO(questionDoc);
             return ResponseEntity.ok(question);
         } catch (InvalidKeyException e) {
             return ResponseEntity.notFound().build();

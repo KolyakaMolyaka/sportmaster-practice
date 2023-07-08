@@ -72,10 +72,12 @@ public class QuestionsService implements IQuestionsService {
 
     @Override
     public List<QuestionDoc> findAllQuestions(Integer quizId) {
+        // получение --вопросов-- для викторины с id == quizId
         List<QuestionDoc> questions = questionsRepository.findAll(quizId)
                 .stream()
                 .map(questionDocToQuestionDataMapper::toQuestionDoc).toList();
 
+        // получение --ответов на вопросы-- для викторины с id == quizId
         List<QuestionDoc> questionsWithAnswers = new ArrayList<>();
         for (QuestionDoc question: questions) {
             question.setAnswers(
