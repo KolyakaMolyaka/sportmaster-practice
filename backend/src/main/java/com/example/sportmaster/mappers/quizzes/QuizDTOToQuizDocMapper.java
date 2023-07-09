@@ -1,4 +1,4 @@
-package com.example.sportmaster.mappers.interfaces;
+package com.example.sportmaster.mappers.quizzes;
 
 import com.example.sportmaster.models.quizzes.QuizDoc;
 import com.example.sportmaster.openapi.model.QuizDTO;

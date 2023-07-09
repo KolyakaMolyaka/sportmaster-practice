@@ -1,8 +1,8 @@
 package com.example.sportmaster.repositories.answers.impl;
 
-import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
+import com.example.sportmaster.mappers.answers.impl.AnswerDocToAnswerDataMapperImpl;
 import com.example.sportmaster.models.answers.AnswerData;
-import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.answers.AnswerDocToAnswerDataMapper;
 import com.example.sportmaster.repositories.answers.AnswersRepository;
 import org.springframework.stereotype.Repository;
 

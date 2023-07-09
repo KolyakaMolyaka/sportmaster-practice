@@ -1,9 +1,10 @@
-package com.example.sportmaster.mappers;
+package com.example.sportmaster.mappers.quizzes.impl;
 
+import com.example.sportmaster.mappers.quizzes.QuizDocToQuizDataMapper;
 import com.example.sportmaster.models.quizzes.QuizData;
 import com.example.sportmaster.models.quizzes.QuizDoc;
 
-public class QuizDocToQuizDataMapperImpl implements com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper {
+public class QuizDocToQuizDataMapperImpl implements QuizDocToQuizDataMapper {
 
     @Override
     public QuizDoc toQuizDoc(QuizData data) {

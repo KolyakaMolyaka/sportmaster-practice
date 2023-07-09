@@ -1,10 +1,10 @@
 package com.example.sportmaster.services.answers.impl;
 
-import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
+import com.example.sportmaster.mappers.answers.impl.AnswerDocToAnswerDataMapperImpl;
 import com.example.sportmaster.models.answers.AnswerDoc;
 import com.example.sportmaster.repositories.answers.AnswersRepository;
 import com.example.sportmaster.repositories.questions.QuestionsRepository;
-import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.answers.AnswerDocToAnswerDataMapper;
 import com.example.sportmaster.services.answers.AnswersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

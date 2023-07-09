@@ -1,9 +1,10 @@
-package com.example.sportmaster.mappers;
+package com.example.sportmaster.mappers.answers.impl;
 
+import com.example.sportmaster.mappers.answers.AnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.models.answers.AnswerDoc;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 
-public class AnswerDTOToAnswerDocMapperImpl implements com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper {
+public class AnswerDTOToAnswerDocMapperImpl implements AnswerDTOToAnswerDocMapper {
     @Override
     public AnswerDTO toAnswerDTO(AnswerDoc doc) {
         if (doc == null) return null;

@@ -1,9 +1,10 @@
-package com.example.sportmaster.mappers;
+package com.example.sportmaster.mappers.questions.impl;
 
+import com.example.sportmaster.mappers.questions.QuestionDocToQuestionDataMapper;
 import com.example.sportmaster.models.questions.QuestionData;
 import com.example.sportmaster.models.questions.QuestionDoc;
 
-public class QuestionDocToQuestionDataMapperImpl implements com.example.sportmaster.mappers.interfaces.QuestionDocToQuestionDataMapper {
+public class QuestionDocToQuestionDataMapperImpl implements QuestionDocToQuestionDataMapper {
     @Override
     public QuestionDoc toQuestionDoc(QuestionData data) {
         if (data == null) return null;

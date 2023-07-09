@@ -1,9 +1,10 @@
-package com.example.sportmaster.mappers;
+package com.example.sportmaster.mappers.quizzes.impl;
 
+import com.example.sportmaster.mappers.quizzes.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.models.quizzes.QuizDoc;
 import com.example.sportmaster.openapi.model.QuizDTO;
 
-public class QuizDTOToQuizDocMapperImpl implements com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper {
+public class QuizDTOToQuizDocMapperImpl implements QuizDTOToQuizDocMapper {
     @Override
     public QuizDTO toQuizDTO(QuizDoc doc) {
         if (doc == null) return null;

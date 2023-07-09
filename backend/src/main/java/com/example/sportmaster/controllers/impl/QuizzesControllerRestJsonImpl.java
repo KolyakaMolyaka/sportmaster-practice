@@ -1,9 +1,9 @@
 package com.example.sportmaster.controllers.impl;
 
-import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapperImpl;
-import com.example.sportmaster.mappers.QuizDTOToQuizDocMapperImpl;
-import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
-import com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper;
+import com.example.sportmaster.mappers.questions.impl.QuestionDTOToQuestionDocMapperImpl;
+import com.example.sportmaster.mappers.quizzes.impl.QuizDTOToQuizDocMapperImpl;
+import com.example.sportmaster.mappers.questions.QuestionDTOToQuestionDocMapper;
+import com.example.sportmaster.mappers.quizzes.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.models.questions.QuestionDoc;
 import com.example.sportmaster.models.quizzes.QuizDoc;
 import com.example.sportmaster.openapi.api.QuizzesApi;

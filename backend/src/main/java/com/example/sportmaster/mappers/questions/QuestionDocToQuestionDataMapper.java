@@ -1,4 +1,4 @@
-package com.example.sportmaster.mappers.interfaces;
+package com.example.sportmaster.mappers.questions;
 
 import com.example.sportmaster.models.questions.QuestionData;
 import com.example.sportmaster.models.questions.QuestionDoc;
