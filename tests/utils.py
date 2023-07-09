@@ -1,5 +1,5 @@
 def generate_quiz() -> dict:
-    """Вспомогательная функция создания викторины"""
+    """ Вспомогательная функция создания викторины """
     quiz = {
         'title': 'quiz title',
         'description': 'quiz description',
@@ -7,4 +7,11 @@ def generate_quiz() -> dict:
         'difficulty': 'easy'
     }
     return quiz
+
+def generate_question() -> dict:
+    """ Вспомогательная функция создания вопроса"""
+    question = {
+        'text': 'question text'
+    }
+    return question
 
