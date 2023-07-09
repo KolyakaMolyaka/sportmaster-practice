@@ -1,4 +1,4 @@
-package com.example.sportmaster.controllers;
+package com.example.sportmaster.controllers.impl;
 
 import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapperImpl;
 import com.example.sportmaster.mappers.QuizDTOToQuizDocMapperImpl;
