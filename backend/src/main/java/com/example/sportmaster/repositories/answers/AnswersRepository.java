@@ -1,4 +1,4 @@
-package com.example.sportmaster.repositories.interfaces;
+package com.example.sportmaster.repositories.answers;
 
 import com.example.sportmaster.models.AnswerData;
 

@@ -1,15 +1,16 @@
-package com.example.sportmaster.repositories;
+package com.example.sportmaster.repositories.answers.impl;
 
 import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
 import com.example.sportmaster.models.AnswerData;
 import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.repositories.answers.AnswersRepository;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
 import java.util.*;
 
 @Repository
-public class AnswersRepositoryHashMapImpl implements com.example.sportmaster.repositories.interfaces.AnswersRepository {
+public class AnswersRepositoryHashMapImpl implements AnswersRepository {
     private HashMap<Integer, AnswerData> answersMap = new HashMap<Integer, AnswerData>() {{
         put(1, new AnswerData(1, 1, "24 фигуры", false));
         put(2, new AnswerData(2, 1, "28 фигур", false));

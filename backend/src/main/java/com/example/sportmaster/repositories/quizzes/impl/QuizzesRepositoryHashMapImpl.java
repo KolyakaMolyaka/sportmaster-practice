@@ -1,6 +1,7 @@
-package com.example.sportmaster.repositories;
+package com.example.sportmaster.repositories.quizzes.impl;
 
 import com.example.sportmaster.models.QuizData;
+import com.example.sportmaster.repositories.quizzes.QuizzesRepository;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
@@ -9,7 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
-public class QuizzesRepositoryHashMapImpl implements com.example.sportmaster.repositories.interfaces.QuizzesRepository {
+public class QuizzesRepositoryHashMapImpl implements QuizzesRepository {
     private HashMap<Integer, QuizData> quizzesMap = new HashMap<Integer, QuizData>() {{
         put(1, new QuizData(1, "Мастер шахмат",
                 "Пройдите тест и проверьте свои знания в шахматах! Викторина \"Мастер шахмат\" представляет серию вопросов, связанных с правилами, стратегией и историей этой увлекательной игры.",

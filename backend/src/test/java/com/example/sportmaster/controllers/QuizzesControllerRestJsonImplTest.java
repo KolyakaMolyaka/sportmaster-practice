@@ -1,8 +1,8 @@
 package com.example.sportmaster.controllers;
 
 import com.example.sportmaster.models.QuestionData;
-import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
-import com.example.sportmaster.repositories.interfaces.QuizzesRepository;
+import com.example.sportmaster.repositories.questions.QuestionsRepository;
+import com.example.sportmaster.repositories.quizzes.QuizzesRepository;
 import com.example.sportmaster.services.questions.QuestionsService;
 import com.example.sportmaster.services.quizzes.QuizzesService;
 import org.junit.jupiter.api.Test;
