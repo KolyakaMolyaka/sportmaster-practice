@@ -1,6 +1,5 @@
 package com.example.sportmaster.repositories;
 
-import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
 import com.example.sportmaster.models.QuizData;
 import org.springframework.stereotype.Repository;
 
@@ -10,7 +9,7 @@ import java.util.HashMap;
 import java.util.List;
 
 @Repository
-public class QuizzesRepository implements IQuizzesRepository {
+public class QuizzesRepository implements com.example.sportmaster.repositories.interfaces.QuizzesRepository {
     private HashMap<Integer, QuizData> quizzesMap = new HashMap<Integer, QuizData>() {{
         put(1, new QuizData(1, "Мастер шахмат",
                 "Пройдите тест и проверьте свои знания в шахматах! Викторина \"Мастер шахмат\" представляет серию вопросов, связанных с правилами, стратегией и историей этой увлекательной игры.",

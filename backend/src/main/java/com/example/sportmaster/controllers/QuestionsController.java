@@ -1,15 +1,13 @@
 package com.example.sportmaster.controllers;
 
-import com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper;
-import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper;
-import com.example.sportmaster.mappers.interfaces.IAnswerDTOToAnswerDocMapper;
-import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
+import com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper;
+import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.openapi.api.QuestionsApi;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;
-import com.example.sportmaster.services.interfaces.IAnswersService;
-import com.example.sportmaster.services.interfaces.IQuestionsService;
+import com.example.sportmaster.services.interfaces.AnswersService;
+import com.example.sportmaster.services.interfaces.QuestionsService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -28,14 +26,14 @@ import java.util.List;
 public class QuestionsController implements QuestionsApi {
 
     @Autowired
-    private IQuestionsService questionsService;
+    private QuestionsService questionsService;
 
     @Autowired
-    private IAnswersService answersService;
+    private AnswersService answersService;
 
 
-    private IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
-    private IAnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new AnswerDTOToAnswerDocMapper();
+    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper();
+    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper();
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {

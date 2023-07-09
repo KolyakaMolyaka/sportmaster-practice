@@ -1,14 +1,13 @@
 package com.example.sportmaster.mappers;
 
-import com.example.sportmaster.mappers.interfaces.IAnswerDTOToAnswerDocMapper;
+import com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.models.QuestionDoc;
-import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 
-public class QuestionDTOToQuestionDocMapper implements IQuestionDTOToQuestionDocMapper {
+public class QuestionDTOToQuestionDocMapper implements com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper {
 
-    private IAnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new AnswerDTOToAnswerDocMapper();
+    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper();
 
     @Override
     public QuestionDTO toQuestionDTO(QuestionDoc doc) {

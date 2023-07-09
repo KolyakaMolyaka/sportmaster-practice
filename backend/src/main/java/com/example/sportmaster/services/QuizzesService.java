@@ -1,12 +1,9 @@
 package com.example.sportmaster.services;
 
-import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
-import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
+import com.example.sportmaster.repositories.interfaces.QuizzesRepository;
 import com.example.sportmaster.models.QuizDoc;
-import com.example.sportmaster.mappers.QuizDocToQuizDataMapper;
-import com.example.sportmaster.mappers.interfaces.IQuizDocToQuizDataMapper;
-import com.example.sportmaster.services.interfaces.IQuestionsService;
-import com.example.sportmaster.services.interfaces.IQuizzesService;
+import com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper;
+import com.example.sportmaster.services.interfaces.QuestionsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,14 +11,14 @@ import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
-public class QuizzesService implements IQuizzesService {
+public class QuizzesService implements com.example.sportmaster.services.interfaces.QuizzesService {
     @Autowired
-    private IQuizzesRepository quizzesRepository;
+    private QuizzesRepository quizzesRepository;
 
     @Autowired
-    private IQuestionsService questionsService;
+    private QuestionsService questionsService;
 
-    private final IQuizDocToQuizDataMapper quizDocToQuizDataMapper = new QuizDocToQuizDataMapper();
+    private final QuizDocToQuizDataMapper quizDocToQuizDataMapper = new com.example.sportmaster.mappers.QuizDocToQuizDataMapper();
 
 
     @Override

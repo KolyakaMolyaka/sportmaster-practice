@@ -1,10 +1,10 @@
 package com.example.sportmaster.controllers;
 
 import com.example.sportmaster.models.QuestionData;
-import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
-import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
-import com.example.sportmaster.services.interfaces.IQuestionsService;
-import com.example.sportmaster.services.interfaces.IQuizzesService;
+import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
+import com.example.sportmaster.repositories.interfaces.QuizzesRepository;
+import com.example.sportmaster.services.interfaces.QuestionsService;
+import com.example.sportmaster.services.interfaces.QuizzesService;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,13 +30,13 @@ class QuizzesControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    private IQuestionsRepository questionsRepository;
+    private QuestionsRepository questionsRepository;
     @MockBean
-    private IQuizzesRepository quizzesRepository;
+    private QuizzesRepository quizzesRepository;
     @MockBean
-    private IQuizzesService quizzesService;
+    private QuizzesService quizzesService;
     @MockBean
-    private IQuestionsService questionsService;
+    private QuestionsService questionsService;
 
 //    @Test
 //    void quizzesGet() {

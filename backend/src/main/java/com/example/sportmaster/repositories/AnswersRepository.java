@@ -1,17 +1,14 @@
 package com.example.sportmaster.repositories;
 
 import com.example.sportmaster.models.AnswerData;
-import com.example.sportmaster.models.QuestionData;
-import com.example.sportmaster.repositories.interfaces.IAnswersRepository;
-import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper;
-import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
 import java.util.*;
 
 @Repository
-public class AnswersRepository implements IAnswersRepository {
+public class AnswersRepository implements com.example.sportmaster.repositories.interfaces.AnswersRepository {
     private HashMap<Integer, AnswerData> answersMap = new HashMap<Integer, AnswerData>() {{
         put(1, new AnswerData(1, 1, "24 фигуры", false));
         put(2, new AnswerData(2, 1, "28 фигур", false));
@@ -105,7 +102,7 @@ public class AnswersRepository implements IAnswersRepository {
 
     }};
 
-    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
+    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper();
 
     private Integer id = 72; // текущий id не будет включен в nextId()
 

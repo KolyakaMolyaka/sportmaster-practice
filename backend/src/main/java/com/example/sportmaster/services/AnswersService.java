@@ -1,11 +1,9 @@
 package com.example.sportmaster.services;
 
 import com.example.sportmaster.models.AnswerDoc;
-import com.example.sportmaster.repositories.interfaces.IAnswersRepository;
-import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
-import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper;
-import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
-import com.example.sportmaster.services.interfaces.IAnswersService;
+import com.example.sportmaster.repositories.interfaces.AnswersRepository;
+import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
+import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +11,14 @@ import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
-public class AnswersService implements IAnswersService {
+public class AnswersService implements com.example.sportmaster.services.interfaces.AnswersService {
     @Autowired
-    private IQuestionsRepository questionsRepository;
+    private QuestionsRepository questionsRepository;
 
     @Autowired
-    private IAnswersRepository answersRepository;
+    private AnswersRepository answersRepository;
 
-    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
+    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper();
     @Override
     public AnswerDoc createAnswer(Integer questionId, AnswerDoc answerDoc) throws InvalidKeyException {
         if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");

@@ -1,39 +1,35 @@
 package com.example.sportmaster.services;
 
-import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper;
-import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
+import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
 import com.example.sportmaster.models.AnswerDoc;
-import com.example.sportmaster.repositories.interfaces.IAnswersRepository;
-import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
-import com.example.sportmaster.repositories.interfaces.IQuizzesRepository;
+import com.example.sportmaster.repositories.interfaces.AnswersRepository;
+import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
+import com.example.sportmaster.repositories.interfaces.QuizzesRepository;
 import com.example.sportmaster.models.QuestionDoc;
-import com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper;
-import com.example.sportmaster.mappers.interfaces.IQuestionDocToQuestionDataMapper;
-import com.example.sportmaster.services.interfaces.IAnswersService;
-import com.example.sportmaster.services.interfaces.IQuestionsService;
+import com.example.sportmaster.mappers.interfaces.QuestionDocToQuestionDataMapper;
+import com.example.sportmaster.services.interfaces.AnswersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.security.InvalidKeyException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 @Service
-public class QuestionsService implements IQuestionsService {
+public class QuestionsService implements com.example.sportmaster.services.interfaces.QuestionsService {
     @Autowired
-    private IQuestionsRepository questionsRepository;
+    private QuestionsRepository questionsRepository;
     @Autowired
-    private IQuizzesRepository quizzesRepository;
+    private QuizzesRepository quizzesRepository;
     @Autowired
-    private IAnswersRepository answersRepository;
+    private AnswersRepository answersRepository;
 
 
     @Autowired
-    private IAnswersService answersService;
+    private AnswersService answersService;
 
-    private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
-    private IAnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapper();
+    private QuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper();
+    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper();
 
     @Override
     public void deleteAnswer(Integer questionId, Integer answerId) {

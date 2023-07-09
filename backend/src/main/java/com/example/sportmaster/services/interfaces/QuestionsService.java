@@ -6,7 +6,7 @@ import com.example.sportmaster.models.QuestionDoc;
 import java.security.InvalidKeyException;
 import java.util.List;
 
-public interface IQuestionsService {
+public interface QuestionsService {
 
     public void deleteAnswer(Integer questionId, Integer answerId);
 

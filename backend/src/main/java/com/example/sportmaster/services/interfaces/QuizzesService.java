@@ -5,7 +5,7 @@ import com.example.sportmaster.models.QuizDoc;
 import java.security.InvalidKeyException;
 import java.util.List;
 
-public interface IQuizzesService {
+public interface QuizzesService {
     public List<QuizDoc> findAllQuizzes();
 
     public QuizDoc createQuiz(QuizDoc quizDoc);

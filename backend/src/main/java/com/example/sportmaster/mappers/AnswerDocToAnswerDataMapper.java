@@ -2,9 +2,8 @@ package com.example.sportmaster.mappers;
 
 import com.example.sportmaster.models.AnswerData;
 import com.example.sportmaster.models.AnswerDoc;
-import com.example.sportmaster.mappers.interfaces.IAnswerDocToAnswerDataMapper;
 
-public class AnswerDocToAnswerDataMapper implements IAnswerDocToAnswerDataMapper {
+public class AnswerDocToAnswerDataMapper implements com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper {
     @Override
     public AnswerDoc toAnswerDoc(AnswerData data) {
         if (data == null) return null;

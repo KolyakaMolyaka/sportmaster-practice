@@ -1,12 +1,11 @@
 package com.example.sportmaster.repositories.interfaces;
 
 import com.example.sportmaster.models.QuestionData;
-import io.swagger.v3.oas.models.security.SecurityScheme;
 
 import java.security.InvalidKeyException;
 import java.util.List;
 
-public interface IQuestionsRepository {
+public interface QuestionsRepository {
     public List<QuestionData> findAll(Integer quizId);
 
     QuestionData create(Integer quizId, QuestionData questionData);

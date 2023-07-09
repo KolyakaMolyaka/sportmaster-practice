@@ -1,16 +1,14 @@
 package com.example.sportmaster.controllers;
 
-import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper;
-import com.example.sportmaster.mappers.QuizDTOToQuizDocMapper;
-import com.example.sportmaster.mappers.interfaces.IQuestionDTOToQuestionDocMapper;
-import com.example.sportmaster.mappers.interfaces.IQuizDTOToQuizDocMapper;
+import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
+import com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.models.QuestionDoc;
 import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.openapi.api.QuizzesApi;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import com.example.sportmaster.openapi.model.QuizDTO;
-import com.example.sportmaster.services.interfaces.IQuestionsService;
-import com.example.sportmaster.services.interfaces.IQuizzesService;
+import com.example.sportmaster.services.interfaces.QuestionsService;
+import com.example.sportmaster.services.interfaces.QuizzesService;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -27,14 +25,14 @@ public class QuizzesController implements QuizzesApi {
 
     /* севисы */
     @Autowired
-    private IQuizzesService quizzesService;
+    private QuizzesService quizzesService;
 
     @Autowired
-    private IQuestionsService questionsService;
+    private QuestionsService questionsService;
 
     /* мапперы */
-    private IQuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new QuizDTOToQuizDocMapper();
-    private IQuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapper();
+    private QuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new com.example.sportmaster.mappers.QuizDTOToQuizDocMapper();
+    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper();
 
 
     /* API */

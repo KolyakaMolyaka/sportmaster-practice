@@ -5,7 +5,7 @@ import com.example.sportmaster.models.AnswerData;
 import java.security.InvalidKeyException;
 import java.util.List;
 
-public interface IAnswersRepository {
+public interface AnswersRepository {
     AnswerData create(Integer questionId, AnswerData answerData);
 
     public List<AnswerData> findAll(Integer questionId);

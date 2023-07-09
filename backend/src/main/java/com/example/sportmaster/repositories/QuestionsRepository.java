@@ -1,18 +1,14 @@
 package com.example.sportmaster.repositories;
 
-import com.example.sportmaster.models.QuizData;
-import com.example.sportmaster.repositories.interfaces.IQuestionsRepository;
 import com.example.sportmaster.models.QuestionData;
-import com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper;
-import com.example.sportmaster.mappers.interfaces.IQuestionDocToQuestionDataMapper;
-import io.swagger.v3.oas.models.security.SecurityScheme;
+import com.example.sportmaster.mappers.interfaces.QuestionDocToQuestionDataMapper;
 import org.springframework.stereotype.Repository;
 
 import java.security.InvalidKeyException;
 import java.util.*;
 
 @Repository
-public class QuestionsRepository implements IQuestionsRepository {
+public class QuestionsRepository implements com.example.sportmaster.repositories.interfaces.QuestionsRepository {
     private HashMap<Integer, QuestionData> questionMap = new HashMap<Integer, QuestionData>() {{
         put(1, new QuestionData(1, 1, "Какое количество фигур находится на шахматной доске в начале партии?"));
         put(2, new QuestionData(2, 1, "Какой фигурой можно совершить \"Рокировку\"?"));
@@ -38,7 +34,7 @@ public class QuestionsRepository implements IQuestionsRepository {
 
     }};
 
-    private IQuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapper();
+    private QuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper();
 
 
     private Integer id = 18; // текущий ID не будет включен в nextId()
