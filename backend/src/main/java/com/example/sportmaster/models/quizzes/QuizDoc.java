@@ -1,4 +1,4 @@
-package com.example.sportmaster.models;
+package com.example.sportmaster.models.quizzes;
 
 import lombok.Data;
 

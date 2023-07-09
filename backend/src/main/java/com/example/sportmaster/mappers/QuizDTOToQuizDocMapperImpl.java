@@ -1,6 +1,6 @@
 package com.example.sportmaster.mappers;
 
-import com.example.sportmaster.models.QuizDoc;
+import com.example.sportmaster.models.quizzes.QuizDoc;
 import com.example.sportmaster.openapi.model.QuizDTO;
 
 public class QuizDTOToQuizDocMapperImpl implements com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper {

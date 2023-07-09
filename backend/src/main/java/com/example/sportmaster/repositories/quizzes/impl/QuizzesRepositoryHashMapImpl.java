@@ -1,6 +1,6 @@
 package com.example.sportmaster.repositories.quizzes.impl;
 
-import com.example.sportmaster.models.QuizData;
+import com.example.sportmaster.models.quizzes.QuizData;
 import com.example.sportmaster.repositories.quizzes.QuizzesRepository;
 import org.springframework.stereotype.Repository;
 

@@ -1,7 +1,7 @@
 package com.example.sportmaster.mappers.interfaces;
 
-import com.example.sportmaster.models.AnswerData;
-import com.example.sportmaster.models.AnswerDoc;
+import com.example.sportmaster.models.answers.AnswerData;
+import com.example.sportmaster.models.answers.AnswerDoc;
 
 public interface AnswerDocToAnswerDataMapper {
     public AnswerDoc toAnswerDoc(AnswerData data);

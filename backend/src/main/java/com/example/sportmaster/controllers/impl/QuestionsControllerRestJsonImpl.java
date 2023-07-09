@@ -4,7 +4,7 @@ import com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapperImpl;
 import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapperImpl;
 import com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
-import com.example.sportmaster.models.AnswerDoc;
+import com.example.sportmaster.models.answers.AnswerDoc;
 import com.example.sportmaster.openapi.api.QuestionsApi;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;

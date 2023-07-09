@@ -1,6 +1,6 @@
 package com.example.sportmaster.repositories.questions;
 
-import com.example.sportmaster.models.QuestionData;
+import com.example.sportmaster.models.questions.QuestionData;
 
 import java.security.InvalidKeyException;
 import java.util.List;

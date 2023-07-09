@@ -1,4 +1,4 @@
-package com.example.sportmaster.models;
+package com.example.sportmaster.models.questions;
 
 import com.example.sportmaster.openapi.model.QuestionDTO;
 import lombok.AllArgsConstructor;

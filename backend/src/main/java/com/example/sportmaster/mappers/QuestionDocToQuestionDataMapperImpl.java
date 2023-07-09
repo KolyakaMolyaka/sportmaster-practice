@@ -1,7 +1,7 @@
 package com.example.sportmaster.mappers;
 
-import com.example.sportmaster.models.QuestionData;
-import com.example.sportmaster.models.QuestionDoc;
+import com.example.sportmaster.models.questions.QuestionData;
+import com.example.sportmaster.models.questions.QuestionDoc;
 
 public class QuestionDocToQuestionDataMapperImpl implements com.example.sportmaster.mappers.interfaces.QuestionDocToQuestionDataMapper {
     @Override

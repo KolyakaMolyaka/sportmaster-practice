@@ -1,6 +1,6 @@
 package com.example.sportmaster.services.quizzes;
 
-import com.example.sportmaster.models.QuizDoc;
+import com.example.sportmaster.models.quizzes.QuizDoc;
 
 import java.security.InvalidKeyException;
 import java.util.List;

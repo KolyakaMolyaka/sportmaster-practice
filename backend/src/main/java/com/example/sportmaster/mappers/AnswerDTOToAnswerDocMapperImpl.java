@@ -1,6 +1,6 @@
 package com.example.sportmaster.mappers;
 
-import com.example.sportmaster.models.AnswerDoc;
+import com.example.sportmaster.models.answers.AnswerDoc;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 
 public class AnswerDTOToAnswerDocMapperImpl implements com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper {

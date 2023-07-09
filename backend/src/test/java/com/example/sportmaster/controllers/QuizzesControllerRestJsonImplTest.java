@@ -1,7 +1,7 @@
 package com.example.sportmaster.controllers;
 
 import com.example.sportmaster.controllers.impl.QuizzesControllerRestJsonImpl;
-import com.example.sportmaster.models.QuestionData;
+import com.example.sportmaster.models.questions.QuestionData;
 import com.example.sportmaster.repositories.questions.QuestionsRepository;
 import com.example.sportmaster.repositories.quizzes.QuizzesRepository;
 import com.example.sportmaster.services.questions.QuestionsService;

@@ -2,7 +2,7 @@ package com.example.sportmaster.services.quizzes.impl;
 
 import com.example.sportmaster.mappers.QuizDocToQuizDataMapperImpl;
 import com.example.sportmaster.repositories.quizzes.QuizzesRepository;
-import com.example.sportmaster.models.QuizDoc;
+import com.example.sportmaster.models.quizzes.QuizDoc;
 import com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper;
 import com.example.sportmaster.services.questions.QuestionsService;
 import com.example.sportmaster.services.quizzes.QuizzesService;
