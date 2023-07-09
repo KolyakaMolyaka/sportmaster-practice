@@ -1,4 +1,4 @@
-package com.example.sportmaster.services.interfaces;
+package com.example.sportmaster.services.questions;
 
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.models.QuestionDoc;

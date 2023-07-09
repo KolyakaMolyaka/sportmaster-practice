@@ -1,10 +1,11 @@
-package com.example.sportmaster.services;
+package com.example.sportmaster.services.answers.impl;
 
 import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.repositories.interfaces.AnswersRepository;
 import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
 import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
+import com.example.sportmaster.services.answers.AnswersService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +13,7 @@ import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
-public class AnswersServiceImpl implements com.example.sportmaster.services.interfaces.AnswersService {
+public class AnswersServiceImpl implements AnswersService {
     @Autowired
     private QuestionsRepository questionsRepository;
 
