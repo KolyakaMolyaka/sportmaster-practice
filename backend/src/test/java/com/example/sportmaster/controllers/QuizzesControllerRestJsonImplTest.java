@@ -22,8 +22,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @ExtendWith(SpringExtension.class)
-@WebMvcTest(QuizzesController.class)
-class QuizzesControllerTest {
+@WebMvcTest(QuizzesControllerRestJsonImpl.class)
+class QuizzesControllerRestJsonImplTest {
 
 
     @Autowired

@@ -1,5 +1,7 @@
 package com.example.sportmaster.controllers;
 
+import com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapperImpl;
+import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapperImpl;
 import com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper;
 import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.models.AnswerDoc;
@@ -23,7 +25,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class QuestionsController implements QuestionsApi {
+public class QuestionsControllerRestJsonImpl implements QuestionsApi {
 
     @Autowired
     private QuestionsService questionsService;
@@ -32,8 +34,8 @@ public class QuestionsController implements QuestionsApi {
     private AnswersService answersService;
 
 
-    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper();
-    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper();
+    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapperImpl();
+    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new AnswerDTOToAnswerDocMapperImpl();
 
     @Override
     public ResponseEntity<Void> questionsQuestionIdAnswersAnswerIdDelete(@ApiParam(value = "ID вопроса", required = true) @PathVariable("questionId") Integer questionId, @ApiParam(value = "ID ответа", required = true) @PathVariable("answerId") Integer answerId) {

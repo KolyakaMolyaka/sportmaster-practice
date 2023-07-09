@@ -1,5 +1,7 @@
 package com.example.sportmaster.controllers;
 
+import com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapperImpl;
+import com.example.sportmaster.mappers.QuizDTOToQuizDocMapperImpl;
 import com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper;
 import com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper;
 import com.example.sportmaster.models.QuestionDoc;
@@ -21,7 +23,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-public class QuizzesController implements QuizzesApi {
+public class QuizzesControllerRestJsonImpl implements QuizzesApi {
 
     /* севисы */
     @Autowired
@@ -31,8 +33,8 @@ public class QuizzesController implements QuizzesApi {
     private QuestionsService questionsService;
 
     /* мапперы */
-    private QuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new com.example.sportmaster.mappers.QuizDTOToQuizDocMapper();
-    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new com.example.sportmaster.mappers.QuestionDTOToQuestionDocMapper();
+    private QuizDTOToQuizDocMapper quizDTOToQuizDocMapper = new QuizDTOToQuizDocMapperImpl();
+    private QuestionDTOToQuestionDocMapper questionDTOToQuestionDocMapper = new QuestionDTOToQuestionDocMapperImpl();
 
 
     /* API */

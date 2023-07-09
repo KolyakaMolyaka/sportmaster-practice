@@ -3,7 +3,7 @@ package com.example.sportmaster.mappers;
 import com.example.sportmaster.models.QuizData;
 import com.example.sportmaster.models.QuizDoc;
 
-public class QuizDocToQuizDataMapper implements com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper {
+public class QuizDocToQuizDataMapperImpl implements com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper {
 
     @Override
     public QuizDoc toQuizDoc(QuizData data) {

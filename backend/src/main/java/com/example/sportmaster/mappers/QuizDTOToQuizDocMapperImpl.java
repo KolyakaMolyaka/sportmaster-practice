@@ -3,7 +3,7 @@ package com.example.sportmaster.mappers;
 import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.openapi.model.QuizDTO;
 
-public class QuizDTOToQuizDocMapper implements com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper {
+public class QuizDTOToQuizDocMapperImpl implements com.example.sportmaster.mappers.interfaces.QuizDTOToQuizDocMapper {
     @Override
     public QuizDTO toQuizDTO(QuizDoc doc) {
         if (doc == null) return null;

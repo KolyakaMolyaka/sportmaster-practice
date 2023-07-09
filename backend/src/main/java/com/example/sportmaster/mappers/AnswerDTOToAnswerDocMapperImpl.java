@@ -3,7 +3,7 @@ package com.example.sportmaster.mappers;
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 
-public class AnswerDTOToAnswerDocMapper implements com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper {
+public class AnswerDTOToAnswerDocMapperImpl implements com.example.sportmaster.mappers.interfaces.AnswerDTOToAnswerDocMapper {
     @Override
     public AnswerDTO toAnswerDTO(AnswerDoc doc) {
         if (doc == null) return null;

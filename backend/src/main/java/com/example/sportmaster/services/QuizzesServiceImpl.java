@@ -1,5 +1,6 @@
 package com.example.sportmaster.services;
 
+import com.example.sportmaster.mappers.QuizDocToQuizDataMapperImpl;
 import com.example.sportmaster.repositories.interfaces.QuizzesRepository;
 import com.example.sportmaster.models.QuizDoc;
 import com.example.sportmaster.mappers.interfaces.QuizDocToQuizDataMapper;
@@ -11,14 +12,14 @@ import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
-public class QuizzesService implements com.example.sportmaster.services.interfaces.QuizzesService {
+public class QuizzesServiceImpl implements com.example.sportmaster.services.interfaces.QuizzesService {
     @Autowired
     private QuizzesRepository quizzesRepository;
 
     @Autowired
     private QuestionsService questionsService;
 
-    private final QuizDocToQuizDataMapper quizDocToQuizDataMapper = new com.example.sportmaster.mappers.QuizDocToQuizDataMapper();
+    private final QuizDocToQuizDataMapper quizDocToQuizDataMapper = new QuizDocToQuizDataMapperImpl();
 
 
     @Override

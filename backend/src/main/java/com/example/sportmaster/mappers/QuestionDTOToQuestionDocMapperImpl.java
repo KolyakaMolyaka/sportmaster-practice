@@ -5,9 +5,9 @@ import com.example.sportmaster.models.QuestionDoc;
 import com.example.sportmaster.openapi.model.AnswerDTO;
 import com.example.sportmaster.openapi.model.QuestionDTO;
 
-public class QuestionDTOToQuestionDocMapper implements com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper {
+public class QuestionDTOToQuestionDocMapperImpl implements com.example.sportmaster.mappers.interfaces.QuestionDTOToQuestionDocMapper {
 
-    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new com.example.sportmaster.mappers.AnswerDTOToAnswerDocMapper();
+    private AnswerDTOToAnswerDocMapper answerDTOToAnswerDocMapper = new AnswerDTOToAnswerDocMapperImpl();
 
     @Override
     public QuestionDTO toQuestionDTO(QuestionDoc doc) {

@@ -1,5 +1,6 @@
 package com.example.sportmaster.services;
 
+import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.repositories.interfaces.AnswersRepository;
 import com.example.sportmaster.repositories.interfaces.QuestionsRepository;
@@ -11,14 +12,14 @@ import java.security.InvalidKeyException;
 import java.util.List;
 
 @Service
-public class AnswersService implements com.example.sportmaster.services.interfaces.AnswersService {
+public class AnswersServiceImpl implements com.example.sportmaster.services.interfaces.AnswersService {
     @Autowired
     private QuestionsRepository questionsRepository;
 
     @Autowired
     private AnswersRepository answersRepository;
 
-    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper();
+    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapperImpl();
     @Override
     public AnswerDoc createAnswer(Integer questionId, AnswerDoc answerDoc) throws InvalidKeyException {
         if (questionsRepository.find(questionId) == null) throw new InvalidKeyException("Вопроса с заданным ID не существует");

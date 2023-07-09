@@ -1,5 +1,7 @@
 package com.example.sportmaster.services;
 
+import com.example.sportmaster.mappers.AnswerDocToAnswerDataMapperImpl;
+import com.example.sportmaster.mappers.QuestionDocToQuestionDataMapperImpl;
 import com.example.sportmaster.mappers.interfaces.AnswerDocToAnswerDataMapper;
 import com.example.sportmaster.models.AnswerDoc;
 import com.example.sportmaster.repositories.interfaces.AnswersRepository;
@@ -16,7 +18,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class QuestionsService implements com.example.sportmaster.services.interfaces.QuestionsService {
+public class QuestionsServiceImpl implements com.example.sportmaster.services.interfaces.QuestionsService {
     @Autowired
     private QuestionsRepository questionsRepository;
     @Autowired
@@ -28,8 +30,8 @@ public class QuestionsService implements com.example.sportmaster.services.interf
     @Autowired
     private AnswersService answersService;
 
-    private QuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new com.example.sportmaster.mappers.QuestionDocToQuestionDataMapper();
-    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new com.example.sportmaster.mappers.AnswerDocToAnswerDataMapper();
+    private QuestionDocToQuestionDataMapper questionDocToQuestionDataMapper = new QuestionDocToQuestionDataMapperImpl();
+    private AnswerDocToAnswerDataMapper answerDocToAnswerDataMapper = new AnswerDocToAnswerDataMapperImpl();
 
     @Override
     public void deleteAnswer(Integer questionId, Integer answerId) {
