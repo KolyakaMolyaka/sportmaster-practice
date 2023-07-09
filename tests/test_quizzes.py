@@ -1,4 +1,5 @@
 import requests
+from utils import generate_quiz
 
 
 PORT = 8080
@@ -34,12 +35,12 @@ class TestQuizzes:
 
     @staticmethod
     def test_post_quizz_200_ok():
-        response = requests.post(URL, json=TestQuizzes._generate_quiz())
+        response = requests.post(URL, json=generate_quiz())
         assert response.status_code == 200, 'Создание викторины должно возвращать статус 200, ожидался статус 200'
 
     @staticmethod
     def test_post_quizz_new_quiz_created_successfully():
-        response = requests.post(URL, json=TestQuizzes._generate_quiz())
+        response = requests.post(URL, json=generate_quiz())
         new_quiz = response.json()
 
         assert new_quiz.get('id') is not None, 'У созданной викторины нет поля ID, ожидалось присутсвие поля ID'
@@ -53,7 +54,7 @@ class TestQuizzes:
     @staticmethod
     def test_delete_quiz_200_ok():
         # создание викторины
-        new_quiz_response = requests.post(URL, json=TestQuizzes._generate_quiz())
+        new_quiz_response = requests.post(URL, json=generate_quiz())
         assert new_quiz_response.status_code == 200, 'Не удалось создать викторину, ожидался код ответа 200'
         new_quiz = new_quiz_response.json()
 
@@ -76,12 +77,12 @@ class TestQuizzes:
     @staticmethod
     def test_put_quiz_404_not_found():
         invalid_id = -1
-        response = requests.put(URL + f'/{invalid_id}', json=TestQuizzes._generate_quiz())
+        response = requests.put(URL + f'/{invalid_id}', json=generate_quiz())
         assert response.status_code == 404, 'Обновление несуществующей викторины должно вернуть статус 404, ожидался статус ответа 404'
 
     @staticmethod
     def test_put_quiz_200_ok():
-        prev_quiz = TestQuizzes._generate_quiz() # создание викторины
+        prev_quiz = generate_quiz() # создание викторины
         prev_quiz_response = requests.post(URL, json=prev_quiz) # отправка викторины на сервер
         assert prev_quiz_response.status_code == 200, 'Не удалось добавить викторину, ожидался статус ответа 200'
         prev_quiz = prev_quiz_response.json() # сервер возвращает более подробную инфомрацию о новой викторине (например: id, created_at)
@@ -91,12 +92,12 @@ class TestQuizzes:
     
     @staticmethod
     def test_put_quiz_successfully_updated():
-        prev_quiz = TestQuizzes._generate_quiz() # создание викторины
+        prev_quiz = generate_quiz() # создание викторины
         prev_quiz_response = requests.post(URL, json=prev_quiz) # отправка викторины на сервер
         assert prev_quiz_response.status_code == 200, 'Не удалось добавить викторину, ожидался статус ответа 200'
         prev_quiz = prev_quiz_response.json() # сервер возвращает более подробную инфомрацию о новой викторине (например: id, created_at)
 
-        new_quiz = {k: str(v) + '_' for k,v in TestQuizzes._generate_quiz().items()} # создание новой викторины с постфиксом '_'
+        new_quiz = {k: str(v) + '_' for k,v in generate_quiz().items()} # создание новой викторины с постфиксом '_'
 
         new_quiz_response = requests.put(URL + f'/{prev_quiz["id"]}', json=new_quiz) # обновление викторины
         updated_quiz = new_quiz_response.json() # получение новой обновленной викторины для сравнения
@@ -113,18 +114,7 @@ class TestQuizzes:
             
     """ Полезные фунции для тестирования """
 
-    @staticmethod
-    def _generate_quiz() -> dict:
-        """Вспомогательная функция создания викторины"""
-        quiz = {
-            'title': 'quiz title',
-            'description': 'quiz description',
-            'category': 'chess',
-            'difficulty': 'easy'
-        }
-        return quiz
-
-
+    
 if __name__ == '__main__':
     # запуск тестов
     TestQuizzes.test_get_quizzes_200_ok()
