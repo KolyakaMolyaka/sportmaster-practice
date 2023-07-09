@@ -95,7 +95,7 @@ public class QuizzesController implements QuizzesApi {
                 .forEach(questions::add);
 
         if (questions.isEmpty()) {
-            ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
 
         return ResponseEntity.ok(questions);
