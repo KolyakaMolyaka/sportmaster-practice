@@ -8,6 +8,7 @@ def generate_quiz() -> dict:
     }
     return quiz
 
+
 def generate_question() -> dict:
     """ Вспомогательная функция создания вопроса"""
     question = {
@@ -15,3 +16,12 @@ def generate_question() -> dict:
     }
     return question
 
+
+def generate_answer() -> dict:
+    """ Вспомогательная функция создания ответа """
+    answer = {
+        'text': 'answer text',
+        'isCorrect': False
+    }
+
+    return answer
